@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 103: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    return
+File "game/script.rpy", line 150: expected menuitem
+    $ strength = True
     ^
 
 Ren'Py Version: Ren'Py 8.1.3.23091805
-Wed Sep 27 22:53:31 2023
+Thu Oct 12 00:53:34 2023
