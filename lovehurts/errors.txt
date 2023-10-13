@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 235: 'show' is not a keyword argument or valid child of the screen statement.
-    show localwizblob:
-        ^
+File "game/script.rpy", line 361: screen expects a non-empty block.
+    screen animals():
+                     ^
 
 Ren'Py Version: Ren'Py 8.1.3.23091805
-Thu Oct 12 23:56:37 2023
+Fri Oct 13 03:12:46 2023
