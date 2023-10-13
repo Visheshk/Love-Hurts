@@ -60,13 +60,13 @@ define gui.interface_text_color = '#ffffff'
 define gui.text_font = "fonts/Neucha-Regular.ttf"
 
 ## The font used for character names.
-define gui.name_text_font = "DejaVuSans.ttf"
+define gui.name_text_font = "fonts/Neucha-Regular.ttf"
 
 ## The font used for out-of-game text.
-define gui.interface_text_font = "DejaVuSans.ttf"
+define gui.interface_text_font = "fonts/Neucha-Regular.ttf"
 
 ## The size of normal dialogue text.
-define gui.text_size = 22
+define gui.text_size = 28
 
 ## The size of character names.
 define gui.name_text_size = 30

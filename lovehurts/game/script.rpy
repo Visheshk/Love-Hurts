@@ -29,7 +29,7 @@ label start:
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
-    show wizfront1:
+    show wiz playerface:
         xpos 0.5 ypos 0.3
 
     # These display lines of dialogue.
@@ -51,12 +51,12 @@ label start:
             jump repress
 
 label express:
-    hide wizfront1
-    show wiz2:
+    show wiz doriface:
         xpos 0.6 ypos 0.4
 
-    show langurrt2:
+    show langur rightface:
         xpos 0.1 ypos 0.3
+        
     "You take a deep breath and relax your body."
     
     p "On my last adventure, I had fun and collected so many different objects...but I felt lonely."
@@ -78,7 +78,7 @@ label express:
 $ strength = 0
 label repress:
 
-    hide wizfront1
+    # hide wizfront1
     show wiz2:
         xpos 0.6 ypos 0.4
 
@@ -130,9 +130,9 @@ label repress:
 
 
 label charSelect:
-    hide wiz2
+    hide wiz
 
-    show langurthinking:
+    show langur thinking:
         xpos 0.1 ypos 0.3
     
     $ strength = False
@@ -149,8 +149,11 @@ label charSelect:
 
 
 label deerStory:
-    scene deerdream
     hide langurthinking
+    scene black
+    with Dissolve(0.5)
+    scene deerdream
+    with Dissolve(0.5)
     
     # show langurempathetic:
     #     xpos 0.1 ypos 0.2
@@ -167,7 +170,8 @@ label deerStory:
     "You feel the warmth in your cheeks. You’re blushing!"
 
     scene intro1
-    
+    with Dissolve(0.6)
+
     show langurrt2:
         xpos 0.1 ypos 0.2
     
@@ -188,12 +192,14 @@ label deerStory:
 
     h "It is known as the Land of Infinite Possibility."
 
-    "You feel the excitement bubble up within you. Another adventure and this time with your crush!"
+    "You feel the excitement bubble up within you. \nAnother adventure and this time with your crush!"
 
     show langurrt2:
         xpos 0.2 ypos 0.3
 
-    h "You will journey through a land that changes depending on who travels through it. Legend says, the true nature of your relationship with your partner will be revealed."
+    h """You will journey through a land that changes depending on who travels through it. 
+    
+    Legend says, the true nature of your relationship with your partner will be revealed."""
 
     p "What causes it to change?"
 
@@ -212,9 +218,6 @@ label deerStory:
     show wizfront1:
         xpos 0.3 ypos 0.4
     
-    show localwizblob:
-        xpos 0.05 ypos 0.1
-
     "While things are all upside down in that realm, just know that help is never too far away. Click on the objects to learn more"
 
     call screen buttons2
@@ -227,9 +230,20 @@ label deerStory:
 
 screen buttons2():
     imagebutton:
+        xalign 0.1
+        yalign 0.35
+        auto "localwizblob_%s.png" action [ToggleScreen("buttons2"), Jump("wizblob")]
+    
+    imagebutton:
         xalign 0.9
         yalign 0.35
-        auto "bagbutton_%s.png" action [ToggleScreen("buttons2"), Jump("postbag")]
+        auto "bagbutton_%s.png" action [ToggleScreen("buttons2"), Jump("bagScreen")]
+
+label wizblob:
+    "blah blah info about wizards"
+
+label bagScreen:
+    "bag screen here"
 
 label postbag:
     hide localwizblob
@@ -259,7 +273,12 @@ label postbag:
 label chap1:
     hide langurrt2
     hide wiz2
+    scene black
+    with Dissolve(0.4)
+    pause(0.3)
+    # figure out fade to b
     scene abundantforest
+    with Dissolve(0.6)
 
     show chap1title:
         xpos 0.25 ypos 0.3
