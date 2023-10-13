@@ -6,7 +6,11 @@
 define config.menu_include_disabled = True
 define h = Character("Paati",  who_color="#c8ffc8")
 define p = Character("You")
+define dh = Character("Hiran")
+define w1 = Character("Wizard Cauwa")
 default char = "Deer"
+default esteem = 0
+default empathy = 0
 # The game starts here.
 
     
@@ -55,7 +59,7 @@ label express:
         xpos 0.6 ypos 0.4
 
     show langur rightface:
-        xpos 0.1 ypos 0.3
+        xpos 0.1 ypos 0.4
         
     "You take a deep breath and relax your body."
     
@@ -153,6 +157,7 @@ label deerStory:
     scene black
     with Dissolve(0.5)
     scene deerdream
+    ### FIX DEER DREAM ETC
     with Dissolve(0.5)
     
     # show langurempathetic:
@@ -194,8 +199,8 @@ label deerStory:
 
     "You feel the excitement bubble up within you. \nAnother adventure and this time with your crush!"
 
-    show langurrt2:
-        xpos 0.2 ypos 0.3
+    # show langurrt2:
+    #     xpos 0.2 ypos 0.2
 
     h """You will journey through a land that changes depending on who travels through it. 
     
@@ -273,26 +278,208 @@ label postbag:
 label chap1:
     hide langurrt2
     hide wiz2
+    
     scene black
     with Dissolve(0.4)
     pause(0.3)
     # figure out fade to b
+    window hide
     scene abundantforest
     with Dissolve(0.6)
-
     show chap1title:
         xpos 0.25 ypos 0.3
-    
-    ""
 
-    return
+    pause
+
+    hide chap1title
+    with Dissolve (0.3)
+
+    show langur empathetic:
+        xpos 0.2 ypos 0.2
+
+    show deer happy:
+        xpos 0.6 ypos 0.2
+
+    window auto
+    
+    "You and Hiran have been walking together for some time. {w}\nYou wonder what they are thinking, and how they are feeling. 
+
+        {w}\nPaati’s warning about the Shifting Sands plays in your mind."
+
+    p "Hiran, are you doing alright? How are you liking the journey so far?"
+
+    dh "I’m okay...I’m a little worried. What if something bad happens to us? "
+
+    p "I am confident that we will manage it together. Have you never been on an adventure like this?"
+
+    dh "This is actually only my second time outside our town. Am I doing okay?"
+
+    p "Oh I didn’t realize you are a beginner. But I’m excited to see how you manage this adventure.
+Why don’t you pick a direction for us to go?"
+
+    dh "Oh no! Please lead the way. I’m a terrible explorer. Besides, I’d love to see you in action."
+
+    "Hiran encouraging you to take the lead has put a spring in your step. You feel a surge of confidence."
+    $ esteem += 10
+
+    p "Let’s start by looking for some food together!"
+    
+    show deer happy:
+        xpos 0.7 ypos 0.2    
+    
+    """Hiran leaps slightly ahead of you. They are quick and graceful as they run through the bushes. You watch and admire them. 
+        You find a rope and keep it safely. The forest is full of berries, honey and mushrooms. Click on food items to collect them.
+
+        You both return with many berries and wildflowers."""
+
+    ### ADD multi BERRY CLICKABLE SCREEN
+    
+    p "Wow! Look at all this! You’re really good at this, huh?"
+
+    dh "Oh haha, just something I learned from my mom. I like running around and finding cool hiding spots too!"
+
+    "You reach a campsite, where most folks on their own journeys are sitting around fires, cooking, eating and laughing. They welcome the two of you with a small cheer and suggest you find a quiet spot to camp."
+
+    p "We’ve reached! Do you want to pick a spot?"
+
+    dh "I’m good with anything!"
+
+    p "Uhm okay...do you have a preference?"
+
+    dh "No, not really. Just some place warm and I’ll curl up into a ball and sleep."
+
+    p "Okay fine, I’ll choose this spot."
+
+    hide langur
+    with Dissolve(0.7)
+
+    "You set up the tent while Hiran arranges dinner. They make a delicious meal of mushroom stew, honeyed buns and wildflower tea. The scent of their cooking travels through the campsite to the others."
+    
+    scene forestanimals
+
+    show deer happy
+    "They begin to gather around you. Click on the other adventurers to see what they’re saying!"
+
+    ### ADD IMAGEMAP for ANIMALS
+
+    "You notice how happy Hiran’s cooking makes the others, and feel lucky to have someone like this on the journey with you. "
+
+    scene deerdream
+
+    "It’s getting late! The others pack up and go into their tents. It’s just you and Hiran, alone under the stars, holding hands. "
+
+    dh "I - um - picked this for us. It stood out from the other berries - reminded me of us."
+
+    p "Oh my god, Hiran! Don’t eat that! That’s a really poisonous berry. "
+    dh "Oh no. I’m such an idiot. I should have known."
+    p "Arre, don’t worry about it! Any new explorer could have made that mistake."
+    dh "I don’t know much... as you can tell. It must be frustrating to have me as a partner. "
+    p "Relax, I know only because I made the mistake of eating it once - hahaha."
+    dh "It’s just - it’s just that it’s been a while since I’ve felt this safe with anyone. Nobody’s ever looked out for me like you do. "
+
+    "You don't really know what to say"
+
+    menu:
+        "Uhm....that’s awful. Let’s get some sleep.":
+            "empathy hit!!"
+            $ empathy -= 10
+            jump nightend
+            
+        
+        "You’re a good explorer. I’m glad to have you by my side.":
+            "empathy ++ "
+            $ empathy += 10
+            jump nightend
+    
+label nightend:
+    "You both head into the tent for the night."
+
+    scene black
+    with Dissolve(1)
+
+    scene abundantforest
+    with Dissolve(0.5)
+    
+    show langur rightface:
+        xpos 0.1 ypos 0.2
+    
+    show deer happy:
+        xpos 0.7 ypos 0.2 
+
+    "The next morning you wake up and the tent is empty. You grab your things in a hurry and see Hiran, sitting next to the fire and holding a piece of wood and a knife."
+
+    dh "You’re up! Slept well? I’ve been thinking about last night. "
+
+    p "What do you mean?"
+
+    dh "You were just so kind to me. I made this for you. As a token."
+
+    ### add token screen
+
+    "Hiran places a beautifully carved wooden pendant on a string into your hands. You feel the muscles in your shoulders tighten. You don’t know what to say."
+
+    show langur shocked
+
+    hide deer
+
+    "You’re not sure how to react. You don’t want to hurt Hiran’s feelings but the gift is making you feel confused. You remember the compass in your bag - this might be a good time to ask for some help!"
+
+    menu:
+        "Visit Local Wizard":
+            jump wizardConsult
+        
+        "Deal with it yourself":
+            jump pendantResponse
+
+
+label wizardConsult:
+    scene black
+    with Dissolve (0.4)
+    scene wizardcave
+    with Dissolve (0.4)
+    show localwiz:
+        xpos 0 ypos 0.2
+
+    show langur thinking:
+        xpos 0.7 ypos 0.2
+
+    "The compass flashes on, the screen shows you a new face. This wizard wears clothes that are similar to Paati’s. "
+
+    w1 "Welcome, young explorer! I’m the Local Wizard, Kauwa."
+
+    p "Hello, Wizard Kauwa. Paati said I could visit you in case I needed help?"
+
+    w1 "Oh, you must be the brave young explorer Paati was telling me about. Tell me, what’s the matter?"
+
+    "You explain to Wizard Kauwa that you are feeling confused by Hiran’s gift - that it seems like things are moving too fast."
+
+    p "How do I talk to Hiran without hurting their feelings?"
+
+    w1 "Hmm, that is confusing. Before I answer, let’s look inward. How do you feel?"
+
+    "You take a moment to listen to your thoughts and feelings. The screen on the compass begins to glow."
+
+    w1 "That’s it! We can now look closer at your emotional states."
+
+    show localwiz:
+        easein 0.4 xpos 0.1 ypos 0.2
+
+    w1 "What do you see?"
+
+
+
+    
+label pendantResponse:
+    "pendant response here"
+
+
+# screen animals():
+    
 
 
 label endStory:
     "story end"
     return
-
-
 
 screen buttons():
     imagebutton:
