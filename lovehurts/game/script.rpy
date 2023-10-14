@@ -11,6 +11,8 @@ define w1 = Character("Wizard Cauwa")
 default char = "Deer"
 default esteem = 0
 default empathy = 0
+default confidence = 0
+default stress = 0
 # The game starts here.
 
     
@@ -432,7 +434,10 @@ label nightend:
             jump pendantResponse
 
 
+default wizard1Consulted = False
+
 label wizardConsult:
+    $ wizard1Consulted = True
     scene black
     with Dissolve (0.4)
     scene wizardcave
@@ -466,15 +471,242 @@ label wizardConsult:
 
     w1 "What do you see?"
 
-
-
+    
     
 label pendantResponse:
-    "pendant response here"
+    scene black
+    with Dissolve (0.4)
+    scene abundantforest
+    with Dissolve (0.4)
+    show langur thinking:
+        xpos 0.05 ypos 0.3
+    show deer tears1:
+        xpos 0.7 ypos 0.2
+    show pendant1:
+        xpos 0.45 ypos 0.5
+    menu:
+        "Reject the Pendant":
+            jump rejectPendant
+        "Accept the Pendant":
+            jump acceptPendant
 
+label rejectPendant:
+    show langur angry:
+        xpos 0.15 ypos 0.2
+    
+    show deer angry:
+        xpos 0.6 ypos 0.2
+    
+    p "I... uh... don't know what to say"
+    $ stress += 10
 
+    dh "Put it on, silly!"
+
+    p "This just doesn't feel right"
+
+    p "I don't want your dumb pendant"
+
+    """Hiran is silent but you can tell that they are hurt and angry. {w}
+    \nSuddenly the land under you starts to shift. {w}\nThis is what Paati had told you about. """
+
+    jump turbulentRiver
+
+label acceptPendant:
+    menu:
+        "This is such a beautiful pendant, but I think we are moving too fast":
+            jump logicalPendant
+
+        "This is such a beautiful pendant, but I am feeling so confused by it" if wizard1Consulted:
+            jump empatheticPendant
+
+label empatheticPendant:
+    show langur empathetic
+    show deer happy
+    dh "Oh, what is there to be confused about? It’s just a pendant. I wanted to show you how much I care about you!"
+
+    p "I feel so special. But next time can you just tell me, instead of giving me something?"
+
+    dh "Uhm, okay. Do you not like gifts or something?"
+
+    p "It’s not that...it’s complicated. "
+
+    """
+    You want to open up about your feelings. But you fear that Hiran will stop liking you if you tell them the truth. {w}
+    \nSuddenly the land under you starts to shift. This is what Paati had told you about. 
+    """
+
+    jump valleyTruth
+
+label valleyTruth:
+    scene black
+    with Dissolve(0.4)
+    pause(0.3)
+    # figure out fade to b
+    window hide
+    scene valleysc
+    with Dissolve(0.6)
+    show valleytitle:
+        xpos 0.25 ypos 0.5
+    pause
+
+    window auto
+    show langur thinking:
+        xpos 0 ypos 0.25
+    show deer normal:
+        xpos 0.7 ypos 0.2
+    
+    hide valleytitle
+    menu:
+        "Start conversation":
+            jump valleyConvoStart
+        "Wait for Hiran to start the conversation":
+            jump valleyHiranWait
+
+label valleyConvoStart:
+    show langur worried
+    "You feel the urge to explain why you're feeling the way you're feeling and you hope Hiran will be understanding."
+
+    p "So I guess I should tell you why I freaked out so much about the pendant."
+    dh "Yes...I don’t understand why this has become such a big deal!"
+    p "My ex...they hurt me really badly. At the start of the relationship they were so sweet, and later they used that sweetness against me. "
+    p "Now I feel scared when someone is so sweet to me. I feel like I can’t trust them or something. "
+    jump valleyCont
+
+label valleyHiranWait:
+    show deer river:
+        xpos 0.55
+    "Hiran comes closer to you, and holds your hand gently"
+    dh "So, tell me about it. What's complicated?"
+    p "I feel like such a baby. But the truth is, my ex...they hurt me really badly. {w}At the start of the relationship they were so sweet, and later they used that sweetness against me." 
+    p "Now I feel scared when someone is so sweet to me. I feel like I can’t trust them or something. "
+
+label valleyCont:
+    show langur rightface
+    "Hiran looks at you with understanding in their eyes. You smile nervously. "
+    dh "Okay, I get that. It sucks that your ex did that!"
+    p "Yah, it was confusing because the beginning was so good. All the gifts, all the attention - I felt so loved."
+    p "Then they started making me feel guilty when I didn’t do what they wanted. They used the gifts to remind me that they were a better partner than I was."
+    dh "Oh, that is so sneaky! I won’t ever do that to you. I want you to trust me and tell me what you’re feeling."
+    p "I know, I am trying. I didn’t mean to hurt your feelings. I am so glad you are by my side."
+
+    $ empathy += 10
+    # TOKEN AWARD
+
+    hide deer
+    show langur thinking
+    "A new path appears in front of you. How will you proceed?"
+    """
+    You and Hiran seem to be quite different, but, by having a tough conversation, you are showing them and yourself that you are willing to let someone else see your pain. {w}
+    You feel lighter and closer to Hiran. Both of you discuss where you want to go next..
+    """
+
+    menu: 
+        "You feel lighter and closer to Hiran. Both of you discuss where you want to go next.."
+
+        "Go ahead with excitement":
+            jump localPub
+        "Go ahead with caution":
+            jump mangrove
+
+label localPub:
+    "local pub chapter"
+    return 
+
+label mangrove:
+    "mangrove chapter"
+    return
+
+label logicalPendant:
+    show langur worried
+        # xpos 0.2 ypos 0.3
+    show deer angry
+        # xpos 0.7 ypos 0.3
+    dh "That's mean. I'm just trying to show you that I like you. Why are you making it such a big deal?"
+    p "I do appreciate the gift. I just want to take things slow."
+    dh "Yeah, whatever. Maybe you're just like the rest of them"
+    p "Hey, that's not fair! I'm only trying to tell you how I feel!"
+    $ stress += 10
+    $ confidence -= 10
+    show deer:
+        ease 1.4 xpos 1.2
+        
+    "Hiran shrugs and turns away. \nSuddenly the land under you starts to shift. This is what Paati had told you about. "
+
+    jump turbulentRiver
 # screen animals():
     
+label turbulentRiver:
+    scene black
+    with Dissolve(0.4)
+    pause(0.3)
+    # figure out fade to b
+    window hide
+    scene turbulentbg
+    with Dissolve(0.6)
+    show turbulentrivertitle:
+        xpos 0.25 ypos 0.5
+    pause
+    
+    # ""
+    hide turbulentrivertitle
+
+    show deer river:
+        xpos 0.6 ypos 0.1
+    
+    show langur angry:
+        xpos 0.1 ypos 0.2
+    window auto
+    "Clouds form above your head and rain begins to fall. It shifts the mud beneath you, pushing you towards a river. Tied to a pole, is a small boat. You realize there is nowhere to go except through. You and Hiran get into the boat in a hurry. "
+
+    dh "What’s your problem, dude? Who reacts like that to a small gift."
+
+    p "It’s complicated, okay! And also, does this seem to be a good time to have a conversation? We’re literally fighting for our lives."
+    
+    $ stress += 10
+
+    show langur worried
+
+    show deer tears1
+
+    dh "We're in this mess because of you"
+    $ confidence -= 10
+    dh "Why are you so closed off?"
+    dh "No! I want you to answer me. {w}Why did you even ask me out? {w}It seems like everything has to be on your terms and you always get your way."
+
+    p "Hiran, I am literally trying to get us out of this dangerous river. Do you think we could MAYBE have this conversation once we’re in a safer environment? "
+    dh "We ARE the environment, Dori. Did you not even listen to your Paati."
+
+    $ stress += 10
+
+    show deer tears1:
+        xpos 0.65
+    
+    show langur worried:
+        xpos 0.05
+
+    "You are having trouble deciding which problem to focus on. Why is Hiran being so unhelpful? "
+    "You decide that survival is more important than Hiran’s feelings."
+
+    p "For God’s sake, Hiran, just help me row the boat. "
+
+    dh "I should never have agreed to be here with you."
+
+    "Hiran grabs the second oar in anger. The two of you row the boat through the choppy waters. "
+
+    show langur thinking
+
+    "After a few hours, the river calms down and the rain stops. You are completely exhausted."
+    "You want to thank Hiran for their help with the boat, but the tension between you is too high."
+    "You remember the compass in your bag - this might be a good time to ask for some help!"
+
+    menu:
+        "Get help":
+            jump riverWiz
+        "Manage by yourself":
+            jump riverCont
+
+#START SAT here
+# label riverWiz
 
 
 label endStory:
