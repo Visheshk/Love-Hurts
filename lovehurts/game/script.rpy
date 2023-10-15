@@ -7,12 +7,13 @@ define config.menu_include_disabled = True
 define h = Character("Paati",  who_color="#c8ffc8")
 define p = Character("You")
 define dh = Character("Hiran")
-define w1 = Character("Wizard Cauwa")
+define w1 = Character("Wizard Kauwa")
 default char = "Deer"
 default esteem = 0
 default empathy = 0
 default confidence = 0
 default stress = 0
+default energy = 0
 # The game starts here.
 
     
@@ -84,7 +85,6 @@ label express:
 $ strength = 0
 label repress:
 
-    # hide wizfront1
     show wiz2:
         xpos 0.6 ypos 0.4
 
@@ -159,15 +159,8 @@ label deerStory:
     scene black
     with Dissolve(0.5)
     scene deerdream
-    ### FIX DEER DREAM ETC
     with Dissolve(0.5)
-    
-    # show langurempathetic:
-    #     xpos 0.1 ypos 0.2
-    
-    # show deerriver:
-    #     xpos 0.7 ypos 0.2
-    
+
     p """I met Hiran at an adventurers group in the last town. Even though they are a bit shy, we hit it off immediately! 
     
     We spent a lot of time wandering the town together. They're really attentive and gentle. We found a quiet spot on a nearby hill and had our first kiss under the stars. 
@@ -284,7 +277,7 @@ label chap1:
     scene black
     with Dissolve(0.4)
     pause(0.3)
-    # figure out fade to b
+    
     window hide
     scene abundantforest
     with Dissolve(0.6)
@@ -334,7 +327,7 @@ Why don’t you pick a direction for us to go?"
 
         You both return with many berries and wildflowers."""
 
-    ### ADD multi BERRY CLICKABLE SCREEN
+    ### TODO ADD multi BERRY CLICKABLE SCREEN
     
     p "Wow! Look at all this! You’re really good at this, huh?"
 
@@ -362,7 +355,7 @@ Why don’t you pick a direction for us to go?"
     show deer happy
     "They begin to gather around you. Click on the other adventurers to see what they’re saying!"
 
-    ### ADD IMAGEMAP for ANIMALS
+    ### TODO ADD IMAGEMAP for ANIMALS
 
     "You notice how happy Hiran’s cooking makes the others, and feel lucky to have someone like this on the journey with you. "
 
@@ -416,7 +409,7 @@ label nightend:
 
     dh "You were just so kind to me. I made this for you. As a token."
 
-    ### add token screen
+    ### TODO add token screen
 
     "Hiran places a beautifully carved wooden pendant on a string into your hands. You feel the muscles in your shoulders tighten. You don’t know what to say."
 
@@ -427,10 +420,10 @@ label nightend:
     "You’re not sure how to react. You don’t want to hurt Hiran’s feelings but the gift is making you feel confused. You remember the compass in your bag - this might be a good time to ask for some help!"
 
     menu:
-        "Visit Local Wizard":
+        "Get help":
             jump wizardConsult
         
-        "Deal with it yourself":
+        "Manage it yourself":
             jump pendantResponse
 
 
@@ -470,6 +463,13 @@ label wizardConsult:
         easein 0.4 xpos 0.1 ypos 0.2
 
     w1 "What do you see?"
+
+    #TODO some dialogue here?
+    
+    "This situation is stressing me out"
+
+    jump pendantResponse
+
 
     
     
@@ -541,7 +541,7 @@ label valleyTruth:
     scene black
     with Dissolve(0.4)
     pause(0.3)
-    # figure out fade to b
+
     window hide
     scene valleysc
     with Dissolve(0.6)
@@ -590,7 +590,7 @@ label valleyCont:
     p "I know, I am trying. I didn’t mean to hurt your feelings. I am so glad you are by my side."
 
     $ empathy += 10
-    # TOKEN AWARD
+    # TODO TOKEN AWARD
 
     hide deer
     show langur thinking
@@ -609,11 +609,310 @@ label valleyCont:
             jump mangrove
 
 label localPub:
-    "local pub chapter"
+    
+    scene black
+    with Dissolve(0.4)
+    pause(0.3)
+    
+    window hide
+    scene localpub
+
+    with Dissolve(0.6)
+    show pubtitle:
+        xpos 0.35 ypos 0.4
+    pause
+
+    window auto
+    "The valley opens up and in the distance, you see a shack. You hear music, voices and the sound of plates and glasses - seems like a good place to stop and rest. "
+
+    hide pubtitle
+    
+    show langur empathetic:
+        xpos 0 ypos 0.25
+    show deer normal:
+        xpos 0.67 ypos 0.2
+    with Dissolve(0.5)
+    
+    "Upon entering, you see the place is crowded and full of noisy chatter. Seems to be a popular place."
+
+    p "Wow, this is nice! And look at all these people! It’s good to see so many new faces. "
+
+    dh "I get a little nervous in crowded places. Will you stay close to me?"
+
+    p "Of course, I promise."
+    
+    "You can sense that Hiran is not going to enjoy the evening, but you are excited to socialize with the other explorers."
+
+    show langur empathetic 4 behind deer:
+        xpos 0.45 ypos 0.2
+    show wolf npc1:
+        xpos 0.05 ypos 0.2
+    show deer normal:
+        xpos 0.72
+    "Wolf" "Hey, newcomers! You both look like you have some stories to tell. Why don’t you join our table?"
+
+    #TODO BADGE RECEIVE
+    $ confidence += 10
+    
+    show langur empathetic 5:
+        xpos 0.2
+    show wolf npc1 behind langur:
+        xpos 0.45
+    show deer normal:
+        xpos 0.78
+
+    "The other travellers seem very impressed by you and your stories. You are enjoying the attention and try to keep Hiran involved in the conversation."
+
+    "You tell the others about how Hiran impressed the campsite with their cooking and quickness. You hold Hiran’s and squeeze it gently. They squeeze yours and seem to relax a bit."
+
+    "Click on the objects to drink "
+
+    # TODO Add clickable drinks
+
+    $ confidence += 10
+
+    hide wolf
+
+    show deer normal:
+        xpos 0.47
+    
+    "After a few hours, people start leaving. Soon, you and Hiran are alone in the pub. You are feeling relaxed and happy. "
+
+    dh "You are so good with people - they like listening to you tell your wonderful stories!"
+
+    p "Ha ha, I just like meeting new people! I’m so glad you stayed. You did such a great job too and I’m proud of you! "
+
+    dh "Thanks! I’m proud of me too. I was nervous at first but then it was fun. It was easier because you were by my side."
+
+    p "You know I've got your back!"
+
+    "You see a familiar shawl in the bar and you recognize it!"
+    
+    p "Oh look, the Local Wizard Kauwa is here! Let me go say hi."
+
+    hide deer 
+
+    show langur thinking:
+        xpos 0.65 ypos 0.22
+    
+    show localwiz:
+        xpos 0.2 ypos 0.22
+    
+    w1 "Young Dori! You look well! How’s the adventuring going? "
+
+    p "Things are going well with Hiran. I feel that we are both trying to make it work with each other."
+
+    w1 "Well, I am very happy to hear that! "
+
+    p "Wizard...I know this may seem a little weird but would you be able to help me look inward again?"
+
+    w1 "Gladly!"
+
+    "You take a moment to listen to your thoughts and feelings. The screen on the compass begins to glow. "
+
+    # TODO stats screen
+
+    w1 """Look at that, Dori! Great work! A strong relationship is about give and take. 
+    {w}But remember, it not about keeping score of who does how much! {w}
+    Give with an open heart, and ask for what you want. A good partner will do the same for you."""
+
+    p "Thank you, Kauwa"
+
+    hide localwiz
+
+    show langur empathetic 5:
+        xpos 0.2 ypos 0.18
+    
+    show deer normal:
+        xpos 0.6 ypos 0.22
+
+    "Having had a nice moment with the Wizard Kauwa, you return to Hiran."
+    p "I just spoke to the Local Wizard and told them how well we are doing together."
+    dh "Oh yes..I think we’re on the right path. I feel very close to you."
+    p "Me too!"
+    dh "So, then...would you be open to making it more official with the pendant?"
+
+    show langur thinking:
+        xpos 0.1 ypos 0.22
+
+    "You don’t want to spoil the good mood, but you are not comfortable with what Hiran is doing. "
+
+    menu:
+        "You've had enough!":
+            jump pubFight
+        "Try to get your point across":
+            jump pubTalk
+    
+label pubFight:
+    show langur angry
+    "There is a loud rumble - thick roots and trees sprout from the pub. The land is changing again!"
+
+    p "Hiran I told you I don’t want any gifts right now. Why can’t you respect that and just let this go? It’s such weird behaviour!"
+    dh "You’re being so mean."
+
+    "going to marshy land"
+    #TODO next step
+
     return 
 
+label pubTalk:
+    show langur empathetic 5:
+        xpos 0.2
+    show deer river:
+        xpos 0.55
+    p "Hiran, I told you, I don’t want to do anything big right now but I’ll keep the pendant close and wear it when I’m ready.  Does that sound good?"
+    dh "That sounds good!"
+
+    "You and Hiran exchange a tender kiss. You feel the ground become uneven beneath you - the land is changing again!"
+
+    "goes to rolling hillins"
+    #TODO next step
+
 label mangrove:
-    "mangrove chapter"
+    scene black
+    with Dissolve(0.4)
+    pause(0.3)
+    
+    window hide
+    scene mangrovesc1
+
+    with Dissolve(0.6)
+    show mangrovetitle:
+        xpos 0.3 ypos 0.4
+    pause
+
+    window auto
+    "The valley opens up into a swamp. The mud is thick and sticky, it is hard to get through. Hiran is struggling more than you are."
+
+    hide mangrovetitle
+    
+    show langur worried:
+        xpos 0.57 ypos 0.16
+    show deer river left:
+        xpos 0.1 ypos 0.16
+    with Dissolve(0.5)
+
+    dh "Slow down! I keep getting stuck!"
+
+    p "It’s hard for me to walk too! I don’t know what to do to make it easier."
+
+    dh "There ‘s rope in your bag. Use that!"
+
+    show deer normal left
+    
+    show langur thinking
+
+    "You tie Hiran to yourself using the rope, and you both begin to walk slowly through the mud. It is much easier. But you suddenly realize something."
+
+    # TODO Secure supporter badge
+
+    p "Hiran, how do you know that I had rope? Did you look in my bag?"
+
+    dh "Well, I couldn’t find my watch and I thought it might have gotten put into your bag. You know it’s normal for people traveling together to look inside each other’s things, right?"
+
+    "You do not agree with Hiran. It is pretty weird that they opened your bag like that. You might need some help with this one!"
+
+    show langur shocked
+
+    menu:
+        "Get help":
+            jump pubWizard
+
+        "Manage by yourself":
+            jump marshPass
+
+
+label pubWizard:
+    scene black
+    with Dissolve (0.4)
+    scene wizardcave
+    with Dissolve (0.4)
+    show localwiz:
+        xpos 0 ypos 0.2
+
+    show langur thinking:
+        xpos 0.7 ypos 0.2
+
+    w1 "Welcome, Dori! I can see you look distressed - let’s take a look inward!"
+
+    #TODO Stats Screen
+
+    p "Kauwaji, is it wrong that I feel angry at Hiran for going through my bag without asking me."
+
+    p "I don’t have anything to hide from them. We are getting so close to each other. {w}\nBut does that mean that they can just go through my private things?"
+    dh "In one word - no!"
+    dh "In any relationship, there are some things that are shared, and some things that are private."
+    dh "Trusting your partner includes respecting their privacy and individuality. "
+    dh "Going through your partner’s things, especially without their permission or knowledge violates that trust."
+
+    p "I had a feeling that was the case."
+    
+    scene mangrovesc1
+    with Dissolve (0.4)
+    show deer normal left:
+        xpos 0.15 ypos 0.2
+    
+    show langur thinking:
+        xpos 0.7 ypos 0.22
+    
+    jump marshPass
+
+label marshPass:
+    "Your heart sinks. You don’t know if things can be fixed with Hiran - this was a violation of your trust and privacy. "
+
+    menu:
+        "Tell them how you feel.":
+            jump marshTell
+
+        "Let it pass.":
+            jump marshPass2
+        
+        "Break up with Hiran.":
+            jump marshBreakup
+
+label marshTell:
+    show deer:
+        xpos 0.2
+    show langur:
+        xpos 0.4
+    
+    p "Hiran, it wasn’t okay that you went through my stuff without asking. "
+
+    p "I know we’re partners and everything but my privacy is important to me - and I wouldn’t go through your things."
+
+    dh "I’m sorry, I didn’t know this is how you felt. In my previous relationships, I shared everything my partners. "
+    dh "I can’t say it was the healthiest thing, but it made us feel closer. "
+    dh "I want you to know you can trust me and that I respect your space. It won’t happen again."
+
+    p "Okay, thanks for being honest. Next time, just ask me."
+
+    #TODO go to rolling hills
+    # WITH PARTNER
+    "go to Rolling hills"
+
+    return
+    
+
+label marshPass2:
+    p "You know what, maybe I’m overthinking this."
+    dh "Yeah, I think you are."
+
+    "go to barren desert"
+    #TODO BARREN DESERT
+    return
+
+label marshBreakup:
+    p "Hira, what you did back there really wasn’t cool. You broke my trust and you invaded my privacy."
+    
+    p "I don't think we should be together anymore"
+
+    dh "You’re breaking up with me? But I didn’t even do anything, "
+
+    dh "You know what! Fine. I don’t need you any way. {w}This whole thing has been one disaster after another. {w}I’m better off without you. Have fun on your stupid little quest."
+
+    #TODO Go to rolling hills alone
+    "go to rolling hills"
+
     return
 
 label logicalPendant:
@@ -650,11 +949,11 @@ label turbulentRiver:
     # ""
     hide turbulentrivertitle
 
-    show deer river:
-        xpos 0.6 ypos 0.1
-    
-    show langur angry:
+    show deer river left:
         xpos 0.1 ypos 0.2
+    
+    show langur angry 2:
+        xpos 0.6 ypos 0.2
     window auto
     "Clouds form above your head and rain begins to fall. It shifts the mud beneath you, pushing you towards a river. Tied to a pole, is a small boat. You realize there is nowhere to go except through. You and Hiran get into the boat in a hurry. "
 
@@ -666,7 +965,7 @@ label turbulentRiver:
 
     show langur worried
 
-    show deer tears1
+    show deer tears left
 
     dh "We're in this mess because of you"
     $ confidence -= 10
@@ -678,12 +977,6 @@ label turbulentRiver:
 
     $ stress += 10
 
-    show deer tears1:
-        xpos 0.65
-    
-    show langur worried:
-        xpos 0.05
-
     "You are having trouble deciding which problem to focus on. Why is Hiran being so unhelpful? "
     "You decide that survival is more important than Hiran’s feelings."
 
@@ -693,7 +986,8 @@ label turbulentRiver:
 
     "Hiran grabs the second oar in anger. The two of you row the boat through the choppy waters. "
 
-    show langur thinking
+    show langur thinking:
+        ypos 0.24
 
     "After a few hours, the river calms down and the rain stops. You are completely exhausted."
     "You want to thank Hiran for their help with the boat, but the tension between you is too high."
@@ -705,9 +999,321 @@ label turbulentRiver:
         "Manage by yourself":
             jump riverCont
 
-#START SAT here
-# label riverWiz
+#TODO START SAT here
+label riverWiz:
 
+    scene black
+    with Dissolve (0.4)
+    scene wizardcave
+    with Dissolve (0.4)
+    show localwiz:
+        xpos 0 ypos 0.2
+
+    show langur thinking:
+        xpos 0.7 ypos 0.24
+    "The compass flashes on"
+
+    w1 "Back so soon, young one!"
+    p "I need your help, Wizard! It’s still only the beginning of my new relationship and I’m exhausted."
+
+    w1 "Okay, explorer, let’s see what we can do! Take a deep breath and focus."
+
+    "You take a moment to listen to your thoughts and feelings. The screen on the compass begins to glow. "
+
+    #TODO STATS Screen
+
+    w1 "You seem upset, young one. \n You might find it helpful to use the tools you and Paati packed. Why don’t we look in the bag and see what we have? What are two tools that can help you feel better in this moment?"
+
+    #TODO Inventory screen
+
+    "You take a moment to have a snack and focus your energy -  the temperature of the cave feels cool, the air smells fresh, you see the sunlight through the waterfall, the chips taste salty and delicious and you listen to the sound of the forest all around you. "
+
+    #TODO emotion navigator badge
+
+    "Having rested and recollected your thoughts, you feel you have the energy to return. "
+    
+    scene turbulentbg
+    with Dissolve(0.6)
+
+    show langur thinking:
+        xpos 0.65 ypos 0.24
+
+    jump riverCont
+
+label riverCont:
+    show deer normal left:
+        xpos 0.15 ypos 0.2
+    
+    "You find Hiran sitting on the banks of the river. You know things between you two are not okay."
+
+    menu:
+        "Ignore the fight":
+            jump riverIgnore
+
+        "Talk about the fight":
+            jump riverTalk
+
+label riverIgnore:
+    show langur worried
+    p "Listen, I'd rather not get into what happened back there. Can we just leave it behind us?"
+    $ empathy -= 10
+    dh "Uhm, okay."
+    "You tie up the boat and leave it by the shore. In the distance, you see shack. You hear music, voices and the sound of plates and glasses - seems like a good place to stop and rest. "
+    p "Let’s go there. I’m sure we’ll feel better after some time."
+
+    jump pub3
+
+label riverTalk:
+    p "Listen Hiran, if we want to make this work, then we need to talk."
+    dh "That’s literally all I’ve been trying to do with you."
+
+    "You tie up the boat and leave it by the shore. Up ahead, you see the land slopes into a deep valley. You wonder what will come next. "
+
+    jump valleyTruth3
+
+label valleyTruth3:
+    scene black
+    with Dissolve(0.4)
+    pause(0.3)
+    # figure out fade to b
+    window hide
+    scene valleysc
+    with Dissolve(0.6)
+    show valleytitle3:
+        xpos 0.25 ypos 0.5
+    pause
+    
+    # ""
+    hide valleytitle3
+
+    show deer river left:
+        xpos 0.1 ypos 0.2
+    
+    show langur angry 2:
+        xpos 0.6 ypos 0.2
+    window auto
+    "waiting for comment resolve to see if this valley arc is still around"
+
+    jump pub3
+
+label pub3:
+    scene black
+    with Dissolve(0.4)
+    pause(0.3)
+    # figure out fade to b
+    window hide
+    scene localpub
+    with Dissolve(0.6)
+    show pubtitle:
+        xpos 0.35 ypos 0.5
+    pause
+    
+    # ""
+    hide pubtitle
+    
+    window auto
+    "You enter a crowded pub. It seems to be a popular place and is full of noisy chatter."
+
+    
+    show langur empathetic:
+        xpos 0 ypos 0.25
+    show deer normal:
+        xpos 0.67 ypos 0.2
+    with Dissolve(0.5)
+    
+    p "Wow, this is nice! And look at all these people! It’s good to see so many new faces. "
+
+    dh "Why does it sound like you want to talk to anyone except me?"
+
+    p "Look, I just want to enjoy myself and forget about how stressful this adventure has been so far. I suggest you do the same. You might enjoy letting loose!"
+    
+    dh "(Sadly) Okay...please stay close to me, though. I don’t want to get lost in the crowd. "
+
+    "You can sense that Hiran is nervous and shy, but seeing other people has improved your mood. "
+
+    show langur empathetic 4 behind deer:
+        xpos 0.45 ypos 0.2
+    show wolf npc1:
+        xpos 0.05 ypos 0.2
+    show deer normal:
+        xpos 0.72
+    "Wolf" "Hey, newcomers! You both look like you have some stories to tell. Why don’t you join our table?"
+
+    #TODO BADGE RECEIVE
+    $ confidence += 10
+    
+    show langur empathetic 5:
+        xpos 0.2
+    show wolf npc2 behind langur:
+        xpos 0.45
+    show deer normal:
+        xpos 0.78
+
+    "The other travellers seem very impressed by you and your stories. You don’t know if it is the alcohol or the attention, but your tension melts away and you forget all about the fight. \nYou also forget about Hiran."
+
+    show deer angry
+
+    "Click on the objects to drink "
+
+    # TODO Add clickable drinks
+
+    $ confidence += 10
+
+    hide wolf
+    with Dissolve(0.3)
+    
+    show langur shocked:
+        xpos 0.2
+
+    "Suddenly you realize that Hiran has left the room. You see them standing in the corner, looking angry."
+
+    show deer angry:
+        xpos 0.47
+    
+    dh "You forgot about me, didn’t you?"
+    p "I - uh - was just coming to check on you!"
+    dh "I’m not an idiot, Dori. I can see you love being the center of attention."
+    p "*hiccup*"
+    dh "And by the way I saw you were flirting with that hot wolf!"
+    p "..."
+    dh "Are you being like this to hurt me? What did I do to deserve this?"
+    $ stress += 10
+    dh "Are we ever going to talk about the pendant or not?"
+    $ energy -= 10
+
+    "Your head feels fuzzy and Hiran’s words leave you numb. You run out of the pub and spot a Local Wizard. Help is right here if you want it."
+    show langur:
+        xpos 0.0
+    show deer:
+        xpos 0.7
+    menu:
+        "Get help":
+            jump pubWiz
+        "Manage it yourself":
+            jump pubCont
+
+label pubWiz:
+    hide deer
+    show langur thinking:
+        xpos 0.6 ypos 0.24
+    show localwiz:
+        xpos 0.1 ypos 0.24
+    
+    "You run up to the Wizard. They greet you warmly but realize quickly that something is wrong."
+    w1 "Young Dori! You don’t well at all! Anything I can help with?"
+    p "Yes! I think I really hurt my partner and they said some things that hurt me too. What do I do!"
+    w1 "Well, let’s take a look, shall we?"
+    "You take a moment to listen to your thoughts and feelings. The screen on the compass begins to glow. "
+    #TODO Stats screen
+    w1 "I sense that there has been a break down in the trust and communication between you and Hiran."
+    p "I feel like I’m doing everything wrong with Hiran. They’re being so clingy. I feel so stuck with them."
+    w1 "This can happen when two people find themselves in a stressful situation."
+    w1 "Hiran did something that hurt you, and then you did something to hurt them. And now they tried to hurt you again. Watch out for this cycle!"
+    w1 "Remember, hurting someone who hurt you will not take away your pain!"
+
+    "You realize the truth of those words."
+    w1 "Your next few steps are very important for your future with Hiran, so you need to be careful. "
+    w1 "Even though you have the tools in your bag, you seem too fatigued to use them. \nI suggest you rest and recover."
+    hide localwiz
+    show langur:
+        xpos 0.0
+
+    show deer angry:
+        xpos 0.7 ypos 0.2
+    jump pubCont
+
+label pubCont:
+    "You walk back into the pub and find Hiran sitting alone, with an angry expression on their face. The thought of talking to them scares you. Before you can say anything, they get up."
+    menu:
+        "Go back to the room":
+            jump homeReturn
+
+        "Stay in the pub":
+            dh "I am going to sleep. This has been a crazy day"
+            jump homeLate
+
+label homeReturn:
+    scene black
+    with Dissolve(0.4)
+    pause(0.3)
+    scene pubhomebg
+    with Dissolve(0.6)
+    $ energy += 10
+    "You follow Hiran to the room, but they are in no mood to talk. It takes you many hours to fall asleep because you keep going over the last few days. 
+    The next morning, you need to make an important decision."
+        
+    show langur thinking:
+        xpos 0 ypos 0.25
+    show deer angry:
+        xpos 0.67 ypos 0.2
+    with Dissolve(0.5)
+    
+    menu:
+        "Share what's on your mind":
+            jump homeShare
+        "Pretend like nothing happened":
+            jump homeIgnore
+
+
+label homeShare:
+    show langur worried
+    p "Listen, Hiran. If we want to make this work, then we really need to talk."
+    "You hear a rumble and look outside the window. The land is changing again. You and Hiran run outside."
+
+    "going to valleyy"
+    return
+    #TODO go to VALLEY V1
+
+label homeIgnore:
+    show deer normal left
+    "You have already invested so much time into this relationship but the tension between the two of you seems too much to address right now. Hopefully, things will get better with a change of scene."
+
+    p "Hope you slept well. Let’s just keep moving."
+    dh "Fine. Whatever"
+
+    "GOING TO MARSHY LAND"
+    return
+    #TODO Marshy Land m1
+
+label homeLate:
+    scene black
+    with Dissolve(0.4)
+    pause(0.3)
+    scene pubhomebg
+    with Dissolve(0.6)
+    $ energy -= 10
+    show langur worried:
+        xpos 0 ypos 0.25
+    show deer angry:
+        xpos 0.67 ypos 0.2
+    with Dissolve(0.5)
+    "You are woken up by the sun rays hitting your eyes. You don’t remember last night, just that you stayed back in the pub and had a few more drinks. 
+    \n{w}Where are you? And how did you get here?"
+
+    dh "I see you are awake. Hope you had a fun night. One of your new friends dropped you off here just as the sun was rising."
+    dh "Where the hell were you? Next time I’m not letting you out of my sight."
+    menu:
+        "You feel angry":
+            jump homeAngry
+        "You feel guilty":
+            jump homeGuilty
+
+label homeAngry:
+    show langur angry
+    "You feel like you're being treated unfairly"
+    menu:
+        "Listen, Hiran. If we want to make this work, then we need to talk." if energy > 1000:
+            "I'm too tired to talk"
+        "I can’t deal with your tantrums anymore.It’s over.":
+            "GOING TO ROLLING HILLS (RHA1)"
+            #TODO ROLLING HOLLS ALONE
+
+label homeGuilty:
+    show langur thinking
+    p "You made what you wanted clear to me and I forgot. I know that must’ve hurt you and for that I’m so sorry. It won’t happen again."
+    dh "It better not"
+    "You hear a rumble and look outside the window. The land is changing again. You and Hiran run outside."
+    #TODO BArren DESERT
 
 label endStory:
     "story end"

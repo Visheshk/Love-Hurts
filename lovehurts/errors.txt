@@ -2,17 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 603: menu statement expects a non-empty block.
-    menu 
-        ^
-
-File "game/script.rpy", line 606: expected statement.
-    "Go ahead with excitement":
-                              ^
-
-File "game/script.rpy", line 608: expected statement.
-    "Go ahead with caution":
-                           ^
+File "game/script.rpy", line 855: expecting name after dot.
+    xpos 0.7 ypos0.2
+                   ^
 
 Ren'Py Version: Ren'Py 8.1.3.23091805
-Sat Oct 14 03:36:49 2023
+Sun Oct 15 04:18:07 2023
