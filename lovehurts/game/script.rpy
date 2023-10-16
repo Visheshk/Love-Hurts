@@ -8,6 +8,7 @@ define h = Character("Paati",  who_color="#c8ffc8")
 define p = Character("You")
 define dh = Character("Hiran")
 define w1 = Character("Wizard Kauwa")
+define es = Character("Eternal Sage")
 default char = "Deer"
 default esteem = 0
 default empathy = 0
@@ -750,11 +751,8 @@ label pubFight:
     p "Hiran I told you I don’t want any gifts right now. Why can’t you respect that and just let this go? It’s such weird behaviour!"
     dh "You’re being so mean."
 
-    "going to marshy land"
-    #TODO next step
-
-    return 
-
+    jump mangrove4
+    
 label pubTalk:
     show langur empathetic 5:
         xpos 0.2
@@ -765,6 +763,7 @@ label pubTalk:
 
     "You and Hiran exchange a tender kiss. You feel the ground become uneven beneath you - the land is changing again!"
 
+    jump rollingHills
     "goes to rolling hillins"
     #TODO next step
 
@@ -886,20 +885,73 @@ label marshTell:
 
     p "Okay, thanks for being honest. Next time, just ask me."
 
-    #TODO go to rolling hills
-    # WITH PARTNER
-    "go to Rolling hills"
+    jump rollingHills
 
-    return
+label rollingHills:
+    scene black
+    with Dissolve(0.4)
+    pause(0.3)
+    
+    window hide
+    scene rollinghillsalone
+
+    with Dissolve(0.6)
+    show rollingtitle:
+        xpos 0.05 ypos 0.3
+    pause
+
+    window auto
+    
+    hide rollingtitle
+    
+    show langur empathetic 5:
+        xpos 0.2 ypos 0.22
+    show deer happy 2:
+        xpos 0.45 ypos 0.1
+    
+    with Dissolve(0.5)
+
+    "Hand in hand, you and Hiran run outside. You have reached the final destination - the legendary Rolling Hills!"
+    
+    show deer happy 3:
+        xpos 0 ypos 0.1
+    show langur worried behind deer:
+        xpos 0.1 ypos 0.2
+    show eternalsage:
+        xpos 0.6
+    
+    "Suddenly a bright light glows and a mysterious figure appears. It is the Eternal Sage!"
+
+    "The Eternal Sage looks inside your eyes and senses everything. "
+
+    #TODO Stats screen
+    hide deer 
+    show langur:
+        xpos 0 ypos 0.1
+    es "Monkey Dori, you have made it to the last stage of your adevnture, welcome!  {w}
+    \nThese Shifting Sands cannot be crossed so easily, but you showed great courage and communicated well with your partner, Hiran."
+    es "I will give you a gift that will help you understand how your journey could have ended if you had made other choices."
+
+    "They offer the gift many seek - Time Travel - a chance to revisit your past and make different choices. "
+    show langur thinking
+
+    menu:
+        "Use Time Machine":
+            p "This is wonderful wise one. Thank you! I want to know if things could have gone differently"
+            "game end here"
+            return
+        "End Game":
+            return
+    
+
+
     
 
 label marshPass2:
     p "You know what, maybe I’m overthinking this."
     dh "Yeah, I think you are."
+    jump barrenDesert
 
-    "go to barren desert"
-    #TODO BARREN DESERT
-    return
 
 label marshBreakup:
     p "Hira, what you did back there really wasn’t cool. You broke my trust and you invaded my privacy."
@@ -910,10 +962,11 @@ label marshBreakup:
 
     dh "You know what! Fine. I don’t need you any way. {w}This whole thing has been one disaster after another. {w}I’m better off without you. Have fun on your stupid little quest."
 
+    jump rollingHillsAlone
     #TODO Go to rolling hills alone
-    "go to rolling hills"
+    # "go to rolling hills"
 
-    return
+    # return
 
 label logicalPendant:
     show langur worried
@@ -1260,9 +1313,71 @@ label homeShare:
     p "Listen, Hiran. If we want to make this work, then we really need to talk."
     "You hear a rumble and look outside the window. The land is changing again. You and Hiran run outside."
 
-    "going to valleyy"
-    return
-    #TODO go to VALLEY V1
+    jump valley4
+    
+label valley4:
+    scene black
+    with Dissolve(0.4)
+    pause(0.3)
+
+    window hide
+    scene valleysc
+    with Dissolve(0.6)
+    show valleytitle4:
+        xpos 0.25 ypos 0.5
+    pause
+
+    hide valleytitle4
+
+    window auto
+    show langur worried:
+        xpos 0 ypos 0.25
+    show deer normal:
+        xpos 0.7 ypos 0.2
+    "You feel a cool breeze as you open the door. Up ahead, you see the land slopes into a deep valley. You suggest a walk and prepare yourself for a tough conversation."
+
+    p "I feel so tired of proving how much you mean to me. This relationship feels like a never ending test. "
+    p "I feel like nothing I do is enough for you."
+    dh "You know I have my own worries and insecurities. If you can’t accept me, then I don’t think this is going anywhere."
+    p "I don’t want our relationship to feel like a problem we have to fix. "
+    dh "Wow. I’m sorry you feel that way."
+
+    "You’re starting to feel very frustrated, like you’re about to snap."
+
+    show deer river left:
+        xpos -0.1
+    show langur behind deer:
+        xpos 0.1
+    show eternalsage:
+        xpos 0.6
+    
+    "Suddenly, there is a flash of light; the brightness almost blinds you! You see a mysterious figure standing before you. The Eternal Sage!"
+    
+    es "Young adventurers, you seen to be struggling."
+
+    hide deer
+    show langur:
+        xpos 0
+    "You feel the Sight of The Eternal Sage on you. You know that they sense everything."
+
+    #TODO Stats Screen
+
+    es "Young Dori, how heavy your heart is!
+    {w}\nRemember that love is a beautiful thing, and it should never feel like a burden. Love is not about proving; it's about understanding, trust, and connection."
+    es "I see that you feel that you lost control of things with Hiran. I can help with that as I believe things can change."
+    es "So, I grant you a single use of my Time Machine, a powerful relic that allows you to revisit those moments and act differently, changing the course of events."
+
+    "They offer the gift many seek - Time Travel - a chance to revisit your past and make different choices. "
+
+    menu:
+        "Use Time Machine":
+            p "This is wonderful wise one. Thank you! I want to know if things could have gone differently"
+            "game end here"
+            return
+        "End Game":
+            return
+
+
 
 label homeIgnore:
     show deer normal left
@@ -1271,9 +1386,75 @@ label homeIgnore:
     p "Hope you slept well. Let’s just keep moving."
     dh "Fine. Whatever"
 
-    "GOING TO MARSHY LAND"
-    return
-    #TODO Marshy Land m1
+    # "GOING TO MARSHY LAND"
+    jump mangrove4
+
+label mangrove4:
+    scene black
+    with Dissolve(0.4)
+    pause(0.3)
+    
+    window hide
+    scene mangrovesc1
+
+    with Dissolve(0.6)
+    show marshtitle4:
+        xpos 0.3 ypos 0.4
+    pause
+
+    window auto
+    
+    hide marshtitle4
+    
+    show langur angry:
+        xpos 0.6 ypos 0.22
+    show deer river left:
+        xpos 0 ypos 0.22
+    with Dissolve(0.5)
+
+    "You storm out of the pub and right into  a marsh that has appeared. The pathway is muddy and it is very difficult to walk. Hiran is having a much harder time than you, though and requires help"
+
+    dh "Will you slow down! I keep getting stuck!"
+    p "Try harder then!"
+    $ empathy -= 10
+    dh "Don’t you have rope in your bag? Just use that."
+    p "How do you know what’s in my bag? Did you look in it without asking me?"
+    dh "I was going to put the pendant in as a surprise! You know it’s normal for people travelling together to look inside each other’s things?"
+    $ stress += 10
+    p "What? I told you I didn’t want that!"
+    dh "I was hoping you’d changed your mind after all this time. Will you please just use the rope - I’m sinking in the mud!"
+    p "You’re the worst partner I’ve ever had and I - "
+
+    show deer normal left:
+        xpos -0.2   
+    show langur worried behind deer:
+        xpos 0.2
+    show eternalsage:
+        xpos 0.65
+    "Suddenly, there is a flash of light; the brightness almost blinds you! You see a mysterious figure standing before you. The Eternal Sage!"
+
+    es "Young adventurers! What’s all the commotion?"
+    hide deer
+    "You feel the Sight of The Eternal Sage on you. You know that they sense everything."
+
+    #TODO Stats screen for m1 vs m2
+
+    es "Young Monkey Dori, you seem frustrated and disappointed. These Marshy Lands are indeed difficult to cross.
+    \n{w}But, don’t worry, I see your pain - you regret the hurt you’ve caused Hiran and you don’t know how to mend it." 
+    es "I can help with that as I believe in second chances.I grant you a single use of my Time Machine, a powerful relic that allows you to revisit those moments and make amends."
+    p "A Time Machine? How can I ever repay you for such a gift?"
+    es "You must use this gift wisely, Dori. Undo the hurt you've caused, learn from your mistakes, and be a force for good in the world. That will be your repayment."
+
+    "What do you do? Do you wish to take the second chance and change the course of your story? Or do you accept and learn to live with the decisions you’ve made?"
+
+    menu:
+        "Use Time Machine":
+            p "Thank you, Eternal Sage. I promise to use this gift responsibly and make things right."
+            "game end here"
+            #TODO add souvenir choice and time travel mech
+            return
+        "End Game":
+            return
 
 label homeLate:
     scene black
@@ -1305,15 +1486,146 @@ label homeAngry:
         "Listen, Hiran. If we want to make this work, then we need to talk." if energy > 1000:
             "I'm too tired to talk"
         "I can’t deal with your tantrums anymore.It’s over.":
-            "GOING TO ROLLING HILLS (RHA1)"
-            #TODO ROLLING HOLLS ALONE
+            jump rollingHillsAlone
+            # "GOING TO ROLLING HILLS (RHA1)"
+            # #TODO ROLLING HOLLS ALONE
+
+label rollingHillsAlone:
+    scene black
+    with Dissolve(0.4)
+    pause(0.3)
+    
+    window hide
+    scene rollinghillsalone
+
+    with Dissolve(0.6)
+    show rollingalonetitle:
+        xpos 0.05 ypos 0.3
+    pause
+
+    window auto
+    
+    hide rollingalonetitle
+    
+    show langur shocked:
+        xpos -0.2 ypos 0.22
+    
+    with Dissolve(0.5)
+
+    "You are alone in a beautiful field. The sky is blue and the sun is shining brightly. "
+    p "I was so excited to go on this adventure with Hiran but I did not realize how difficult it is to understand another person and their needs."
+
+    p "I definitely made some choices I am not proud of. But Hiran hurt me too! {w}\nHow does one become a perfect partner in adventure?"
+
+    show langur worried:
+        xpos 0.1 ypos 0.26
+    show eternalsage:
+        xpos 0.6
+    
+    "Suddenly a bright light glows and a mysterious figure appears. It is the Eternal Sage!"
+
+    "The Eternal Sage looks inside your eyes and senses everything. "
+
+    #TODO Stats screen
+
+    es "Monkey Dori, your mind is buzzing with so many questions! {w}
+    \nNot every question has an answer, brave explorer. These Shifting Sands cannot be crossed so easily."
+    es "I see that you have regret for some of the hurt you caused Hiran. {w}
+    \nI will give you a gift that will help you make it right."
+
+    "They offer the gift many seek - Time Travel - a chance to revisit your past and make different choices. "
+    show langur thinking
+
+    menu:
+        "Use Time Machine":
+            p "This is wonderful wise one. Thank you! I want to know if things could have gone differently"
+            "game end here"
+            return
+        "End Game":
+            return
+    
+
+
 
 label homeGuilty:
     show langur thinking
     p "You made what you wanted clear to me and I forgot. I know that must’ve hurt you and for that I’m so sorry. It won’t happen again."
     dh "It better not"
     "You hear a rumble and look outside the window. The land is changing again. You and Hiran run outside."
-    #TODO BArren DESERT
+    jump barrenDesert
+    # TODO BArren DESERT
+
+label barrenDesert:
+
+    scene black
+    with Dissolve(0.4)
+    pause(0.3)
+    
+    window hide
+    scene barrendesert
+
+    with Dissolve(0.6)
+    show barrentitle4:
+        xpos 0.3 ypos 0.4
+    pause
+
+    window auto
+    
+    hide barrentitle4
+    
+    show langur shocked:
+        xpos 0.1 ypos 0.22
+    show deer normal left:
+        xpos 0.6 ypos 0.22
+    with Dissolve(0.5)
+
+    "As you walk, the path turns to sand. You find yourself in a hot, dusty desert. There’s no one around you for miles. "
+    dh "This is nice, huh? Just you and me - nobody else to bother us?"
+    "Hiran’s words feel strangely lonely. Despite being physically in same place there doesn’t like you two have  much to do or talk about. You are unsure about how to bring it up especially since the last few environments have been so taxing. "
+    p "I mean, it would be nice if there was something or someone else around. Don’t you feel lonely?"
+    dh "How could I feel lonely when I have you all to myself?"
+    "There’s that sinking feeling again."
+
+    show deer normal left:
+        xpos 0
+    show langur worried behind deer:
+        xpos 0.1
+    show eternalsage:
+        xpos 0.6
+
+    "You continue walking for a very long time. {w}You’re tired, sore and parched. You feel like giving up. {w}Suddenly, there is a flash of light; the brightness almost blinds you! You see a mysterious figure standing before you. The Eternal Sage!"
+
+    es "Young adventurers! These sands are indeed lonely to travel. "
+    "You don’t know what to say or how to ask for help."
+    hide deer
+    "But you feel the Sight of The Eternal Sage on you. You know that they sense everything."
+    show langur:
+        xpos 0
+
+    #TODO STATS Screen
+    es "Young Monkey Dori, it seems you are struggling quite a bit with space and communication."
+
+    es "Feeling like the sole focus of your partner's attention may seem flattering at first, but it can become overwhelming and potentially unhealthy over time. It's essential to maintain balance and individuality in a relationship."
+
+    es "If you would like the opportunity to push for those boundaries, I have just the thing.I grant you a single use of my Time Machine, a powerful relic that allows you to revisit those moments and make amends."
+
+    p "A Time Machine? How can I ever repay you for such a gift?"
+
+    es "You must use this gift wisely, Dori. Make an effort to have tough conversations, ask for help and listen to what you need. That will be your repayment."
+
+    "They offer the gift many seek - Time Travel - a chance to revisit your past and make different choices. "
+
+    show langur thinking:
+        xpos 0 ypos 0.24
+
+    menu:
+        "Use Time Machine":
+            p "This is wonderful wise one. Thank you! I want to know if things could have gone differently"
+            "game end here"
+            return
+        "End Game":
+            return
+
 
 label endStory:
     "story end"
