@@ -60,10 +60,10 @@ define gui.interface_text_color = '#ffffff'
 define gui.text_font = "fonts/Neucha-Regular.ttf"
 
 ## The font used for character names.
-define gui.name_text_font = "fonts/Neucha-Regular.ttf"
+define gui.name_text_font = "fonts/Galindo-Regular.ttf"
 
 ## The font used for out-of-game text.
-define gui.interface_text_font = "fonts/Neucha-Regular.ttf"
+define gui.interface_text_font = "fonts/Galindo-Regular.ttf"
 
 ## The size of normal dialogue text.
 define gui.text_size = 28
@@ -87,8 +87,8 @@ define gui.title_text_size = 50
 ## Main and Game Menus #########################################################
 
 ## The images used for the main and game menus.
-define gui.main_menu_background = "gui/game_menu.jpg"
-define gui.game_menu_background = "gui/game_menu.jpg"
+define gui.main_menu_background = "gui/game_menu.png"
+define gui.game_menu_background = "gui/game_menu.png"
 
 
 ## Dialogue ####################################################################

@@ -15,6 +15,7 @@ default empathy = 0
 default confidence = 0
 default stress = 0
 default energy = 0
+default endScene = "v1"
 # The game starts here.
 
     
@@ -86,11 +87,11 @@ label express:
 $ strength = 0
 label repress:
 
-    show wiz2:
+    show wiz doriface:
         xpos 0.6 ypos 0.4
 
 
-    show langurriver1:
+    show langur worried:
         xpos 0 ypos 0.2
     
     "You feel your chest tighten and you wonder how your response will be perceived. You play it cool."
@@ -100,10 +101,9 @@ label repress:
 
     h "I am sensing some resistance, young one. Would you like to tell me more?"
     
-    hide langurriver1
     
-    show langurworried:
-        xpos 0.1 ypos 0.2
+    # show langurworried:
+    #     xpos 0.1 ypos 0.2
 
     "Sometimes, it is hard to be vulnerable with those closest to us."
 
@@ -111,9 +111,9 @@ label repress:
 
     h "There is no shame in acknowledging the hardship of your journey. I will always be proud of you. "
 
-    hide langurworried
+    # hide langurworried
 
-    show langurthinking:
+    show langur thinking:
         xpos 0.1 ypos 0.2
 
     "You let out a sigh and sink deeper into the chair. Sometimes it’s harder to pretend."
@@ -122,16 +122,14 @@ label repress:
 
     h "Companionship is a wonderful thing to want, young one. Joy shared is joy doubled, as they say.On your next adventure, will you be going with someone? Have you met anyone interesting? "
 
-    hide langurthinking
-
-    show langurempathetic:
+    show langur empathetic:
         xpos 0.1 ypos 0.2
 
     p "Thank you, elder one. I tried to use the tools and advice you gave me. Yes, I will be going with someone. I met another adventurer recently. We share a lot of interests and I enjoy spending time with them. "
 
     h "That’s wonderful news! What’s their name and tell me more!"
 
-    hide langurempathetic
+    hide langur
 
     jump charSelect
 
@@ -216,18 +214,25 @@ label deerStory:
 
     hide wiz2
     
-    show wizfront1:
+    show wiz playerface:
         xpos 0.3 ypos 0.4
     
-    "While things are all upside down in that realm, just know that help is never too far away. Click on the objects to learn more"
+    "While things are all upside down in that realm, just know that help is never too far away. "
+    
+    show bagwizscreen behind wiz
+    
+    "Remember, young one: when things get difficult, help is never too far away. Use the materials in your bag when you get stuck."
 
-    call screen buttons2
+    hide bagwizscreen
+    jump postbag
+    # window hide
+    # call screen buttons2
 
-    "extra"
+    # "extra"
 
-    "extra 2"
+    # "extra 2"
 
-    return
+    # return
 
 screen buttons2():
     imagebutton:
@@ -252,17 +257,21 @@ label postbag:
     show langurrt2:
         xpos 0.1 ypos 0.3
 
-    hide wizfront1
-    show wiz2:
+    # hide wizfront1
+    show wiz doriface:
         xpos 0.55 ypos 0.4
     
     h "And lastly you will always have us, your friends and family waiting for you back home. Go on then."
 
     p "I can’t wait. Hiran is on their way to the Tower too. Let’s start packing!"
 
-    "Paati hands you a brand new satchel. The material is sturdier and it is filled with items!"
+    "Paati hands you a brand new bag. The material is strong and it is filled with items!"
 
     h "Take a good look, young one."
+
+    show bagpack
+    window hide
+    pause
 
     jump chap1
     
@@ -377,13 +386,13 @@ Why don’t you pick a direction for us to go?"
 
     menu:
         "Uhm....that’s awful. Let’s get some sleep.":
-            "empathy hit!!"
+            # "empathy hit!!"
             $ empathy -= 10
             jump nightend
             
         
         "You’re a good explorer. I’m glad to have you by my side.":
-            "empathy ++ "
+            # "empathy ++ "
             $ empathy += 10
             jump nightend
     
@@ -419,6 +428,7 @@ label nightend:
     hide deer
 
     "You’re not sure how to react. You don’t want to hurt Hiran’s feelings but the gift is making you feel confused. You remember the compass in your bag - this might be a good time to ask for some help!"
+
 
     menu:
         "Get help":
@@ -459,6 +469,8 @@ label wizardConsult:
     "You take a moment to listen to your thoughts and feelings. The screen on the compass begins to glow."
 
     w1 "That’s it! We can now look closer at your emotional states."
+
+    show forestwizstats
 
     show localwiz:
         easein 0.4 xpos 0.1 ypos 0.2
@@ -651,6 +663,9 @@ label localPub:
     show deer normal:
         xpos 0.72
     "Wolf" "Hey, newcomers! You both look like you have some stories to tell. Why don’t you join our table?"
+    
+    show badge social:
+        xpos 0 ypos 0.1
 
     #TODO BADGE RECEIVE
     $ confidence += 10
@@ -666,6 +681,7 @@ label localPub:
 
     "You tell the others about how Hiran impressed the campsite with their cooking and quickness. You hold Hiran’s and squeeze it gently. They squeeze yours and seem to relax a bit."
 
+    hide badge
     "Click on the objects to drink "
 
     # TODO Add clickable drinks
@@ -711,6 +727,8 @@ label localPub:
 
     "You take a moment to listen to your thoughts and feelings. The screen on the compass begins to glow. "
 
+    show stats pub1:
+        xpos 0.3 ypos 0.1
     # TODO stats screen
 
     w1 """Look at that, Dori! Great work! A strong relationship is about give and take. 
@@ -718,6 +736,7 @@ label localPub:
     Give with an open heart, and ask for what you want. A good partner will do the same for you."""
 
     p "Thank you, Kauwa"
+    hide stats
 
     hide localwiz
 
@@ -751,6 +770,7 @@ label pubFight:
     p "Hiran I told you I don’t want any gifts right now. Why can’t you respect that and just let this go? It’s such weird behaviour!"
     dh "You’re being so mean."
 
+    $ endScene = "m2"
     jump mangrove4
     
 label pubTalk:
@@ -763,8 +783,9 @@ label pubTalk:
 
     "You and Hiran exchange a tender kiss. You feel the ground become uneven beneath you - the land is changing again!"
 
+    $ endScene = "rh1"
     jump rollingHills
-    "goes to rolling hillins"
+    # "goes to rolling hillins"
     #TODO next step
 
 label mangrove:
@@ -834,6 +855,9 @@ label pubWizard:
 
     w1 "Welcome, Dori! I can see you look distressed - let’s take a look inward!"
 
+    show stats mangrove1:
+        xpos 0.3 ypos 0.1
+        
     #TODO Stats Screen
 
     p "Kauwaji, is it wrong that I feel angry at Hiran for going through my bag without asking me."
@@ -884,7 +908,7 @@ label marshTell:
     dh "I want you to know you can trust me and that I respect your space. It won’t happen again."
 
     p "Okay, thanks for being honest. Next time, just ask me."
-
+    $ endScene = "rh2"
     jump rollingHills
 
 label rollingHills:
@@ -923,7 +947,13 @@ label rollingHills:
     "Suddenly a bright light glows and a mysterious figure appears. It is the Eternal Sage!"
 
     "The Eternal Sage looks inside your eyes and senses everything. "
-
+    
+    if endScene == "rh1":
+        show stats rh1:
+            xpos 0.3 ypos 0.1
+    if endScene == "rh2":
+        show stats rh2:
+            xpos 0.3 ypos 0.1
     #TODO Stats screen
     hide deer 
     show langur:
@@ -932,6 +962,7 @@ label rollingHills:
     \nThese Shifting Sands cannot be crossed so easily, but you showed great courage and communicated well with your partner, Hiran."
     es "I will give you a gift that will help you understand how your journey could have ended if you had made other choices."
 
+    hide stats
     "They offer the gift many seek - Time Travel - a chance to revisit your past and make different choices. "
     show langur thinking
 
@@ -942,14 +973,12 @@ label rollingHills:
             return
         "End Game":
             return
-    
 
-
-    
 
 label marshPass2:
     p "You know what, maybe I’m overthinking this."
     dh "Yeah, I think you are."
+    $ endScene = "bd3"
     jump barrenDesert
 
 
@@ -961,7 +990,8 @@ label marshBreakup:
     dh "You’re breaking up with me? But I didn’t even do anything, "
 
     dh "You know what! Fine. I don’t need you any way. {w}This whole thing has been one disaster after another. {w}I’m better off without you. Have fun on your stupid little quest."
-
+    
+    $ endScene = "rha3"
     jump rollingHillsAlone
     #TODO Go to rolling hills alone
     # "go to rolling hills"
@@ -1043,6 +1073,13 @@ label turbulentRiver:
         ypos 0.24
 
     "After a few hours, the river calms down and the rain stops. You are completely exhausted."
+
+    scene turbulentbg2
+    show langur thinking:
+        xpos 0.6 ypos 0.24
+    show deer tears left:
+        xpos 0.1 ypos 0.2
+    
     "You want to thank Hiran for their help with the boat, but the tension between you is too high."
     "You remember the compass in your bag - this might be a good time to ask for some help!"
 
@@ -1072,20 +1109,29 @@ label riverWiz:
     w1 "Okay, explorer, let’s see what we can do! Take a deep breath and focus."
 
     "You take a moment to listen to your thoughts and feelings. The screen on the compass begins to glow. "
-
+    
     #TODO STATS Screen
+    show stats forest wiz:
+        xpos 0.3 ypos 0.1
 
     w1 "You seem upset, young one. \n You might find it helpful to use the tools you and Paati packed. Why don’t we look in the bag and see what we have? What are two tools that can help you feel better in this moment?"
 
+    hide stats
+    show bag river wiz:
+        xpos 0.32 ypos 0.3
+    # show 
     #TODO Inventory screen
 
     "You take a moment to have a snack and focus your energy -  the temperature of the cave feels cool, the air smells fresh, you see the sunlight through the waterfall, the chips taste salty and delicious and you listen to the sound of the forest all around you. "
+    hide bag river wiz
 
+    show badge emotion:
+        xpos 0.4 ypos 0.4
     #TODO emotion navigator badge
 
     "Having rested and recollected your thoughts, you feel you have the energy to return. "
     
-    scene turbulentbg
+    scene turbulentbg2
     with Dissolve(0.6)
 
     show langur thinking:
@@ -1192,6 +1238,8 @@ label pub3:
         xpos 0.72
     "Wolf" "Hey, newcomers! You both look like you have some stories to tell. Why don’t you join our table?"
 
+    show badge social:
+        xpos 0.4 ypos 0
     #TODO BADGE RECEIVE
     $ confidence += 10
     
@@ -1202,8 +1250,9 @@ label pub3:
     show deer normal:
         xpos 0.78
 
-    "The other travellers seem very impressed by you and your stories. You don’t know if it is the alcohol or the attention, but your tension melts away and you forget all about the fight. \nYou also forget about Hiran."
+    "The other travellers seem very impressed by you and your stories. {w}You don’t know if it is the alcohol or the attention, but your tension melts away and you forget all about the fight. {w}You also forget about Hiran."
 
+    hide badge
     show deer angry
 
     "Click on the objects to drink "
@@ -1257,13 +1306,15 @@ label pubWiz:
     p "Yes! I think I really hurt my partner and they said some things that hurt me too. What do I do!"
     w1 "Well, let’s take a look, shall we?"
     "You take a moment to listen to your thoughts and feelings. The screen on the compass begins to glow. "
+    show stats pub early:
+        xpos 0.3 ypos 0.1
     #TODO Stats screen
     w1 "I sense that there has been a break down in the trust and communication between you and Hiran."
     p "I feel like I’m doing everything wrong with Hiran. They’re being so clingy. I feel so stuck with them."
     w1 "This can happen when two people find themselves in a stressful situation."
     w1 "Hiran did something that hurt you, and then you did something to hurt them. And now they tried to hurt you again. Watch out for this cycle!"
     w1 "Remember, hurting someone who hurt you will not take away your pain!"
-
+    hide stats
     "You realize the truth of those words."
     w1 "Your next few steps are very important for your future with Hiran, so you need to be careful. "
     w1 "Even though you have the tools in your bag, you seem too fatigued to use them. \nI suggest you rest and recover."
@@ -1359,14 +1410,15 @@ label valley4:
     show langur:
         xpos 0
     "You feel the Sight of The Eternal Sage on you. You know that they sense everything."
-
+    show stats valley end:
+        xpos 0.3 ypos 0.1
     #TODO Stats Screen
 
     es "Young Dori, how heavy your heart is!
     {w}\nRemember that love is a beautiful thing, and it should never feel like a burden. Love is not about proving; it's about understanding, trust, and connection."
     es "I see that you feel that you lost control of things with Hiran. I can help with that as I believe things can change."
     es "So, I grant you a single use of my Time Machine, a powerful relic that allows you to revisit those moments and act differently, changing the course of events."
-
+    hide stats
     "They offer the gift many seek - Time Travel - a chance to revisit your past and make different choices. "
 
     menu:
@@ -1387,6 +1439,7 @@ label homeIgnore:
     dh "Fine. Whatever"
 
     # "GOING TO MARSHY LAND"
+    $ endScene = "m1"
     jump mangrove4
 
 label mangrove4:
@@ -1425,18 +1478,28 @@ label mangrove4:
     dh "I was hoping you’d changed your mind after all this time. Will you please just use the rope - I’m sinking in the mud!"
     p "You’re the worst partner I’ve ever had and I - "
 
+    "Suddenly, there is a flash of light; the brightness almost blinds you! You see a mysterious figure standing before you. The Eternal Sage!"
+    show white bg
+    with Dissolve(0.1)
+
     show deer normal left:
         xpos -0.2   
     show langur worried behind deer:
         xpos 0.2
-    show eternalsage:
+    show eternalsage behind white:
         xpos 0.65
-    "Suddenly, there is a flash of light; the brightness almost blinds you! You see a mysterious figure standing before you. The Eternal Sage!"
+    
+    hide white bg
+    with Dissolve(1.5)
+
 
     es "Young adventurers! What’s all the commotion?"
     hide deer
     "You feel the Sight of The Eternal Sage on you. You know that they sense everything."
 
+    if endScene == "m1":
+        show stats mangrove 1:
+            xpos 0.3 ypos 0.1
     #TODO Stats screen for m1 vs m2
 
     es "Young Monkey Dori, you seem frustrated and disappointed. These Marshy Lands are indeed difficult to cross.
@@ -1445,6 +1508,7 @@ label mangrove4:
     p "A Time Machine? How can I ever repay you for such a gift?"
     es "You must use this gift wisely, Dori. Undo the hurt you've caused, learn from your mistakes, and be a force for good in the world. That will be your repayment."
 
+    hide stats
     "What do you do? Do you wish to take the second chance and change the course of your story? Or do you accept and learn to live with the decisions you’ve made?"
 
     menu:
@@ -1486,6 +1550,7 @@ label homeAngry:
         "Listen, Hiran. If we want to make this work, then we need to talk." if energy > 1000:
             "I'm too tired to talk"
         "I can’t deal with your tantrums anymore.It’s over.":
+            $ endScene = "rha1"
             jump rollingHillsAlone
             # "GOING TO ROLLING HILLS (RHA1)"
             # #TODO ROLLING HOLLS ALONE
@@ -1526,6 +1591,8 @@ label rollingHillsAlone:
 
     "The Eternal Sage looks inside your eyes and senses everything. "
 
+    show stats rha:
+        xpos 0.3 ypos 0.1
     #TODO Stats screen
 
     es "Monkey Dori, your mind is buzzing with so many questions! {w}
@@ -1533,6 +1600,7 @@ label rollingHillsAlone:
     es "I see that you have regret for some of the hurt you caused Hiran. {w}
     \nI will give you a gift that will help you make it right."
 
+    hide stats
     "They offer the gift many seek - Time Travel - a chance to revisit your past and make different choices. "
     show langur thinking
 
@@ -1552,6 +1620,7 @@ label homeGuilty:
     p "You made what you wanted clear to me and I forgot. I know that must’ve hurt you and for that I’m so sorry. It won’t happen again."
     dh "It better not"
     "You hear a rumble and look outside the window. The land is changing again. You and Hiran run outside."
+    $ endScene = "bd1"
     jump barrenDesert
     # TODO BArren DESERT
 
@@ -1601,6 +1670,14 @@ label barrenDesert:
     "But you feel the Sight of The Eternal Sage on you. You know that they sense everything."
     show langur:
         xpos 0
+    
+    if endScene == "bd1":
+        show stats bd1:
+            xpos 0.3 ypos 0.1
+    
+    if endScene == "bd3":
+        show stats bd3:
+            xpos 0.3 ypos 0.1
 
     #TODO STATS Screen
     es "Young Monkey Dori, it seems you are struggling quite a bit with space and communication."
@@ -1612,6 +1689,8 @@ label barrenDesert:
     p "A Time Machine? How can I ever repay you for such a gift?"
 
     es "You must use this gift wisely, Dori. Make an effort to have tough conversations, ask for help and listen to what you need. That will be your repayment."
+    
+    hide stats
 
     "They offer the gift many seek - Time Travel - a chance to revisit your past and make different choices. "
 
