@@ -4,11 +4,12 @@
 # name of the character.
 
 define config.menu_include_disabled = True
-define h = Character("Paati",  who_color="#c8ffc8")
-define p = Character("You")
-define dh = Character("Hiran")
-define w1 = Character("Wizard Kauwa")
-define es = Character("Eternal Sage")
+define h = Character("Paati",  who_color="#f4c2c2")
+define p = Character("You", color="#69c9b3")
+define dh = Character("Hiran", color="#228b22")
+define w1 = Character("Wizard Kauwa", color="#57228b")
+define kw = Character("Khaang", color="#b5c9c2")
+define es = Character("Eternal Sage", color="#ffbf00")
 default char = "Deer"
 default esteem = 0
 default empathy = 0
@@ -25,37 +26,35 @@ label start:
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
+    scene wiztowerdark
+    show langur happy
+    "Hello Dori! Yes, that’s you - a bright and experienced explorer. It’s a big day for you today. You are going to meet with your mentor, the Great Wizard Paati. "
+
+    "Your last adventure was a few months ago and while you have enjoyed resting and relaxing, you are eager to get back to exploring. "
+    
     scene intro1
+    with Dissolve(0.6)
+
+    "Paati has invited you to their Tower. This means that a new adventure is coming up!"
     
-    "You are Dori, an explorer who is mentored by Paati, the Great Wizard of the Forest. "
-
-    extend "\nYour last adventure was 3 months ago and you are restless to go back into the forest and explore."
-
-    "Paati has invited you for chai. This means that a new adventure is coming up!"
-    
-    extend "\nAs always, Paati greets you with hot masala chai"
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
-
     show wiz playerface:
         xpos 0.5 ypos 0.3
 
-    # These display lines of dialogue.
+    "Even though it’s been a while, Paati greets you with a big hug and a cup of hot masala chai."
 
     h "Welcome, young one."
     extend "\nSit, relax, drink."
     extend "\nI am glad to see you are well"
 
-    h "You seem restless - is there something on your mind?
-    "
+    h "You seem restless - is there something on your mind?"
+
     menu:
         "How would you like to respond?"
-        "I want to share my thoughts and emotions openly.":
+        "Share what is on your mind":
         
             jump express
 
-        "I should probably keep this to myself.":
+        "Hide what is on your mind":
         
             jump repress
 
@@ -70,15 +69,15 @@ label express:
     
     p "On my last adventure, I had fun and collected so many different objects...but I felt lonely."
     
-    h "Ah yes...adventuring can be lonely. Many explorers get lost in the forest when they try to do everything alone." 
+    h "Ah yes... adventuring can be lonely. Many explorers get lost in the forest when they try to do everything alone." 
 
     p "I tried to use the tools and advice you gave me, Paati. But it wasn’t easy. "
 
-    h "Yes...the forest is not an easy place to explore. Why don’t you take someone with you on the next adventure?"
+    h "Yes... the forest is not an easy place to explore. Why don’t you take someone with you on the next adventure?"
 
-    p "Paati..you know me so well. \n\nI met someone special recently...and I think I will ask them to join me."
+    p "Paati.. you know me so well. \n\nI met someone special recently...and I think I will ask them to join me."
     
-    h "Yes"
+    h "That’s wonderful news. Tell me more about them..."
 
     hide langurrt2
 
@@ -90,46 +89,38 @@ label repress:
     show wiz doriface:
         xpos 0.6 ypos 0.4
 
-
     show langur worried:
         xpos 0 ypos 0.2
     
-    "You feel your chest tighten and you wonder how your response will be perceived. You play it cool."
+    "Your heart skips a beat upon hearing this question. Paati knows you too well. But you are not ready to talk about things yet."
 
+    p "It was alright - you know how adventures can be. \nI got you some nice gifts. "
 
-    p "It was alright - you know how adventuring can be. \nI’ve made it back, though, and I got you these cool trinkets. "
-
-    h "I am sensing some resistance, young one. Would you like to tell me more?"
-    
+    h "I am sensing that you are hiding something. Tell me, child, what is bothering you?"
     
     # show langurworried:
     #     xpos 0.1 ypos 0.2
+    show langur river
 
     "Sometimes, it is hard to be vulnerable with those closest to us."
 
-    p "I just don’t see the point. There’s no use whining like a baby. It was hard but I did it. Sometimes you just have to suck it up."
+    p "Uff Paati...I don’t want you to see me as a child throwing a tantrum. \nThe adventure was really hard!  Sometimes you just have to deal with stuff on your own."
 
-    h "There is no shame in acknowledging the hardship of your journey. I will always be proud of you. "
+    h "Ah yes...adventuring can be lonely. Many explorers get lost in the forest when they try to do everything alone. There is no shame in what you felt."
 
     # hide langurworried
 
     show langur thinking:
         xpos 0.1 ypos 0.2
 
-    "You let out a sigh and sink deeper into the chair. Sometimes it’s harder to pretend."
-
-    p "If I’m being honest, I had a hard time. Mostly with loneliness. There were many times I wished I had someone with me - to share the experience with."
-
-    h "Companionship is a wonderful thing to want, young one. Joy shared is joy doubled, as they say.On your next adventure, will you be going with someone? Have you met anyone interesting? "
+    "You realize how stiff and nervous you are. Yes it is difficult to be honest, but sometimes it’s so much harder to pretend."
+    p "Paati, you know me so well..I tried to use the tools and advice you gave me, but there were many times I wished I had someone with me to share the adventure with."
+    h "Yes...the forest is not an easy place to explore. Why don’t you take someone with you on the next adventure?"
 
     show langur empathetic:
         xpos 0.1 ypos 0.2
-
-    p "Thank you, elder one. I tried to use the tools and advice you gave me. Yes, I will be going with someone. I met another adventurer recently. We share a lot of interests and I enjoy spending time with them. "
-
-    h "That’s wonderful news! What’s their name and tell me more!"
-
-    hide langur
+    p "I met someone special recently...and I think I will ask them to join me. "
+    h "That’s wonderful news. Tell me more about them.."
 
     jump charSelect
 
@@ -160,11 +151,8 @@ label deerStory:
     scene deerdream
     with Dissolve(0.5)
 
-    p """I met Hiran at an adventurers group in the last town. Even though they are a bit shy, we hit it off immediately! 
-    
-    We spent a lot of time wandering the town together. They're really attentive and gentle. We found a quiet spot on a nearby hill and had our first kiss under the stars. 
-    
-    It was magical! I asked them if they would like to go on an adventure - and they said yes!"""
+    p "So...I met Hiran at the Local Pub. They are a bit shy, but I enjoyed spending time with them.{w} \nWhat I loved was they are gentle and thoughtful. A few days ago we had our first kiss under the stars. It was magical!"
+    p "I asked them if they would like to go on an adventure with me - and they said yes!"
 
     "You feel the warmth in your cheeks. You’re blushing!"
 
@@ -177,38 +165,27 @@ label deerStory:
     show wiz2:
         xpos 0.6 ypos 0.4
 
-    h "How sweet! Being in love is a nice feeling."
-
-    p "I think so too! I’m excited to go on an adventure with them. Do you have anything for me?"
-
-    h """I think I have just the adventure for you two.
-
-        I must warn you, though, this journey will need courage and communication. 
-        
-        The terrain can be quite reactive."""
-    
+    h "How sweet. Having a crush is a nice feeling, isn’t it?"
+    p "Yes! I am so excited to go on an adventure with them.."
+    h "I have been waiting for this moment to tell you about a very special adventure. I think you are ready now.."
     p "I’m intrigued, Paati. What are we traveling through?"
-
-    h "It is known as the Land of Infinite Possibility."
+    h "You will be traveling through the Land of Shifting Sands. This land is beautiful, but ever-changing. {w}\nYou and Hiran will have to use courage and communication to overcome this tricky terrain."
 
     "You feel the excitement bubble up within you. \nAnother adventure and this time with your crush!"
 
     # show langurrt2:
     #     xpos 0.2 ypos 0.2
 
-    h """You will journey through a land that changes depending on who travels through it. 
-    
-    Legend says, the true nature of your relationship with your partner will be revealed."""
+    h """This land changes depending on who travels through it. Legend says, the true nature of your relationship with your partner will be revealed!"""
+    p "Oh my... What causes it to change?"
 
-    p "What causes it to change?"
+    h "Your choices, conversations, or conflicts... all of them have an effect on your surroundings."
 
-    h "Any choice, conversation, or conflict"
+    p "That sounds difficult, but I feel I am ready. I am sure Hiran is too."
 
-    p "That sounds difficult but I’m up for the challenge!"
+    h "As you and Hiran explore, you must work together to collect badges, until you reach the Eldest Sage. The Sage is the keeper of some of the deepest wisdom known to us."
 
-    h "You and Hiran must walk through the  terrains, collecting tokens at various checkpoints until you reach the Eldest Sage. They are the keeper of some of the deepest wisdom known to us."
-
-    p "Whoa. I’m excited and nervous and thrilled all at the same time. "
+    p "The Eternal Sage! I always thought they were only in stories. Can’t wait to meet them."
     
     hide langurrt2
 
@@ -217,7 +194,7 @@ label deerStory:
     show wiz playerface:
         xpos 0.3 ypos 0.4
     
-    "While things are all upside down in that realm, just know that help is never too far away. "
+    # "While things are all upside down in that realm, just know that help is never too far away. "
     
     show bagwizscreen behind wiz
     
@@ -263,11 +240,14 @@ label postbag:
     
     h "And lastly you will always have us, your friends and family waiting for you back home. Go on then."
 
-    p "I can’t wait. Hiran is on their way to the Tower too. Let’s start packing!"
-
+    p "I am so excited! Hiran should be reaching soon. Let’s start packing!"
+    
     "Paati hands you a brand new bag. The material is strong and it is filled with items!"
 
-    h "Take a good look, young one."
+    show bagicon:
+        xpos 0.1 ypos 0.1
+
+    h "Here you go, Dori. Take a look!"
 
     show bagpack
     window hide
@@ -662,7 +642,7 @@ label localPub:
         xpos 0.05 ypos 0.2
     show deer normal:
         xpos 0.72
-    "Wolf" "Hey, newcomers! You both look like you have some stories to tell. Why don’t you join our table?"
+    kw "Hey, newcomers! You both look like you have some stories to tell. Why don’t you join our table?"
     
     show badge social:
         xpos 0 ypos 0.1
@@ -1236,7 +1216,7 @@ label pub3:
         xpos 0.05 ypos 0.2
     show deer normal:
         xpos 0.72
-    "Wolf" "Hey, newcomers! You both look like you have some stories to tell. Why don’t you join our table?"
+    kw "Hey, newcomers! You both look like you have some stories to tell. Why don’t you join our table?"
 
     show badge social:
         xpos 0.4 ypos 0
