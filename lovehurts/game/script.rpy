@@ -699,7 +699,7 @@ label valleyHiranWait:
 
 label valleyCont:
     "Hiran looks at you with understanding in their eyes. You smile nervously. "
-    d "Okay, I get that. It sucks that your ex did that!"
+    dh "Okay, I get that. It sucks that your ex did that!"
     p "Yeah, it was confusing because the beginning was so good.  All the gifts, all the attention - I felt so loved. "
     p "Then they started making me feel guilty when I didn’t do what they wanted. They used the gifts to remind me that they were a better partner than I was."
     dh "Oh, that is so sneaky! I won’t ever do that to you. I want you to trust me and tell me what you’re feeling."
