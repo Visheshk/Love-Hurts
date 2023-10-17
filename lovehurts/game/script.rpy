@@ -1270,12 +1270,12 @@ label valleyTruth3:
     window hide
     scene valleysc
     with Dissolve(0.6)
-    show valleytitle3:
+    show valleytitle:
         xpos 0.25 ypos 0.5
     pause
     
     # ""
-    hide valleytitle3
+    hide valleytitle
 
     show deer river left:
         xpos 0.1 ypos 0.2
@@ -1467,11 +1467,11 @@ label valley4:
     window hide
     scene valleysc
     with Dissolve(0.6)
-    show valleytitle4:
+    show valleytitle:
         xpos 0.25 ypos 0.5
     pause
 
-    hide valleytitle4
+    hide valleytitle
 
     window auto
     show langur worried:
@@ -1544,13 +1544,13 @@ label mangrove4:
     scene mangrovesc1
 
     with Dissolve(0.6)
-    show marshtitle4:
+    show mangrovetitle:
         xpos 0.3 ypos 0.4
     pause
 
     window auto
     
-    hide marshtitle4
+    hide mangrovetitle
     
     show langur angry:
         xpos 0.6 ypos 0.22
