@@ -28,13 +28,19 @@ default pubBeer = False
 # The game starts here.
 
 init python:
-    try:
-        import emscripten
-        web_params = emscripten.run_script_string("location.href")
-        wp = emscripten.run_script_string("console.log(location.href)")
-    except ImportError:
-        web_params = ""
-    print(web_params)
+    import json
+    def to_json(obj):
+        return json.dumps(obj, default=lambda obj: obj.__dict__)
+
+    def save_playtime(d):
+        d["playtime"] = renpy.get_game_runtime()
+    def jsoncallback(d):
+        d["playername"] = username
+        d["playtime"] = renpy.get_game_runtime()
+        d["dilaogueHistory"] = to_json(_history_list)
+
+    config.save_json_callbacks.append(jsoncallback)
+
 
 
 

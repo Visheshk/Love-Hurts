@@ -1,26 +1,74 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 30, in script
-    init python:
-  File "game/script.rpy", line 36, in <module>
-    console.log(web_params)
-NameError: name 'console' is not defined
+  File "renpy/common/00gamemenu.rpy", line 174, in script
+    $ ui.interact()
+  File "renpy/common/00gamemenu.rpy", line 174, in <module>
+    $ ui.interact()
+  File "renpy/common/00action_file.rpy", line 397, in __call__
+    renpy.save(fn, extra_info=save_name)
+  File "game/script.rpy", line 37, in jsoncallback
+    d["dilaogueHistory"] = json.dumps(_history_list)
+TypeError: Object of type HistoryEntry is not JSON serializable
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 30, in script
-    init python:
+  File "renpy/common/00gamemenu.rpy", line 174, in script
+    $ ui.interact()
   File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/ast.py", line 1138, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/python.py", line 1122, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "game/script.rpy", line 36, in <module>
-    console.log(web_params)
-NameError: name 'console' is not defined
+  File "renpy/common/00gamemenu.rpy", line 174, in <module>
+    $ ui.interact()
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/core.py", line 3582, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/core.py", line 4543, in interact_core
+    rv = root_widget.event(ev, x, y, 0)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/layout.py", line 1179, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/transition.py", line 53, in event
+    return self.new_widget.event(ev, x, y, st) # E1101
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/layout.py", line 1179, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/layout.py", line 1179, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/screen.py", line 770, in event
+    rv = self.child.event(ev, x, y, st)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/layout.py", line 1179, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/layout.py", line 1403, in event
+    rv = super(Window, self).event(ev, x, y, st)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/layout.py", line 281, in event
+    rv = d.event(ev, x - xo, y - yo, st)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/layout.py", line 1179, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/layout.py", line 1179, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/behavior.py", line 1142, in event
+    return handle_click(self.clicked)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/behavior.py", line 1075, in handle_click
+    rv = run(action)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/behavior.py", line 372, in run
+    new_rv = run(i, *args, **kwargs)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/behavior.py", line 379, in run
+    return action(*args, **kwargs)
+  File "renpy/common/00action_file.rpy", line 397, in __call__
+    renpy.save(fn, extra_info=save_name)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/loadsave.py", line 442, in save
+    i(json)
+  File "game/script.rpy", line 37, in jsoncallback
+    d["dilaogueHistory"] = json.dumps(_history_list)
+  File "/home/tom/ab/renpy-build-fix/tmp/install.linux-x86_64/lib/python3.9/json/__init__.py", line 231, in dumps
+  File "/home/tom/ab/renpy-build-fix/tmp/install.linux-x86_64/lib/python3.9/json/encoder.py", line 199, in encode
+  File "/home/tom/ab/renpy-build-fix/tmp/install.linux-x86_64/lib/python3.9/json/encoder.py", line 257, in iterencode
+  File "/home/tom/ab/renpy-build-fix/tmp/install.linux-x86_64/lib/python3.9/json/encoder.py", line 179, in default
+TypeError: Object of type HistoryEntry is not JSON serializable
 
 macOS-13.1-arm64-arm-64bit arm64
 Ren'Py 8.1.3.23091805
 lovehurts 1.0
-Tue Oct 17 04:24:58 2023
+Tue Oct 17 05:02:11 2023
