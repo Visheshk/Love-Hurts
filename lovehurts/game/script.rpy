@@ -27,7 +27,17 @@ default pubWine = False
 default pubBeer = False
 # The game starts here.
 
-    
+init python:
+    try:
+        import emscripten
+        web_params = emscripten.run_script_string("location.href")
+        wp = emscripten.run_script_string("console.log(location.href)")
+    except ImportError:
+        web_params = ""
+    print(web_params)
+
+
+
 label start:
 
     # Show a background. This uses a placeholder by default, but you can
@@ -1111,7 +1121,7 @@ label marshBreakup:
 
     dh "You know what! Fine. I don’t need you any way. {w}This whole thing has been one disaster after another. {w}I’m better off without you. Have fun on your stupid little quest."
     
-    $ endScene = "rha3"
+    $ endScene = "rha2"
     jump rollingHillsAlone
 
 label logicalPendant:
@@ -1782,9 +1792,15 @@ label rollingHillsAlone:
 
     "You feel the Sight of The Eternal Sage on you. You know that they sense everything."
 
-    show stats rha:
-        xpos 0.3 ypos 0.1
-    with Dissolve(0.3)
+    
+    if endScene == "rha1":
+        show stats rha1: 
+            xpos 0.3 ypos 0.1
+        with Dissolve(0.3)
+    if endScene == "rha2":
+        show stats rha2:
+            xpos 0.3 ypos 0.1
+        with Dissolve(0.3)
     #TODO Stats screen
 
     es "Young Monkey Dori, you have many questions! This is good. {w}
