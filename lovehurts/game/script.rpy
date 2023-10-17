@@ -396,10 +396,14 @@ label chap1:
 
     "It’s getting late! The others pack up and go into their tents. It’s just you and Hiran, alone under the stars, holding hands. "
 
-    dh "I - um - picked this for us. It stood out from the other berries - reminded me of us."
+    show smallberries:
+        xpos 0.5 ypos 0.6
 
+    dh "I - um - picked this for us. It stood out from the other berries - reminded me of us."
+    
     p "Oh my god, Hiran! Don’t eat that! That’s a really poisonous berry. "
     dh "Oh no. I’m such an idiot. I should have known."
+    hide smallberries
     p "Arre, don’t worry about it! Any new explorer could have made that mistake."
     dh "I don’t know much... as you can tell. It must be frustrating to have me as a partner. "
     p "Relax, I know only because I made the mistake of eating it once - hahaha."
@@ -436,7 +440,7 @@ screen berries():
     
     if forestMushroom == False:
         imagebutton:
-            xalign 0.89
+            xalign 0.99
             yalign 0.6      
             auto "forestmushroom_%s.png" action [Hide("berries"), SetVariable("forestMushroom", True), Return()]
     
@@ -515,6 +519,10 @@ label wizardConsult:
 
     "You take a moment to listen to your thoughts and feelings. The screen on the compass begins to glow."
 
+    show glowingcompass:
+        xpos 0.87 ypos 0.05
+    with Dissolve(0.5)
+
     w1 "That’s it! We can now look closer at your emotional states."
 
     show stats forest wiz:
@@ -528,6 +536,7 @@ label wizardConsult:
     p "It seems like I’m too stressed out to think straight."
 
     w1 "That’s right! Would it help if I explained a little bit more about the situation?"
+    hide glowingcompass
 
     menu:
         "Yes, please":
@@ -643,58 +652,55 @@ label valleyTruth:
     
     hide valleytitle
     menu:
-        "Start the conversation":
+        "Start conversation":
             jump valleyConvoStart
         "Wait for Hiran to start the conversation":
             jump valleyHiranWait
 
 label valleyConvoStart:
     show langur worried
-    show deer river:
+    show deer normal:
         xpos 0.55
-    p "I feel I have been making all the decisions and you’re so passive. But, somehow I feel I have no control on what is happening."
-    dh "I don’t know what you’re talking about. I am just trying to learn and help. I am new to adventure, remember? "
-    dh "In fact, I feel like you’re just waiting to push me away."
-    p "That is not true! How can you say this? This is coming out of nowhere!"
-    dh "I am not passive, I am trying to learn from you because we have to stick together. Sorry but it’s just the truth. "
-    dh "Also! I would like if you were more appreciative of my gifts."
+    "You feel the urge to explain why you’re feeling the way you’re feeling and you hope Hiran will be understanding."
 
+    p "So I guess I should tell you why I freaked out so much about the pendant."
+    dh "Yes...I don’t understand why this has become such a big deal!"
+    
+    p "My ex...they hurt me really badly. At the start of the relationship they were so sweet, and later they used that sweetness against me."
+    p "Now I feel scared when someone is so sweet to me. I feel like I can’t trust them or something. "
+    
     jump valleyCont
 
 label valleyHiranWait:
     show deer river:
-        xpos 0.55
-    dh "I feel like you’ve been avoiding talking about how you feel...why?"
-    p "I’m trying, Hiran This is new for me. "
-    dh "I hope you know it took lot of courage for me to go on this adventure. The truth is I constantly worry about if you still like me or not. {w}It’s because of my past where I was hurt by my partner. I can’t help it."
-    p "I care about you a lot but sometimes, I feel overwhelmed by the constant need for me to keep proving it. {w}\nIt's been a lot to handle, especially since we just started this journey."
-    dh "l didn’t realize you were feeling pressured and stressed. I will work on it. But can you think about accepting the gift?"
+        xpos 0.5
+    "Hiran comes closer to you, and holds your hand gently."
+    dh "So, tell me about it. What’s complicated?"
+    p "I feel like such a baby. But the truth is, my ex...they hurt me really badly. {w}At the start of the relationship they were so sweet, and later they used that sweetness against me. "
+    p "Now I feel scared when someone is so sweet to me. I feel like I can’t trust them or something."
+    
     jump valleyCont
 
 label valleyCont:
-    # show langur rightface
-    # "Hiran looks at you with understanding in their eyes. You smile nervously. "
-    # dh "Okay, I get that. It sucks that your ex did that!"
-    p "Oh yeah, the pendant. Look, I have bad history with partners showering me with gifts only to throw them in my face later. {w}It made me feel really guilty. So now gifts just make me feels weird."
+    "Hiran looks at you with understanding in their eyes. You smile nervously. "
+    d "Okay, I get that. It sucks that your ex did that!"
+    p "Yeah, it was confusing because the beginning was so good.  All the gifts, all the attention - I felt so loved. "
     p "Then they started making me feel guilty when I didn’t do what they wanted. They used the gifts to remind me that they were a better partner than I was."
     dh "Oh, that is so sneaky! I won’t ever do that to you. I want you to trust me and tell me what you’re feeling."
-    p "I know, I am trying. I didn’t mean to hurt your feelings. I am so glad you are by my side.{w}\nI'll work on saying things out loud. We'll face this together."
+    p "I know, I am trying. I didn’t mean to hurt your feelings. I am so glad you are by my side.{w}\n"
     show badge courage:
-        xpos 0 ypos 0.1
+        xpos 0.1 ypos 0.1
     with Dissolve(0.1)
 
     $ empathy += 10
     # TODO TOKEN AWARD
 
     # hide deer
-    show langur shocked
-    "You and Hiran seem to be quite different, but, by having a tough conversation, you are showing them and yourself that you are willing to let someone else see your feelings.{w}\nYou feel lighter and closer to Hiran. Both of you discuss where you want to go next. What will come next for the two of you?"
+    show langur thinking
+    "You and Hiran seem to be quite different, but, by having a tough conversation, you are showing them and yourself that you are willing to let someone else see your feelings."
+    "You feel lighter and closer to Hiran. Both of you discuss where you want to go next. What will come next for the two of you?"
 
-    dh "I’m really glad you told me, Dori. I wouldn’t have known. "
-    p "It does feel good to tell someone. "
-    p "I think we’re almost through the tunnel- there’s a light up ahead!"
-    dh "I see it - let’s go!"
-
+    
     menu: 
         "Go ahead with excitement":
             jump localPub
@@ -758,7 +764,7 @@ label localPub:
 
     "The other travellers seem very impressed by you and your stories. You are enjoying the attention and try to keep Hiran involved in the conversation."
 
-    "You tell the others about how Hiran impressed the campsite with their cooking and quickness. You hold Hiran’s and squeeze it gently. They squeeze yours and seem to relax a bit."
+    "You tell the others about how Hiran impressed the campsite with their cooking and quickness. You hold Hiran’s hand and squeeze it gently. They squeeze yours and seem to relax a bit."
 
     hide badge
     
@@ -808,6 +814,10 @@ label localPub:
     w1 "Gladly!"
 
     "You take a moment to listen to your thoughts and feelings. The screen on the compass begins to glow. "
+    show glowingcompass:
+        xpos 0.87 ypos 0.05
+    with Dissolve(0.5)
+    pause
 
     show stats pub1:
         xpos 0.3 ypos 0.1
@@ -818,6 +828,7 @@ label localPub:
     Give with an open heart, and ask for what you want. A good partner will do the same for you."""
 
     p "Thank you, Kauwa"
+    hide glowingcompass
     hide stats
 
     hide localwiz
@@ -1033,15 +1044,25 @@ label rollingHills:
     with Dissolve(0.5)
 
     "Hand in hand, you and Hiran run outside. You have reached the final destination - the legendary Rolling Hills!"
+        
     
+    dh "This place is lovely, Dori!"
+    p "I know! The sky, the sun, having you here with me. So much to be grateful for. "
+    
+
+    "You are enjoying the hills together when..." 
+    show white bg
+    with Dissolve(0.1)
     show deer happy 3:
         xpos 0 ypos 0.1
     show langur worried behind deer:
         xpos 0.1 ypos 0.2
     show eternalsage:
         xpos 0.6
-    
-    "Suddenly a bright light glows and a mysterious figure appears. It is the Eternal Sage!"
+    hide white
+    with Dissolve(0.8)
+
+    "Suddenly there is a flash of light; the brightness almost blinds you! You see a mysterious figure standing before you. The Eternal Sage!"
 
     "The Eternal Sage looks inside your eyes and senses everything. "
     
@@ -1055,18 +1076,20 @@ label rollingHills:
     hide deer 
     show langur:
         xpos 0 ypos 0.1
-    es "Monkey Dori, you have made it to the last stage of your adevnture, welcome!  {w}
-    \nThese Shifting Sands cannot be crossed so easily, but you showed great courage and communicated well with your partner, Hiran."
-    es "I will give you a gift that will help you understand how your journey could have ended if you had made other choices."
+    es "Welcome to the final stage of your adventure, Monkey Dori! Your friends and family will be thrilled to see how far you’ve come."
+    es "These lands are not easy to cross and yet you showed great courage and communicated well with your partner, Hiran."
+    es "I hope you are satisfied with your ending. If you would like to use it, I grant you a single use of my Time Machine. "
+    es "This powerful relic that allows you to revisit key moments in your journey and change your decision. You can see how differently things could have turned out."
+    p "A Time Machine? How can I ever repay you for such a gift?"
+    es "Challenge yourself, young one! Make an effort to have tough conversations, ask for help and listen to what you need. That will be your repayment."
 
     hide stats
-    "They offer the gift many seek - Time Travel - a chance to revisit your past and make different choices. "
+    "What do you do? Do you wish to take the second chance and change the course of your story? Or do you accept and learn to live with the decisions you’ve made?"
     show langur thinking
 
     menu:
         "Use Time Machine":
-            p "This is wonderful wise one. Thank you! I want to know if things could have gone differently"
-            "game end here"
+            p "Thank you, Eternal Sage. I promise to use this gift responsibly and make things right."
             return
         "End Game":
             return
@@ -1201,13 +1224,18 @@ label riverWiz:
     w1 "Okay, explorer, let’s see what we can do! Take a deep breath and focus."
 
     "You take a moment to listen to your thoughts and feelings. The screen on the compass begins to glow. "
-    
+    show glowingcompass:
+        xpos 0.87 ypos 0.05
+    with Dissolve(0.5)
+    pause
+
     #TODO STATS Screen
     show stats forest wiz:
         xpos 0.3 ypos 0.1
 
     w1 "You seem upset, young one. \n You might find it helpful to use the tools you and Paati packed. Why don’t we look in the bag and see what we have? What are two tools that can help you feel better in this moment?"
 
+    hide glowingcompass
     hide stats
     show bag river wiz:
         xpos 0.32 ypos 0.3
@@ -1235,7 +1263,7 @@ label riverCont:
     show deer normal left:
         xpos 0.15 ypos 0.2
     
-    "You find Hiran sitting on the banks of the river. You know things between you two are not okay."
+    "You turn to face Hiran"
 
     menu:
         "Ignore the fight":
@@ -1266,26 +1294,80 @@ label valleyTruth3:
     scene black
     with Dissolve(0.4)
     pause(0.3)
-    # figure out fade to b
+
     window hide
     scene valleysc
     with Dissolve(0.6)
     show valleytitle:
         xpos 0.25 ypos 0.5
     pause
-    
-    # ""
-    hide valleytitle
 
-    show deer river left:
-        xpos 0.1 ypos 0.2
-    
-    show langur angry 2:
-        xpos 0.6 ypos 0.2
     window auto
-    "waiting for comment resolve to see if this valley arc is still around"
+    show langur thinking:
+        xpos 0 ypos 0.25
+    show deer normal:
+        xpos 0.7 ypos 0.2
+    
+    hide valleytitle
+    menu:
+        "Start the conversation":
+            jump valleyConvoStart3
+        "Wait for Hiran to start the conversation":
+            jump valleyHiranWait3
 
-    jump pub3
+label valleyConvoStart3:
+    show langur worried
+    show deer river:
+        xpos 0.55
+    p "I feel I have been making all the decisions and you’re so passive. But, somehow I feel I have no control on what is happening."
+    dh "I don’t know what you’re talking about. I am just trying to learn and help. I am new to adventure, remember? "
+    dh "In fact, I feel like you’re just waiting to push me away."
+    p "That is not true! How can you say this? This is coming out of nowhere!"
+    dh "I am not passive, I am trying to learn from you because we have to stick together. Sorry but it’s just the truth. "
+    dh "Also! I would like if you were more appreciative of my gifts."
+
+    jump valleyCont3
+
+label valleyHiranWait3:
+    show deer river:
+        xpos 0.55
+    dh "I feel like you’ve been avoiding talking about how you feel...why?"
+    p "I’m trying, Hiran This is new for me. "
+    dh "I hope you know it took lot of courage for me to go on this adventure. The truth is I constantly worry about if you still like me or not. {w}It’s because of my past where I was hurt by my partner. I can’t help it."
+    p "I care about you a lot but sometimes, I feel overwhelmed by the constant need for me to keep proving it. {w}\nIt's been a lot to handle, especially since we just started this journey."
+    dh "l didn’t realize you were feeling pressured and stressed. I will work on it. But can you think about accepting the gift?"
+    jump valleyCont3
+
+label valleyCont3:
+    # show langur rightface
+    # "Hiran looks at you with understanding in their eyes. You smile nervously. "
+    # dh "Okay, I get that. It sucks that your ex did that!"
+    p "Oh yeah, the pendant. Look, I have bad history with partners showering me with gifts only to throw them in my face later. {w}It made me feel really guilty. So now gifts just make me feels weird."
+    p "Then they started making me feel guilty when I didn’t do what they wanted. They used the gifts to remind me that they were a better partner than I was."
+    dh "Oh, that is so sneaky! I won’t ever do that to you. I want you to trust me and tell me what you’re feeling."
+    p "I know, I am trying. I didn’t mean to hurt your feelings. I am so glad you are by my side.{w}\nI'll work on saying things out loud. We'll face this together."
+    show badge courage:
+        xpos 0.1 ypos 0.1
+    with Dissolve(0.1)
+
+    $ empathy += 10
+    # TODO TOKEN AWARD
+
+    # hide deer
+    show langur shocked
+    "You and Hiran seem to be quite different, but, by having a tough conversation, you are showing them and yourself that you are willing to let someone else see your feelings."
+    "You feel lighter and closer to Hiran. Both of you discuss where you want to go next. What will come next for the two of you?"
+
+    dh "I’m really glad you told me, Dori. I wouldn’t have known. "
+    p "It does feel good to tell someone. "
+    p "I think we’re almost through the tunnel- there’s a light up ahead!"
+    dh "I see it - let’s go!"
+
+    menu: 
+        "Go ahead with excitement":
+            jump localPub
+        "Go ahead with caution":
+            jump pub3
 
 label pub3:
     scene black
@@ -1399,6 +1481,10 @@ label pubWiz:
     p "Yes! I think I really hurt my partner and they said some things that hurt me too. What do I do!"
     w1 "Well, let’s take a look, shall we?"
     "You take a moment to listen to your thoughts and feelings. The screen on the compass begins to glow. "
+    show glowingcompass:
+        xpos 0.87 ypos 0.05
+    with Dissolve(0.5)
+
     show stats pub early:
         xpos 0.3 ypos 0.1
     #TODO Stats screen
@@ -1407,6 +1493,7 @@ label pubWiz:
     w1 "This can happen when two people find themselves in a stressful situation."
     w1 "Hiran did something that hurt you, and then you did something to hurt them. And now they tried to hurt you again. Watch out for this cycle!"
     w1 "Remember, hurting someone who hurt you will not take away your pain!"
+    hide glowingcompass
     hide stats
     "You realize the truth of those words."
     w1 "Your next few steps are very important for your future with Hiran, so you need to be careful. "
@@ -1508,16 +1595,16 @@ label valley4:
     #TODO Stats Screen
 
     es "Young Dori, how heavy your heart is!
-    {w}\nRemember that love is a beautiful thing, and it should never feel like a burden. Love is not about proving; it's about understanding, trust, and connection."
-    es "I see that you feel that you lost control of things with Hiran. I can help with that as I believe things can change."
+    {w}\nRemember that going on an adventure with a partner can be a wonderful thing, and it should never feel like a burden. The journey  is not about proving anything; it's about understanding, trust, and connection."
+    es "I see that you feel that you lost control of things with Hiran.  I can help with that as I believe things can change."
     es "So, I grant you a single use of my Time Machine, a powerful relic that allows you to revisit those moments and act differently, changing the course of events."
     hide stats
-    "They offer the gift many seek - Time Travel - a chance to revisit your past and make different choices. "
+    "What do you do? Do you wish to take the second chance and change the course of your story? Or do you accept and learn to live with the decisions you’ve made?"
 
     menu:
         "Use Time Machine":
-            p "This is wonderful wise one. Thank you! I want to know if things could have gone differently"
-            "game end here"
+            p "This is wonderful wise one. Thank you! I want to know if things could have gone differently."
+            # "game end here"
             return
         "End Game":
             return
@@ -1558,7 +1645,7 @@ label mangrove4:
         xpos 0 ypos 0.22
     with Dissolve(0.5)
 
-    "You storm out of the pub and right into  a marsh that has appeared. The pathway is muddy and it is very difficult to walk. Hiran is having a much harder time than you, though and requires help"
+    "You walk right into a marsh that has appeared. The pathway is muddy and it is very difficult to walk. Hiran is struggling a lot and needs your help."
 
     dh "Will you slow down! I keep getting stuck!"
     p "Try harder then!"
@@ -1596,10 +1683,10 @@ label mangrove4:
     #TODO Stats screen for m1 vs m2
 
     es "Young Monkey Dori, you seem frustrated and disappointed. These Marshy Lands are indeed difficult to cross.
-    \n{w}But, don’t worry, I see your pain - you regret the hurt you’ve caused Hiran and you don’t know how to mend it." 
-    es "I can help with that as I believe in second chances.I grant you a single use of my Time Machine, a powerful relic that allows you to revisit those moments and make amends."
+    \n{w}But, don’t worry, I see your pain - you are hurt and regret the hurt you’ve caused Hiran. You don’t know how to mend it." 
+    es "I can help with that as I believe in second chances. {w}\nI grant you a single use of my Time Machine, a powerful relic that allows you to revisit those moments and make amends."
     p "A Time Machine? How can I ever repay you for such a gift?"
-    es "You must use this gift wisely, Dori. Undo the hurt you've caused, learn from your mistakes, and be a force for good in the world. That will be your repayment."
+    es "You must use this gift wisely, Dori. You can choose to undo the hurt you've caused, learn from your mistakes, cross these lands with Hiran. That will be your repayment."
 
     hide stats
     "What do you do? Do you wish to take the second chance and change the course of your story? Or do you accept and learn to live with the decisions you’ve made?"
@@ -1607,7 +1694,7 @@ label mangrove4:
     menu:
         "Use Time Machine":
             p "Thank you, Eternal Sage. I promise to use this gift responsibly and make things right."
-            "game end here"
+            # "game end here"
             #TODO add souvenir choice and time travel mech
             return
         "End Game":
@@ -1664,41 +1751,56 @@ label rollingHillsAlone:
     hide rollingalonetitle
     
     show langur shocked:
-        xpos -0.2 ypos 0.22
+        xpos 0.2 ypos 0.22
     
     with Dissolve(0.5)
 
-    "You are alone in a beautiful field. The sky is blue and the sun is shining brightly. "
-    p "I was so excited to go on this adventure with Hiran but I did not realize how difficult it is to understand another person and their needs."
-
-    p "I definitely made some choices I am not proud of. But Hiran hurt me too! {w}\nHow does one become a perfect partner in adventure?"
-
+    "Hiran leaves and you find your path leads you into a beautiful field. The sky is blue and the sun shines brightly. "
+    
+    "As you walk through the grasses, you think about how excited you had been to start this adventure with Hiran. {w}Since then, you have learned how challenging communication can be - learning about another person and their needs."
+    
+    "You think about the choices you made - some you are proud of, some you aren’t. Perhaps you have more questions now than you did at the start of your journey. {w}For example, is there such a thing as true love or a perfect partnership? "
+    
+    "You miss Hiran - having someone to talk to and share the adventure with - but you are relieved that you don’t have to reassure them constantly. "
+    
+    "You begin to wonder when your journey will end. "
+    show white bg
+    with Dissolve(0.1)
     show langur worried:
         xpos 0.1 ypos 0.26
     show eternalsage:
         xpos 0.6
+
+    hide white
+    with Dissolve(0.9)
     
     "Suddenly a bright light glows and a mysterious figure appears. It is the Eternal Sage!"
 
-    "The Eternal Sage looks inside your eyes and senses everything. "
+    es "Young Dori, welcome to the Rolling Hills! Reflecting on your journey alone?"
+    p "Wise One! Paati told me I’d meet you eventually. It is good to see you. "
+    p "Yes, actually. I’m thinking about how I ended up here. "
+
+    "You feel the Sight of The Eternal Sage on you. You know that they sense everything."
 
     show stats rha:
         xpos 0.3 ypos 0.1
+    with Dissolve(0.3)
     #TODO Stats screen
 
-    es "Monkey Dori, your mind is buzzing with so many questions! {w}
-    \nNot every question has an answer, brave explorer. These Shifting Sands cannot be crossed so easily."
-    es "I see that you have regret for some of the hurt you caused Hiran. {w}
-    \nI will give you a gift that will help you make it right."
+    es "Young Monkey Dori, you have many questions! This is good. {w}
+    \nWhile not every question has an answer, I am proud to see you taking the time to reflect and think about the choices you have made."
+    es "If you would like to use it, I grant you a single use of my Time Machine, a powerful relic that allows you to revisit key moments in your journey and change your decision. You can see how differently things could have turned out."
+    p "A Time Machine? How can I ever repay you for such a gift?"
+    es "You must use this gift wisely, Dori. Make an effort to have tough conversations, ask for help and listen to what you need. That will be your repayment."
 
     hide stats
-    "They offer the gift many seek - Time Travel - a chance to revisit your past and make different choices. "
+    "What do you do? Do you wish to take the second chance and change the course of your story? Or do you accept and learn to live with the decisions you’ve made?"
     show langur thinking
 
     menu:
         "Use Time Machine":
-            p "This is wonderful wise one. Thank you! I want to know if things could have gone differently"
-            "game end here"
+            p "Thank you, Eternal Sage. I promise to use this gift responsibly and make things right."
+            # "game end here"
             return
         "End Game":
             return
@@ -1770,11 +1872,11 @@ label barrenDesert:
             xpos 0.3 ypos 0.1
 
     #TODO STATS Screen
-    es "Young Monkey Dori, it seems you are struggling quite a bit with space and communication."
+    es "Young Monkey Dori, it seems you are struggling quite a bit."
 
-    es "Feeling like the sole focus of your partner's attention may seem flattering at first, but it can become overwhelming and potentially unhealthy over time. It's essential to maintain balance and individuality in a relationship."
+    es "Being the focus of your partner's attention may seem romantic at first, but it can become too much over time. {w}It is important to maintain balance and individuality in a relationship."
 
-    es "If you would like the opportunity to push for those boundaries, I have just the thing.I grant you a single use of my Time Machine, a powerful relic that allows you to revisit those moments and make amends."
+    es "If you would like the opportunity to push for those boundaries, I have just the thing. {w}\n I grant you a single use of my Time Machine, a powerful relic that allows you to revisit those moments and make amends."
 
     p "A Time Machine? How can I ever repay you for such a gift?"
 
@@ -1782,15 +1884,14 @@ label barrenDesert:
     
     hide stats
 
-    "They offer the gift many seek - Time Travel - a chance to revisit your past and make different choices. "
+    "What do you do? Do you wish to take the second chance and change the course of your story? Or do you accept and learn to live with the decisions you’ve made?"
 
     show langur thinking:
         xpos 0 ypos 0.24
 
     menu:
         "Use Time Machine":
-            p "This is wonderful wise one. Thank you! I want to know if things could have gone differently"
-            "game end here"
+            p "Thank you, Eternal Sage. I promise to use this gift responsibly and make things right."
             return
         "End Game":
             return
