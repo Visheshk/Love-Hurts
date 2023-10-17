@@ -17,6 +17,11 @@ default confidence = 0
 default stress = 0
 default energy = 0
 default endScene = "v1"
+default username = "default"
+
+default forestBerries = False
+default forestHoney = False
+default forestMushroom = False
 # The game starts here.
 
     
@@ -27,6 +32,8 @@ label start:
     # images directory to show it.
 
     scene wiztowerdark
+    if username == "default":
+        $ username = renpy.input("What is the username you entered in the initial survey to play this game?")
     show langur happy
     "Hello Dori! Yes, that’s you - a bright and experienced explorer. It’s a big day for you today. You are going to meet with your mentor, the Great Wizard Paati. "
 
@@ -115,7 +122,7 @@ label repress:
 
     "You realize how stiff and nervous you are. Yes it is difficult to be honest, but sometimes it’s so much harder to pretend."
     p "Paati, you know me so well..I tried to use the tools and advice you gave me, but there were many times I wished I had someone with me to share the adventure with."
-    h "Yes...the forest is not an easy place to explore. Why don’t you take someone with you on the next adventure?"
+    h "Yes...the forest is not an easy place to explore. Why don’t you take someone with you on the next adventure?"
 
     show langur empathetic:
         xpos 0.1 ypos 0.2
@@ -134,14 +141,17 @@ label charSelect:
     $ strength = False
 
     menu:
+        "Other storylines will be available soon! Currently you can only explore this journey with Hiran!"
         "Hiran, The Romantic":
             jump deerStory
         
         "Khaang, The Confident" if strength:
-            jump endStory
+            "nothing"
+            # jump endStory
 
         "Ullu, The Observant" if strength:
-            jump endStory
+            "This storyline will be available soon in an upcoming version!"
+            # jump endStory
 
 
 label deerStory:
@@ -151,10 +161,10 @@ label deerStory:
     scene deerdream
     with Dissolve(0.5)
 
-    p "So...I met Hiran at the Local Pub. They are a bit shy, but I enjoyed spending time with them.{w} \nWhat I loved was they are gentle and thoughtful. A few days ago we had our first kiss under the stars. It was magical!"
+    p "So... I met Hiran at the Local Pub. They are a bit shy, but I enjoyed spending time with them.{w} \nWhat I loved was they are gentle and thoughtful. A few days ago we had our first kiss under the stars. It was magical!"
     p "I asked them if they would like to go on an adventure with me - and they said yes!"
 
-    "You feel the warmth in your cheeks. You’re blushing!"
+    "You feel the warmth in your cheeks as you tell Paati about Hiran. You’re blushing!"
 
     scene intro1
     with Dissolve(0.6)
@@ -166,8 +176,8 @@ label deerStory:
         xpos 0.6 ypos 0.4
 
     h "How sweet. Having a crush is a nice feeling, isn’t it?"
-    p "Yes! I am so excited to go on an adventure with them.."
-    h "I have been waiting for this moment to tell you about a very special adventure. I think you are ready now.."
+    p "Yes! I am so excited to go on an adventure with them..."
+    h "I have been waiting for this moment to tell you about a very special adventure. I think you are ready now..."
     p "I’m intrigued, Paati. What are we traveling through?"
     h "You will be traveling through the Land of Shifting Sands. This land is beautiful, but ever-changing. {w}\nYou and Hiran will have to use courage and communication to overcome this tricky terrain."
 
@@ -176,7 +186,7 @@ label deerStory:
     # show langurrt2:
     #     xpos 0.2 ypos 0.2
 
-    h """This land changes depending on who travels through it. Legend says, the true nature of your relationship with your partner will be revealed!"""
+    h "This land changes depending on who travels through it. Legend says, the true nature of your relationship with your partner will be revealed!"
     p "Oh my... What causes it to change?"
 
     h "Your choices, conversations, or conflicts... all of them have an effect on your surroundings."
@@ -198,7 +208,7 @@ label deerStory:
     
     show bagwizscreen behind wiz
     
-    "Remember, young one: when things get difficult, help is never too far away. Use the materials in your bag when you get stuck."
+    "Remember, young one - when things get difficult, help is never too far away. Use the materials in your bag when you get stuck."
 
     hide bagwizscreen
     jump postbag
@@ -253,37 +263,47 @@ label postbag:
     window hide
     pause
 
-    jump chap1
-    
-    "extra"
+    jump prechap1
 
-    "extra 2"
+label prechap1:
 
-
-label chap1:
-    hide langurrt2
-    hide wiz2
-    
     scene black
     with Dissolve(0.4)
-    pause(0.3)
+    scene journey start
+    show langur empathetic:
+        xpos 0.25 ypos 0.2
+
+    show deer happy:
+        xpos 0.5 ypos 0.2
+
+    "You are standing at the edge of the Shifting Sands. The trees, cloaked in moss, seem to be calling you. You pause to enjoy this moment of tension and excitement. {w}Suddenly you realise that a warm hand is holding yours. To your side is Hiran. They are smiling."
     
-    window hide
+    p "Ready?"
+
+    dh "Lead the way!"
+
+    menu:
+        "Start Journey":
+            jump chap1
+
+label chap1:
+    scene black
+    with Dissolve(0.4)
     scene abundantforest
     with Dissolve(0.6)
-    show chap1title:
-        xpos 0.25 ypos 0.3
+    show lushforesttitle:
+        xpos 0.35 ypos 0.4
 
     pause
 
-    hide chap1title
+    hide lushforesttitle
     with Dissolve (0.3)
 
     show langur empathetic:
         xpos 0.2 ypos 0.2
 
     show deer happy:
-        xpos 0.6 ypos 0.2
+        xpos 0.5 ypos 0.2
 
     window auto
     
@@ -293,14 +313,13 @@ label chap1:
 
     p "Hiran, are you doing alright? How are you liking the journey so far?"
 
-    dh "I’m okay...I’m a little worried. What if something bad happens to us? "
+    dh "I’m okay... I’m a little worried. What if something bad happens to us? "
 
     p "I am confident that we will manage it together. Have you never been on an adventure like this?"
 
     dh "This is actually only my second time outside our town. Am I doing okay?"
 
-    p "Oh I didn’t realize you are a beginner. But I’m excited to see how you manage this adventure.
-Why don’t you pick a direction for us to go?"
+    p "Oh I didn’t realize you are a beginner. But I’m excited to see how you manage this adventure. Why don’t you pick a direction for us to go?"
 
     dh "Oh no! Please lead the way. I’m a terrible explorer. Besides, I’d love to see you in action."
 
@@ -309,20 +328,31 @@ Why don’t you pick a direction for us to go?"
 
     p "Let’s start by looking for some food together!"
     
+    scene abundantforest2
+    
+    show langur empathetic:
+        xpos 0.2 ypos 0.2
     show deer happy:
         xpos 0.7 ypos 0.2    
     
-    """Hiran leaps slightly ahead of you. They are quick and graceful as they run through the bushes. You watch and admire them. 
-        You find a rope and keep it safely. The forest is full of berries, honey and mushrooms. Click on food items to collect them.
+    """Hiran leaps slightly ahead of you. They are quick and graceful as they run through the bushes. You watch and admire them. {w} You find a rope and keep it safely. The forest is full of berries, honey and mushrooms.""" 
+    "Click on food items to collect them."
 
-        You both return with many berries and wildflowers."""
-
+    call screen berries
+    call screen berries
+    call screen berries
+    
     ### TODO ADD multi BERRY CLICKABLE SCREEN
+    "You both return with many berries and wildflowers."""
     
     p "Wow! Look at all this! You’re really good at this, huh?"
-
+    
     dh "Oh haha, just something I learned from my mom. I like running around and finding cool hiding spots too!"
 
+    show badge collab:
+        xpos 0 ypos 0.1
+    with Dissolve(0.2)
+    
     "You reach a campsite, where most folks on their own journeys are sitting around fires, cooking, eating and laughing. They welcome the two of you with a small cheer and suggest you find a quiet spot to camp."
 
     p "We’ve reached! Do you want to pick a spot?"
@@ -334,16 +364,26 @@ Why don’t you pick a direction for us to go?"
     dh "No, not really. Just some place warm and I’ll curl up into a ball and sleep."
 
     p "Okay fine, I’ll choose this spot."
+    hide badge
+    with Dissolve(0.3)
 
     hide langur
     with Dissolve(0.7)
 
     "You set up the tent while Hiran arranges dinner. They make a delicious meal of mushroom stew, honeyed buns and wildflower tea. The scent of their cooking travels through the campsite to the others."
     
-    scene forestanimals
-
-    show deer happy
-    "They begin to gather around you. Click on the other adventurers to see what they’re saying!"
+    # scene forestanimals
+    
+    show deer happy:
+        xpos 0.5
+    
+    "They begin to gather around you."
+    show crowdialog
+    "They begin to gather around you."
+    pause
+    show monkeydialog
+    # "They begin to gather around you."
+    pause
 
     ### TODO ADD IMAGEMAP for ANIMALS
 
@@ -363,6 +403,7 @@ Why don’t you pick a direction for us to go?"
     dh "It’s just - it’s just that it’s been a while since I’ve felt this safe with anyone. Nobody’s ever looked out for me like you do. "
 
     "You don't really know what to say"
+    $ stress += 10
 
     menu:
         "Uhm....that’s awful. Let’s get some sleep.":
@@ -375,7 +416,29 @@ Why don’t you pick a direction for us to go?"
             # "empathy ++ "
             $ empathy += 10
             jump nightend
+
+
+screen berries():
+    if forestBerries == False:
+        imagebutton:
+            xalign 0.18
+            yalign 0.02        
+            auto "forestberries_%s.png" action [Hide("berries"), SetVariable("forestBerries", True), Return()]
     
+    if forestHoney == False:
+        imagebutton:
+            xalign 0.65
+            yalign 0.2
+            auto "foresthoney_%s.png" action [Hide("berries"), SetVariable("forestHoney", True), Return()]
+    
+    if forestMushroom == False:
+        imagebutton:
+            xalign 0.89
+            yalign 0.6      
+            auto "forestmushroom_%s.png" action [Hide("berries"), SetVariable("forestMushroom", True), Return()]
+    
+
+
 label nightend:
     "You both head into the tent for the night."
 
@@ -385,11 +448,11 @@ label nightend:
     scene abundantforest
     with Dissolve(0.5)
     
-    show langur rightface:
+    show langur river:
         xpos 0.1 ypos 0.2
     
-    show deer happy:
-        xpos 0.7 ypos 0.2 
+    show deer happy 4:
+        xpos 0.5 ypos 0.1
 
     "The next morning you wake up and the tent is empty. You grab your things in a hurry and see Hiran, sitting next to the fire and holding a piece of wood and a knife."
 
@@ -399,7 +462,9 @@ label nightend:
 
     dh "You were just so kind to me. I made this for you. As a token."
 
-    ### TODO add token screen
+    show pendant1:
+        xpos 0.4 ypos 0.5
+    with Dissolve(0.2) 
 
     "Hiran places a beautifully carved wooden pendant on a string into your hands. You feel the muscles in your shoulders tighten. You don’t know what to say."
 
@@ -432,9 +497,9 @@ label wizardConsult:
     show langur thinking:
         xpos 0.7 ypos 0.2
 
-    "The compass flashes on, the screen shows you a new face. This wizard wears clothes that are similar to Paati’s. "
+    "The compass flashes on, suddenly you’re in a mystical cave with the local wizard. Their robes remind you of Paati. "
 
-    w1 "Welcome, young explorer! I’m the Local Wizard, Kauwa."
+    w1 "Hello there! I’m the Local Wizard, Kauwa."
 
     p "Hello, Wizard Kauwa. Paati said I could visit you in case I needed help?"
 
@@ -450,21 +515,43 @@ label wizardConsult:
 
     w1 "That’s it! We can now look closer at your emotional states."
 
-    show forestwizstats
+    show stats forest wiz:
+        xpos 0.3 ypos 0.1
 
     show localwiz:
         easein 0.4 xpos 0.1 ypos 0.2
 
     w1 "What do you see?"
+         
+    p "It seems like I’m too stressed out to think straight."
 
-    #TODO some dialogue here?
+    w1 "That’s right! Would it help if I explained a little bit more about the situation?"
+
+    menu:
+        "Yes, please":
+            jump forestWizExplain
+        "No, thank you. I’m ready to head out.":
+            w1 "Very well, young explorer. All the best for your journey. Feel free to call any time you’re in the area."
+            p "Thank you for your help! I will."
+            "It feels good to get a wise perspective on things. You feel more capable of talking things out with Hiran."
+            jump pendantResponse
     
-    "This situation is stressing me out"
+label forestWizExplain:
+    w1 "When someone showers you with attention and compliments at the beginning of a relationship, it is ok to feel confused."
 
-    jump pendantResponse
+    p "Oh I am so glad to hear that."
 
+    w1 "Sometimes it is genuine, and sometimes it is a way to make you like them more. "
 
-    
+    p "But why do I feel this pressure to prove that I like Hiran? I wouldn’t be on this adventure with them if I didn’t like them!"
+
+    w1 "In a healthy relationship, both people give each other time to fall in love without pressure and without guilt. {w}It is your right to go slow, and say no to things you're not ready for."
+
+    p "Okay! I understand. I think I’m ready to talk to Hiran now."
+
+    w1 "Excellent! Talking to your partner is a great way to resolve such conflicts. \n All the best for your journey. Feel free to call any time you’re in the area."
+    "It feels good to get a wise perspective on things. You feel more capable of talking things out with Hiran."
+    jump pendantResponse   
     
 label pendantResponse:
     scene black
@@ -497,7 +584,10 @@ label rejectPendant:
 
     p "This just doesn't feel right"
 
+    dh "Dori, what? I’m just trying to give you a gift."
+
     p "I don't want your dumb pendant"
+    $ empathy -= 10
 
     """Hiran is silent but you can tell that they are hurt and angry. {w}
     \nSuddenly the land under you starts to shift. {w}\nThis is what Paati had told you about. """
@@ -505,6 +595,7 @@ label rejectPendant:
     jump turbulentRiver
 
 label acceptPendant:
+    "You clasp the pendant in your hand. Hiran smiles widely. You know what you are going to say."
     menu:
         "This is such a beautiful pendant, but I think we are moving too fast":
             jump logicalPendant
@@ -521,7 +612,7 @@ label empatheticPendant:
 
     dh "Uhm, okay. Do you not like gifts or something?"
 
-    p "It’s not that...it’s complicated. "
+    p "It’s not that... it’s complicated. "
 
     """
     You want to open up about your feelings. But you fear that Hiran will stop liking you if you tell them the truth. {w}
@@ -550,52 +641,59 @@ label valleyTruth:
     
     hide valleytitle
     menu:
-        "Start conversation":
+        "Start the conversation":
             jump valleyConvoStart
         "Wait for Hiran to start the conversation":
             jump valleyHiranWait
 
 label valleyConvoStart:
     show langur worried
-    "You feel the urge to explain why you're feeling the way you're feeling and you hope Hiran will be understanding."
+    show deer river:
+        xpos 0.55
+    p "I feel I have been making all the decisions and you’re so passive. But, somehow I feel I have no control on what is happening."
+    dh "I don’t know what you’re talking about. I am just trying to learn and help. I am new to adventure, remember? "
+    dh "In fact, I feel like you’re just waiting to push me away."
+    p "That is not true! How can you say this? This is coming out of nowhere!"
+    dh "I am not passive, I am trying to learn from you because we have to stick together. Sorry but it’s just the truth. "
+    dh "Also! I would like if you were more appreciative of my gifts."
 
-    p "So I guess I should tell you why I freaked out so much about the pendant."
-    dh "Yes...I don’t understand why this has become such a big deal!"
-    p "My ex...they hurt me really badly. At the start of the relationship they were so sweet, and later they used that sweetness against me. "
-    p "Now I feel scared when someone is so sweet to me. I feel like I can’t trust them or something. "
     jump valleyCont
 
 label valleyHiranWait:
     show deer river:
         xpos 0.55
-    "Hiran comes closer to you, and holds your hand gently"
-    dh "So, tell me about it. What's complicated?"
-    p "I feel like such a baby. But the truth is, my ex...they hurt me really badly. {w}At the start of the relationship they were so sweet, and later they used that sweetness against me." 
-    p "Now I feel scared when someone is so sweet to me. I feel like I can’t trust them or something. "
+    dh "I feel like you’ve been avoiding talking about how you feel...why?"
+    p "I’m trying, Hiran This is new for me. "
+    dh "I hope you know it took lot of courage for me to go on this adventure. The truth is I constantly worry about if you still like me or not. {w}It’s because of my past where I was hurt by my partner. I can’t help it."
+    p "I care about you a lot but sometimes, I feel overwhelmed by the constant need for me to keep proving it. {w}\nIt's been a lot to handle, especially since we just started this journey."
+    dh "l didn’t realize you were feeling pressured and stressed. I will work on it. But can you think about accepting the gift?"
+    jump valleyCont
 
 label valleyCont:
-    show langur rightface
-    "Hiran looks at you with understanding in their eyes. You smile nervously. "
-    dh "Okay, I get that. It sucks that your ex did that!"
-    p "Yah, it was confusing because the beginning was so good. All the gifts, all the attention - I felt so loved."
+    # show langur rightface
+    # "Hiran looks at you with understanding in their eyes. You smile nervously. "
+    # dh "Okay, I get that. It sucks that your ex did that!"
+    p "Oh yeah, the pendant. Look, I have bad history with partners showering me with gifts only to throw them in my face later. {w}It made me feel really guilty. So now gifts just make me feels weird."
     p "Then they started making me feel guilty when I didn’t do what they wanted. They used the gifts to remind me that they were a better partner than I was."
     dh "Oh, that is so sneaky! I won’t ever do that to you. I want you to trust me and tell me what you’re feeling."
-    p "I know, I am trying. I didn’t mean to hurt your feelings. I am so glad you are by my side."
+    p "I know, I am trying. I didn’t mean to hurt your feelings. I am so glad you are by my side.{w}\nI'll work on saying things out loud. We'll face this together."
+    show badge courage:
+        xpos 0 ypos 0.1
+    with Dissolve(0.1)
 
     $ empathy += 10
     # TODO TOKEN AWARD
 
-    hide deer
-    show langur thinking
-    "A new path appears in front of you. How will you proceed?"
-    """
-    You and Hiran seem to be quite different, but, by having a tough conversation, you are showing them and yourself that you are willing to let someone else see your pain. {w}
-    You feel lighter and closer to Hiran. Both of you discuss where you want to go next..
-    """
+    # hide deer
+    show langur shocked
+    "You and Hiran seem to be quite different, but, by having a tough conversation, you are showing them and yourself that you are willing to let someone else see your feelings.{w}\nYou feel lighter and closer to Hiran. Both of you discuss where you want to go next. What will come next for the two of you?"
+
+    dh "I’m really glad you told me, Dori. I wouldn’t have known. "
+    p "It does feel good to tell someone. "
+    p "I think we’re almost through the tunnel- there’s a light up ahead!"
+    dh "I see it - let’s go!"
 
     menu: 
-        "You feel lighter and closer to Hiran. Both of you discuss where you want to go next.."
-
         "Go ahead with excitement":
             jump localPub
         "Go ahead with caution":
@@ -647,7 +745,6 @@ label localPub:
     show badge social:
         xpos 0 ypos 0.1
 
-    #TODO BADGE RECEIVE
     $ confidence += 10
     
     show langur empathetic 5:
@@ -765,8 +862,6 @@ label pubTalk:
 
     $ endScene = "rh1"
     jump rollingHills
-    # "goes to rolling hillins"
-    #TODO next step
 
 label mangrove:
     scene black
@@ -973,10 +1068,6 @@ label marshBreakup:
     
     $ endScene = "rha3"
     jump rollingHillsAlone
-    #TODO Go to rolling hills alone
-    # "go to rolling hills"
-
-    # return
 
 label logicalPendant:
     show langur worried
@@ -1033,7 +1124,7 @@ label turbulentRiver:
     dh "We're in this mess because of you"
     $ confidence -= 10
     dh "Why are you so closed off?"
-    dh "No! I want you to answer me. {w}Why did you even ask me out? {w}It seems like everything has to be on your terms and you always get your way."
+    dh "Just answer me! {w}Why did you even ask me out? It seems like everything has to be on your terms and you always get your way."
 
     p "Hiran, I am literally trying to get us out of this dangerous river. Do you think we could MAYBE have this conversation once we’re in a safer environment? "
     dh "We ARE the environment, Dori. Did you not even listen to your Paati."
@@ -1043,7 +1134,7 @@ label turbulentRiver:
     "You are having trouble deciding which problem to focus on. Why is Hiran being so unhelpful? "
     "You decide that survival is more important than Hiran’s feelings."
 
-    p "For God’s sake, Hiran, just help me row the boat. "
+    p "For God’s sake, Hiran, just help me row the boat."
 
     dh "I should never have agreed to be here with you."
 
@@ -1069,7 +1160,6 @@ label turbulentRiver:
         "Manage by yourself":
             jump riverCont
 
-#TODO START SAT here
 label riverWiz:
 
     scene black
@@ -1099,6 +1189,7 @@ label riverWiz:
     hide stats
     show bag river wiz:
         xpos 0.32 ypos 0.3
+    pause
     # show 
     #TODO Inventory screen
 
@@ -1107,7 +1198,6 @@ label riverWiz:
 
     show badge emotion:
         xpos 0.4 ypos 0.4
-    #TODO emotion navigator badge
 
     "Having rested and recollected your thoughts, you feel you have the energy to return. "
     
@@ -1220,7 +1310,7 @@ label pub3:
 
     show badge social:
         xpos 0.4 ypos 0
-    #TODO BADGE RECEIVE
+    
     $ confidence += 10
     
     show langur empathetic 5:
@@ -1532,8 +1622,6 @@ label homeAngry:
         "I can’t deal with your tantrums anymore.It’s over.":
             $ endScene = "rha1"
             jump rollingHillsAlone
-            # "GOING TO ROLLING HILLS (RHA1)"
-            # #TODO ROLLING HOLLS ALONE
 
 label rollingHillsAlone:
     scene black
@@ -1602,7 +1690,6 @@ label homeGuilty:
     "You hear a rumble and look outside the window. The land is changing again. You and Hiran run outside."
     $ endScene = "bd1"
     jump barrenDesert
-    # TODO BArren DESERT
 
 label barrenDesert:
 
