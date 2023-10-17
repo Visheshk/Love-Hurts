@@ -22,6 +22,9 @@ default username = "default"
 default forestBerries = False
 default forestHoney = False
 default forestMushroom = False
+
+default pubWine = False
+default pubBeer = False
 # The game starts here.
 
     
@@ -269,7 +272,7 @@ label prechap1:
 
     scene black
     with Dissolve(0.4)
-    scene journey start
+    scene journeystart
     show langur empathetic:
         xpos 0.25 ypos 0.2
 
@@ -354,7 +357,7 @@ label chap1:
     with Dissolve(0.2)
     
     "You reach a campsite, where most folks on their own journeys are sitting around fires, cooking, eating and laughing. They welcome the two of you with a small cheer and suggest you find a quiet spot to camp."
-
+    hide badge 
     p "We’ve reached! Do you want to pick a spot?"
 
     dh "I’m good with anything!"
@@ -437,7 +440,6 @@ screen berries():
             yalign 0.6      
             auto "forestmushroom_%s.png" action [Hide("berries"), SetVariable("forestMushroom", True), Return()]
     
-
 
 label nightend:
     "You both head into the tent for the night."
@@ -759,8 +761,11 @@ label localPub:
     "You tell the others about how Hiran impressed the campsite with their cooking and quickness. You hold Hiran’s and squeeze it gently. They squeeze yours and seem to relax a bit."
 
     hide badge
-    "Click on the objects to drink "
-
+    
+    show localpub2 behind langur
+    # "Click on the objects to drink"
+    call screen drinks
+    call screen drinks
     # TODO Add clickable drinks
 
     $ confidence += 10
@@ -839,7 +844,24 @@ label localPub:
             jump pubFight
         "Try to get your point across":
             jump pubTalk
+
+screen drinks():
+    text "Click on the objects to drink":
+        xpos 0.5 ypos 0.3
+        at transform:
+            alpha 1
+    if pubBeer == False:
+        imagebutton:
+            xpos 218
+            ypos 330
+            auto "pubbeer_%s.png" action [Hide("berries"), SetVariable("pubBeer", True), Return()]
     
+    if pubWine == False:
+        imagebutton:
+            xpos 965
+            ypos 326
+            auto "pubwine_%s.png" action [Hide("berries"), SetVariable("pubWine", True), Return()]
+
 label pubFight:
     show langur angry
     "There is a loud rumble - thick roots and trees sprout from the pub. The land is changing again!"
@@ -1325,8 +1347,9 @@ label pub3:
     hide badge
     show deer angry
 
-    "Click on the objects to drink "
-
+    # "Click on the objects to drink "
+    call screen drinks
+    call screen drinks
     # TODO Add clickable drinks
 
     $ confidence += 10

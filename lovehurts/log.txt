@@ -1,19 +1,19 @@
-Tue Oct 17 02:05:35 2023
+Tue Oct 17 02:15:28 2023
 macOS-13.1-arm64-arm-64bit
 Ren'Py 8.1.3.23091805
  
 
 Bootstrap to the start of init.init. took 0.02s
 Early init. took 0.00s
-Loader init. took 0.01s
+Loader init. took 0.00s
 Loading error handling. took 0.02s
-Loading script. took 0.07s
+Loading script. took 0.10s
 Loading save slot metadata. took 0.03s
 Loading persistent. took 0.00s
-Running init code. took 0.02s
+Running init code. took 0.03s
 Loading analysis data. took 0.01s
 Analyze and compile ATL. took 0.00s
-Reloading save slot metadata. took 0.02s
+Reloading save slot metadata. took 0.01s
 Index archives took 0.00s
 Dump and make backups. took 0.02s
 Cleaning cache. took 0.00s
@@ -29,4 +29,384 @@ Analyze screens took 0.00s
 Save screen analysis took 0.00s
 Prepare screens took 0.03s
 Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.58s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 3840, 2160)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1 Pro'
+Version: b'2.1 Metal - 83'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1280, 720) drawable=(1280, 720)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init. took 258.37s
+Early init. took 0.00s
+Loader init. took 0.00s
+Loading error handling. took 0.01s
+Loading script. took 0.06s
+Loading save slot metadata. took 0.02s
+Loading persistent. took 0.00s
+Running init code. took 0.01s
+Loading analysis data. took 0.01s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.01s
+Index archives took 0.00s
+Dump and make backups. took 0.02s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.02s
+DPI scale factor: 1.000000
+Creating interface object. took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.02s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.03s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.08s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 3840, 2160)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1 Pro'
+Version: b'2.1 Metal - 83'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1280, 720) drawable=(1280, 720)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init. took 261.62s
+Early init. took 0.00s
+Loader init. took 0.00s
+Loading error handling. took 0.01s
+Loading script. took 0.05s
+Loading save slot metadata. took 0.02s
+Loading persistent. took 0.00s
+Running init code. took 0.01s
+Loading analysis data. took 0.01s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.01s
+Index archives took 0.00s
+Dump and make backups. took 0.02s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.02s
+DPI scale factor: 1.000000
+Creating interface object. took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.02s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.03s
+Save pyanalysis. took 0.00s
 Save bytecode. took 0.00s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.08s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 3840, 2160)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1 Pro'
+Version: b'2.1 Metal - 83'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1280, 720) drawable=(1280, 720)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init. took 264.93s
+Early init. took 0.00s
+Loader init. took 0.01s
+Loading error handling. took 0.01s
+Loading script. took 0.05s
+Loading save slot metadata. took 0.02s
+Loading persistent. took 0.00s
+Running init code. took 0.01s
+Loading analysis data. took 0.01s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.01s
+Index archives took 0.00s
+Dump and make backups. took 0.02s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.02s
+DPI scale factor: 1.000000
+Creating interface object. took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.02s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.03s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.08s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 3840, 2160)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1 Pro'
+Version: b'2.1 Metal - 83'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1280, 720) drawable=(1280, 720)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init. took 268.21s
+Early init. took 0.00s
+Loader init. took 0.01s
+Loading error handling. took 0.01s
+Loading script. took 0.05s
+Loading save slot metadata. took 0.02s
+Loading persistent. took 0.00s
+Running init code. took 0.01s
+Loading analysis data. took 0.01s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.01s
+Index archives took 0.00s
+Dump and make backups. took 0.02s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.02s
+DPI scale factor: 1.000000
+Creating interface object. took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.02s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.03s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.07s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 3840, 2160)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1 Pro'
+Version: b'2.1 Metal - 83'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1280, 720) drawable=(1280, 720)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init. took 269.94s
+Early init. took 0.00s
+Loader init. took 0.00s
+Loading error handling. took 0.01s
+Loading script. took 0.06s
+Loading save slot metadata. took 0.02s
+Loading persistent. took 0.00s
+Running init code. took 0.01s
+Loading analysis data. took 0.01s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.02s
+Index archives took 0.00s
+Dump and make backups. took 0.02s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.03s
+DPI scale factor: 1.000000
+Creating interface object. took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.02s
+Build styles took 0.00s
+Load screen analysis took 0.01s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.03s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.09s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 3840, 2160)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'Apple'"
+Renderer: b'Apple M1 Pro'
+Version: b'2.1 Metal - 83'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1280, 720) drawable=(1280, 720)
+Maximum texture size: 4096x4096
+
+Full traceback:
+  File "renpy/common/00start.rpy", line 212, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 529, in script
+    python hide:
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/ast.py", line 1138, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/python.py", line 1122, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/00keymap.rpy", line 529, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 540, in _execute_python_hide
+    renpy.load(renpy.session["_reload_slot"])
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/loadsave.py", line 810, in load
+    log_data, signature = location.load(filename)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/savelocation.py", line 520, in load
+    return l.load(slotname) # type: ignore
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/savelocation.py", line 284, in load
+    with zipfile.ZipFile(filename, "r") as zf:
+  File "/home/tom/ab/renpy-build-fix/tmp/install.linux-x86_64/lib/python3.9/zipfile.py", line 1239, in __init__
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/vkumar/Library/RenPy/lovehurts-1695864529/sync/_reload-1-LT1.save'
+
+While running game code:
+  File "renpy/common/00start.rpy", line 212, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 529, in script
+    python hide:
+  File "renpy/common/00keymap.rpy", line 529, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 540, in _execute_python_hide
+    renpy.load(renpy.session["_reload_slot"])
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/vkumar/Library/RenPy/lovehurts-1695864529/sync/_reload-1-LT1.save'
+While handling exception:
+Traceback (most recent call last):
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/execution.py", line 596, in run
+    node.execute()
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/ast.py", line 1138, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/python.py", line 1122, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/00keymap.rpy", line 529, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 540, in _execute_python_hide
+    renpy.load(renpy.session["_reload_slot"])
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/loadsave.py", line 810, in load
+    log_data, signature = location.load(filename)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/savelocation.py", line 520, in load
+    return l.load(slotname) # type: ignore
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/savelocation.py", line 284, in load
+    with zipfile.ZipFile(filename, "r") as zf:
+  File "/home/tom/ab/renpy-build-fix/tmp/install.linux-x86_64/lib/python3.9/zipfile.py", line 1239, in __init__
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/vkumar/Library/RenPy/lovehurts-1695864529/sync/_reload-1-LT1.save'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/error.py", line 140, in report_exception
+    renpy.game.invoke_in_new_context(
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/game.py", line 287, in invoke_in_new_context
+    return callable(*args, **kwargs)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/error.py", line 48, in call_exception_screen
+    return renpy.ui.interact(mouse="screen", type="screen", suppress_overlay=True, suppress_underlay=True)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/core.py", line 3582, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/core.py", line 4543, in interact_core
+    rv = root_widget.event(ev, x, y, 0)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/layout.py", line 1179, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/layout.py", line 1179, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/layout.py", line 1179, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/screen.py", line 770, in event
+    rv = self.child.event(ev, x, y, st)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/layout.py", line 1179, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/layout.py", line 1403, in event
+    rv = super(Window, self).event(ev, x, y, st)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/layout.py", line 281, in event
+    rv = d.event(ev, x - xo, y - yo, st)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/layout.py", line 281, in event
+    rv = d.event(ev, x - xo, y - yo, st)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/layout.py", line 1179, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/layout.py", line 1179, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/layout.py", line 1179, in event
+    rv = i.event(ev, x - xo, y - yo, cst)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/behavior.py", line 1142, in event
+    return handle_click(self.clicked)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/behavior.py", line 1075, in handle_click
+    rv = run(action)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/behavior.py", line 379, in run
+    return action(*args, **kwargs)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/error.py", line 55, in rollback_action
+    renpy.exports.rollback(force=True)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/exports.py", line 1817, in rollback
+    renpy.game.log.rollback(checkpoints, greedy=greedy, label=label, force=(force is True), abnormal=abnormal, current_label=current_label)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/rollback.py", line 905, in rollback
+    self.load_failed()
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/rollback.py", line 823, in load_failed
+    raise Exception("Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?")
+Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
+
+Full traceback:
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/bootstrap.py", line 275, in bootstrap
+    renpy.main.main()
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/main.py", line 670, in main
+    run(restart)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/main.py", line 144, in run
+    renpy.execution.run_context(True)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/execution.py", line 955, in run_context
+    context.run()
+  File "renpy/common/00start.rpy", line 212, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 529, in script
+    python hide:
+  File "/home/tom/ab/renpy-build-fix/tmp/install.linux-x86_64/lib/python3.9/site-packages/future/utils/__init__.py", line 444, in raise_
+  File "renpy/common/00start.rpy", line 212, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 529, in script
+    python hide:
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/ast.py", line 1138, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/python.py", line 1122, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/00keymap.rpy", line 529, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 540, in _execute_python_hide
+    renpy.load(renpy.session["_reload_slot"])
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/loadsave.py", line 810, in load
+    log_data, signature = location.load(filename)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/savelocation.py", line 520, in load
+    return l.load(slotname) # type: ignore
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/savelocation.py", line 284, in load
+    with zipfile.ZipFile(filename, "r") as zf:
+  File "/home/tom/ab/renpy-build-fix/tmp/install.linux-x86_64/lib/python3.9/zipfile.py", line 1239, in __init__
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/vkumar/Library/RenPy/lovehurts-1695864529/sync/_reload-1-LT1.save'
+
+While running game code:
+  File "renpy/common/00start.rpy", line 212, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 529, in script
+    python hide:
+  File "renpy/common/00start.rpy", line 212, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 529, in script
+    python hide:
+  File "renpy/common/00keymap.rpy", line 529, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 540, in _execute_python_hide
+    renpy.load(renpy.session["_reload_slot"])
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/vkumar/Library/RenPy/lovehurts-1695864529/sync/_reload-1-LT1.save'
