@@ -442,6 +442,10 @@ label chap1:
 
 
 screen berries():
+    frame:
+        xpos 400 ypos 600
+        # has vbox
+        text "Click on food items to collect them! (There are 3!)"
     if forestBerries == False:
         imagebutton:
             xalign 0.18
