@@ -1102,11 +1102,12 @@ label rollingHills:
     hide stats
     "What do you do? Do you wish to take the second chance and change the course of your story? Or do you accept and learn to live with the decisions you’ve made?"
     show langur thinking
-
+    
+    call screen postsurvey
     menu:
         "Use Time Machine":
             p "Thank you, Eternal Sage. I promise to use this gift responsibly and make things right."
-            jump chap1
+            jump pendantResponse
         "End Game":
             return
 
@@ -1617,10 +1618,11 @@ label valley4:
     hide stats
     "What do you do? Do you wish to take the second chance and change the course of your story? Or do you accept and learn to live with the decisions you’ve made?"
 
+    call screen postsurvey
     menu:
         "Use Time Machine":
             p "This is wonderful wise one. Thank you! I want to know if things could have gone differently."
-            jump chap1
+            jump pendantResponse
             # return
         "End Game":
             return
@@ -1707,10 +1709,11 @@ label mangrove4:
     hide stats
     "What do you do? Do you wish to take the second chance and change the course of your story? Or do you accept and learn to live with the decisions you’ve made?"
 
+    call screen postsurvey
     menu:
         "Use Time Machine":
             p "Thank you, Eternal Sage. I promise to use this gift responsibly and make things right."
-            jump chap1
+            jump pendantResponse
         "End Game":
             return
 
@@ -1817,10 +1820,11 @@ label rollingHillsAlone:
     "What do you do? Do you wish to take the second chance and change the course of your story? Or do you accept and learn to live with the decisions you’ve made?"
     show langur thinking
 
+    call screen postsurvey
     menu:
         "Use Time Machine":
             p "Thank you, Eternal Sage. I promise to use this gift responsibly and make things right."
-            jump chap1
+            jump pendantResponse
         "End Game":
             return
     
@@ -1912,7 +1916,7 @@ label barrenDesert:
     menu:
         "Use Time Machine":
             p "Thank you, Eternal Sage. I promise to use this gift responsibly and make things right."
-            jump chap1
+            jump pendantResponse
         "End Game":
             return
 
@@ -1921,13 +1925,13 @@ screen postsurvey():
         xpos 0.3
         ypos 0.2
         has vbox
-        textbutton "You reached a game end! We would \nlove to hear your thoughts on the game!":
+        textbutton "You reached a game end! We would \nlove to hear your thoughts on the game!\n Click to open our post survey":
             xalign 0.3
             action [OpenURL("https://tinyurl.com/postdori"), Return()]
-        
-        textbutton "\nNot right now! I'll go to\n https://tinyurl.com/postdori\n myself later. ":
-            action Return()
-        
+
+        textbutton "\n Just play again":
+            # xalign 0.3
+            action [Return()]
         
 label endStory:
     "story end"
