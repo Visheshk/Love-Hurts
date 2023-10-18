@@ -1106,7 +1106,7 @@ label rollingHills:
     menu:
         "Use Time Machine":
             p "Thank you, Eternal Sage. I promise to use this gift responsibly and make things right."
-            return
+            jump chap1
         "End Game":
             return
 
@@ -1612,7 +1612,7 @@ label valley4:
 
     es "Young Dori, how heavy your heart is!
     {w}\nRemember that going on an adventure with a partner can be a wonderful thing, and it should never feel like a burden. The journey  is not about proving anything; it's about understanding, trust, and connection."
-    es "I see that you feel that you lost control of things with Hiran.  I can help with that as I believe things can change."
+    es "I see that you feel that you lost control of things with Hiran. I can help with that as I believe things can change."
     es "So, I grant you a single use of my Time Machine, a powerful relic that allows you to revisit those moments and act differently, changing the course of events."
     hide stats
     "What do you do? Do you wish to take the second chance and change the course of your story? Or do you accept and learn to live with the decisions you’ve made?"
@@ -1620,8 +1620,8 @@ label valley4:
     menu:
         "Use Time Machine":
             p "This is wonderful wise one. Thank you! I want to know if things could have gone differently."
-            # "game end here"
-            return
+            jump chap1
+            # return
         "End Game":
             return
 
@@ -1710,9 +1710,7 @@ label mangrove4:
     menu:
         "Use Time Machine":
             p "Thank you, Eternal Sage. I promise to use this gift responsibly and make things right."
-            # "game end here"
-            #TODO add souvenir choice and time travel mech
-            return
+            jump chap1
         "End Game":
             return
 
@@ -1822,8 +1820,7 @@ label rollingHillsAlone:
     menu:
         "Use Time Machine":
             p "Thank you, Eternal Sage. I promise to use this gift responsibly and make things right."
-            # "game end here"
-            return
+            jump chap1
         "End Game":
             return
     
@@ -1911,14 +1908,27 @@ label barrenDesert:
     show langur thinking:
         xpos 0 ypos 0.24
 
+    call screen postsurvey
     menu:
         "Use Time Machine":
             p "Thank you, Eternal Sage. I promise to use this gift responsibly and make things right."
-            return
+            jump chap1
         "End Game":
             return
 
-
+screen postsurvey():
+    frame:
+        xpos 0.3
+        ypos 0.2
+        has vbox
+        textbutton "You reached a game end! We would \nlove to hear your thoughts on the game!":
+            xalign 0.3
+            action [OpenURL("https://tinyurl.com/postdori"), Return()]
+        
+        textbutton "\nNot right now! I'll go to\n https://tinyurl.com/postdori\n myself later. ":
+            action Return()
+        
+        
 label endStory:
     "story end"
     return
