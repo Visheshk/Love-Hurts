@@ -173,6 +173,8 @@ label charSelect:
             # jump endStory
 
 
+define hb = Character(None, image="paati", kind=bubble, retain=True)
+
 label deerStory:
     hide langurthinking
     scene black
@@ -202,9 +204,6 @@ label deerStory:
 
     "You feel the excitement bubble up within you. \nAnother adventure and this time with your crush!"
 
-    # show langurrt2:
-    #     xpos 0.2 ypos 0.2
-
     h "This land changes depending on who travels through it. Legend says, the true nature of your relationship with your partner will be revealed!"
     p "Oh my... What causes it to change?"
 
@@ -215,6 +214,9 @@ label deerStory:
     h "As you and Hiran explore, you must work together to collect badges, until you reach the Eldest Sage. The Sage is the keeper of some of the deepest wisdom known to us."
 
     p "The Eternal Sage! I always thought they were only in stories. Can’t wait to meet them."
+
+
+
     
     hide langurrt2
 
@@ -273,16 +275,51 @@ label postbag:
     
     "Paati hands you a brand new bag. The material is strong and it is filled with items!"
 
+    call screen bagHover
+    
     show bagicon:
         xpos 0.1 ypos 0.1
 
     h "Here you go, Dori. Take a look!"
 
-    show bagpack
+    # show bagpack
+    
     window hide
     pause
 
     jump prechap1
+
+screen bagHover():
+    default whom = ""
+    frame:
+        xpos 400 ypos 600
+        # has vbox
+        # default tt = Tooltip("No button selected.")
+        # text tt.value
+        text whom
+    # if forestBerries == False:
+    
+    imagebutton:
+        xalign 0.18
+        yalign 0.02
+        # hovered tt.Action("The loneliest number.")       
+        hovered (SetVariable("whom", "The Choose Button"))
+        unhovered (SetVariable("whom", "")) 
+        auto "forestberries_%s.png" action [Hide("berries"), SetVariable("forestBerries", True), Return()]
+
+    
+    # if forestHoney == False:
+    #     imagebutton:
+    #         xalign 0.65
+    #         yalign 0.2
+    #         auto "foresthoney_%s.png" action [Hide("berries"), SetVariable("forestHoney", True), Return()]
+    
+    # if forestMushroom == False:
+    #     imagebutton:
+    #         xalign 0.99
+    #         yalign 0.6      
+    #         auto "forestmushroom_%s.png" action [Hide("berries"), SetVariable("forestMushroom", True), Return()]
+
 
 label prechap1:
 
