@@ -50,16 +50,21 @@ label start:
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
-    scene wiztowerdark
+    scene introback
     if username == "default":
         $ username = renpy.input("What is the username you entered in the initial survey to play this game?")
-    show langur happy
-    "Hello Dori! Yes, that’s you - a bright and experienced explorer. It’s a big day for you today. You are going to meet with your mentor, the Great Wizard Paati. "
-
-    "Your last adventure was a few months ago and while you have enjoyed resting and relaxing, you are eager to get back to exploring. "
+    # show langur happy
+    "Sun beams burst through the window - you’ve flung the curtains wide open to survey the array of gear you may need. You’re off on another adventure soon. You feel the familiar bubble of excitement in your stomach, tinged with a little nervousness."
     
-    scene intro1
-    with Dissolve(0.6)
+    scene introback2
+    with Dissolve(0.4)
+
+    "You look around the room at all your trinkets and treasures. It reminds you of all the things you love the most - your family, your friends, and the open air. "
+
+    "While you are young, you have an impressive number of adventures under your belt. However, you haven’t journeyed with a companion in a long while. So, you’re looking forward to having someone to share the adventure with. "
+    
+    scene intro3
+    with Dissolve(0.4)
 
     "Paati has invited you to their Tower. This means that a new adventure is coming up!"
     
@@ -68,6 +73,7 @@ label start:
 
     "Even though it’s been a while, Paati greets you with a big hug and a cup of hot masala chai."
 
+    call phone_on
     h "Welcome, young one."
     extend "\nSit, relax, drink."
     extend "\nI am glad to see you are well"
