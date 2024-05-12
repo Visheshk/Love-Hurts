@@ -4,13 +4,14 @@
 # name of the character.
 
 define config.menu_include_disabled = True
+
 define h = Character("Paati",  who_color="#f4c2c2")
 define p = Character("You", color="#69c9b3")
 define dh = Character("Hiran", color="#228b22")
 define w1 = Character("Wizard Kauwa", color="#57228b")
 define kw = Character("Khaang", color="#b5c9c2")
 define es = Character("Eternal Sage", color="#ffbf00")
-default char = "Deer"
+
 default esteem = 0
 default empathy = 0
 default confidence = 0
@@ -25,6 +26,16 @@ default forestMushroom = False
 
 default pubWine = False
 default pubBeer = False
+
+#///// Version 2 variables     //////
+default char = "Deer"
+define sh = Character("Shilo", color="#ffbf00")
+define do = Character("Dori", color="#f4c2c2")
+define ra = Character("Raka", color="#80f680")
+
+
+default mapDone = False
+default partnerChoice = False
 # The game starts here.
 
 init python:
@@ -50,13 +61,13 @@ label start:
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
-    scene introback
+    scene intro1
     if username == "default":
         $ username = renpy.input("What is the username you entered in the initial survey to play this game?")
     # show langur happy
     "Sun beams burst through the window - you’ve flung the curtains wide open to survey the array of gear you may need. You’re off on another adventure soon. You feel the familiar bubble of excitement in your stomach, tinged with a little nervousness."
     
-    scene introback2
+    scene intro2
     with Dissolve(0.4)
 
     "You look around the room at all your trinkets and treasures. It reminds you of all the things you love the most - your family, your friends, and the open air. "
@@ -66,29 +77,361 @@ label start:
     scene intro3
     with Dissolve(0.4)
 
-    "Paati has invited you to their Tower. This means that a new adventure is coming up!"
+    "You don’t know what to expect on this journey but you’ve been on enough adventures to predict some of the essentials you might need. You check your list. Do you have everything you need?"
     
-    show wiz playerface:
-        xpos 0.5 ypos 0.3
+    scene room1
+    show dori thinking:
+        xpos 0.55 ypos 0.15
 
-    "Even though it’s been a while, Paati greets you with a big hug and a cup of hot masala chai."
+    "You have so many questions! Where will you find yourself? What will you uncover? What will you learn about yourself? And, perhaps the most puzzling question of all, who will you go with?"
 
-    call phone_on
-    h "Welcome, young one."
-    extend "\nSit, relax, drink."
-    extend "\nI am glad to see you are well"
+    "Your pondering is interrupted by Shilo, your sibling, bursting through the door!"
 
-    h "You seem restless - is there something on your mind?"
+    show shilo happy:
+        xpos 0.15 ypos 0.15
+
+    sh "How’s it going, kid? You all set? What’s in this bag?"
+    
+    "Shilo picks up your bag and begins rifling through it."
+
+    do "Will you leave that alone! I’m packing it. Also, learn how to knock, dude."
+
+    "Sensing the tension in your voice, Shilo apologizes halfheartedly and sits on the edge of your bed."
+
+    sh "Why are you snapping?"
+
+    do "I don’t know...I guess I’m just nervous. But I’m also excited. Like, what if I fail? What if I get lost?"
+
+    scene room2
+    show shilo explaining:
+        xpos 0.25
+    
+    sh "How's the packing coming along?"
+
+    sh "It’s understandable that you’re nervous but you’re going to be fine! Like, honestly, this is just another one of your adventures"
+
+    "You smile and Shilo smiles back"
+    
+    sh "See? You know you got this, kid!"
+    
+    scene room1
+    show dori thinking:
+        xpos 0.55 ypos 0.15
+    show shilo happy:
+        xpos 0.15 ypos 0.15
+    
+    "You're beaming now"
+
+    sh "How’s the packing coming along?"
+
+ 
+    # show wiz playerface:
+    #     xpos 0.5 ypos 0.3
+
+    # "Even though it’s been a while, Paati greets you with a big hug and a cup of hot masala chai."
+
+    # call phone_on
+    # h "Welcome, young one."
+    # extend "\nSit, relax, drink."
+    # extend "\nI am glad to see you are well"
+
+    # h "You seem restless - is there something on your mind?"
 
     menu:
-        "How would you like to respond?"
-        "Share what is on your mind":
-        
-            jump express
+        "Check out on my to-do list!":        
+            jump todolist
 
-        "Hide what is on your mind":
-        
-            jump repress
+        "I'm still working on it":
+            jump working
+
+label todolist:
+    show dori chuffed
+
+    show shilo explaining 2
+    "Shilo rubs their hands together"
+    sh "Oh man, I love a good list!"
+    "You do too - guess it runs in the family!"
+    "Shilo offers to help, double-checking the list as you go."
+
+    jump mapwork
+
+
+label working:
+    show shilo explaining 2
+    show dori uncomfortable
+    sh "Let's work on it together! I think we should start with who you're going with. Have you chosen your partner yet?!"
+
+    # screen 
+    jump partnerSelect
+
+
+label mapwork:
+    scene map
+    "You open up your map. You’ve been poring over the rough outline for a while. It’s uncharted territory and you volunteered to traverse it and bring back your findings. Shilo has been on a few adventures of their own and have some useful advice."
+
+    show postit1 hover:
+        xpos 0.000 ypos 0.0
+
+    "This is Emoterra! You and your partner will travel through this ever-changing land; the terrains you find yourselves in will reflect the dynamics of your relationship. Every choice, conversation, and conflict will lead you to a new landscape, a new possibility."
+
+    show postit1 nohover
+    sh "Keep an eye out for twists and turns, you never know where things take you. "
+
+    show postit2 hover:
+        xpos 0 ypos 0
+
+    "Each terrain will tell you something about yourself or your partner. Don’t be afraid to explore the different corners of this land - it’s full of things to be discovered!"
+
+    show postit2 nohover
+
+    do "I can’t wait to get my hands on some rare rocks and crystals!"
+    
+    show postit3 hover:
+        xpos 0 ypos 0
+
+    "This land is inhabited by mysterious folk too - some adventurers speak of meeting an Eternal Sage, a keeper of wisdom. They may even have a gift for you."
+    
+    show postit3 nohover
+
+    do "I wonder if I’ll bump into the Sage - what even is this gift that everyone speaks of?"
+    
+    sh "Everyone’s journey looks different. Remember to keep a record of the places you go. It’s important that you’re able to understand where you’ve been."
+
+    "You make a mental note to keep a diary/log."
+
+    show postit4 hover
+
+    "If you’re ever stuck in a confusing place or need help with a situation, there’s always the Local Wizards Helpline - a group of people who have experience with the problems you might face."
+
+    show postit4 nohover
+
+    $ mapDone = True
+
+    if partnerChoice:
+        sh "Just remember you’re never alone - Reach out any time! And, oh my god!! Have you picked your partner yet?"
+        jump bagpack
+    else:        
+        sh "Just remember you’re never alone - Reach out any time!"
+        jump partnerSelect
+
+label partnerSelect:
+    show overlay:
+        alpha 0.95
+    
+    "You find yourself blushing a little."
+
+    show kai nohover
+    show raka nohover
+
+    do "Well...I have a couple options..."
+
+    sh "A couple options! So popular!"
+    
+    do "It’s not like that! It’s just...well they’re both cuties for sure. I’m just confused about whom to pick. "
+
+    sh "Well, tell me about them!"
+
+    show kai hover:
+        alpha 0.8
+    "(Sorry but Kai is not ready yet, will be dateable in the near future!) You are sure you will enjoy their quiet company and walks in the sunlit forest!"
+
+    show kai nohover
+    show raka hover
+
+    "You look forward to the thrill of chasing down the answers to your questions."
+
+    sh "Are you ready to start packing now?"
+
+    "You nod"
+
+    $ partnerChoice = True
+
+    if mapDone:
+        jump bagpack
+    else:
+        sh "Now! On to where you're going!"
+        jump mapwork
+
+label bagpack:
+    scene intro3
+
+    show overlay:
+        alpha 0.95
+    
+    show bagunpack
+
+    #//// TODO: make bag hoverable interactions /////#
+
+    # "Hover over items to read about them, click to pack them."
+    # call screen bagitems
+    # call screen bagitems
+    # call screen bagitems
+    # call screen bagitems
+    # call screen bagitems
+
+    show diary nohover
+    show snack nohover
+    show liquidcourage nohover
+    show bracelet nohover
+    show star nohover
+
+    "Let's go through all the items you might need"
+
+    show liquidcourage hover 
+    ""
+    show liquidcourage packed
+    ""
+    
+    show diary hover 
+    ""
+    show diary packed
+    ""
+
+    show snack hover 
+    ""
+    show snack packed
+    ""
+    
+    show bracelet hover 
+    ""
+    show bracelet packed
+    ""
+
+    show star hover 
+    ""
+    show star packed
+    ""
+    # show diary
+
+    scene intro3
+
+    "You and Shilo stand triumphantly over the pack. You’re surprised and impressed by how much fit into it. Shilo lays a hand on your shoulder and gives it an affectionate squeeze."
+
+    scene room1
+
+    show shilo explaining 2:
+        xpos 0.2 ypos 0.2
+    show dori bighappy:
+        xpos 0.45 ypos 0.2
+
+    sh "Hey, listen. {p} I know you’re going to be alright but if you ever need help, I’m just a call away."
+
+    #////TODO: create mobile phone notification /////#
+
+    "As you’re doing the last checks, you feel your phone buzz. It’s _____X_____.
+    A sweet text reads, “Can’t wait to see you!” OR “You all set? Meet me at the Forest entrance when you’re ready! See ya :)”"
+
+    jump forest1
+ 
+default bagDiary = False
+default bagSnack = False
+default bagBracelet = False
+default bagStar = False
+
+screen bagitems():
+    # frame:
+    #     xpos 400 ypos 600
+    #     # has vbox
+    #     text "Click on food items to collect them! (There are 3!)"
+    if bagDiary == False:
+        imagebutton:        
+            auto "items/bagpack/diary_%s.png" action [Hide("bagitems"), SetVariable("bagDiary", True), Return()]
+    else:
+        add "items/bagpack/diary packed.png"
+
+
+label forest1:
+    scene newforest
+    show newforesttitle:
+        xpos 0.15 ypos 0.4
+
+    pause 5
+    hide newforesttitle
+
+    show raka happy 1:
+        xpos 0.1 ypos 0.2
+    show dori bighappy:
+        xpos 0.5 ypos 0.2
+
+    "You meet Raka at the edge of the forest. They are carrying a small, light pack. As the sun shines down on them, they radiate confidence."
+
+    scene newforest2
+    show dori chuffed
+    
+    #/// TODO make diary dialog box style
+
+    "Diary Entry" "Today Raka and I begin our travels. I am feeling lot of mixed emotions! What will Raka think of me?? I am also so excited about the adventure - so many samples to find and notes to make! My head is buzzing with thoughts - is this normal?"
+
+    scene newforest
+    show raka happy 1:
+        xpos 0.1 ypos 0.2
+    show dori bighappy:
+        xpos 0.5 ypos 0.2
+    
+    "Raka is excited to get going, so you set off almost immediately. They have many things to say - so many adventures, with so many different people!" 
+    "You find that you both share a love for adventuring. But Raka especially likes feeling prepared and in control."
+
+    scene newforest3
+    with Dissolve(0.1)
+    show raka proud zoomed
+    ra "Failing to prepare is preparing to fail! I stay vigilant and aware at all times. I don’t really like people who aren’t focused on success, y’know?"
+
+    do "Hmmm..."
+
+    scene newforest
+    show raka happy 1:
+        xpos 0.1 ypos 0.2
+    show dori happy:
+        xpos 0.5 ypos 0.2
+    
+    "Raka continues to open up. They share experiences of past partners. The conversation then turns to you."
+
+    ra "So what about you?"
+    
+    do "Well, this is my first time on an adventure like this. I’m usually part of a team. "
+
+    ra "Oh, so I have a lot to teach you!"
+
+    do "Hahaha, well, I’m always open to learning."
+
+    ra "I’m a bit tough, though. "
+
+    do "Oh?"
+
+    scene newforest3
+    with None
+    show raka eyeroll zoomed
+
+    ra "Past partners have told me I’m a perfectionist but, honestly, I don't see that as a bad thing! Is it wrong to want to do my best and to expect that of others? "
+
+    scene newforest4
+    with None
+    show dori uncomfortable 1
+
+    do "Well, I don’t think so."
+
+    ra "Exactly! So, you get it. As the person who has more experience, it’s my job to take care of you. And since it’s your first time, you probably don’t even know what to expect. "
+
+    scene newforest
+    show raka happy 1:
+        xpos 0.1 ypos 0.2
+    show dori happy:
+        xpos 0.5 ypos 0.2
+
+    ##TODO: diary style again
+
+    "Diary Entry" "I’m really glad Raka opened up to me about their past partners and shared so many of their stories with me. Their confidence is sooo attractive. Like, they just know what they want and how to get it."
+
+
+#/// current ongoing 2024 code above this, older code below ///#
+
+
+
+
+
+
+
+
 
 label express:
     show wiz doriface:

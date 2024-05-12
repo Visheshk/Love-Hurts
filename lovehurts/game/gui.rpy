@@ -50,14 +50,14 @@ define gui.muted_color = '#003d51'
 define gui.hover_muted_color = '#005b7a'
 
 ## The colors used for dialogue and menu choice text.
-define gui.text_color = '#ffffff'
-define gui.interface_text_color = '#ffffff'
+define gui.text_color = '#111111'
+define gui.interface_text_color = '#111111'
 
 
 ## Fonts and Font Sizes ########################################################
 
 ## The font used for in-game text.
-define gui.text_font = "fonts/Neucha-Regular.ttf"
+define gui.text_font = "fonts/Grandstander.ttf"
 
 ## The font used for character names.
 define gui.name_text_font = "fonts/Galindo-Regular.ttf"
@@ -66,10 +66,10 @@ define gui.name_text_font = "fonts/Galindo-Regular.ttf"
 define gui.interface_text_font = "fonts/Galindo-Regular.ttf"
 
 ## The size of normal dialogue text.
-define gui.text_size = 26
+define gui.text_size = 21
 
 ## The size of character names.
-define gui.name_text_size = 28
+define gui.name_text_size = 24
 
 ## The size of text in the game's user interface.
 define gui.interface_text_size = 22
@@ -97,7 +97,7 @@ define gui.game_menu_background = "gui/game_menu.png"
 ## time.
 
 ## The height of the textbox containing dialogue.
-define gui.textbox_height = 185
+define gui.textbox_height = 180
 
 ## The placement of the textbox vertically on the screen. 0.0 is the top, 0.5 is
 ## center, and 1.0 is the bottom.
@@ -106,8 +106,8 @@ define gui.textbox_yalign = 1.0
 
 ## The placement of the speaking character's name, relative to the textbox.
 ## These can be a whole number of pixels from the left or top, or 0.5 to center.
-define gui.name_xpos = 240
-define gui.name_ypos = 0
+define gui.name_xpos = 270
+define gui.name_ypos = -20
 
 ## The horizontal alignment of the character's name. This can be 0.0 for left-
 ## aligned, 0.5 for centered, and 1.0 for right-aligned.
@@ -131,10 +131,10 @@ define gui.namebox_tile = False
 ## number of pixels relative to the left or top side of the textbox, or 0.5 to
 ## center.
 define gui.dialogue_xpos = 268
-define gui.dialogue_ypos = 50
+define gui.dialogue_ypos = 42
 
 ## The maximum width of dialogue text, in pixels.
-define gui.dialogue_width = 744
+define gui.dialogue_width = 754
 
 ## The horizontal alignment of the dialogue text. This can be 0.0 for left-
 ## aligned, 0.5 for centered, and 1.0 for right-aligned.
