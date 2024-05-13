@@ -784,6 +784,11 @@ label stickyQuicksand:
     "sticky quicksand work here!!!"
     # return
 
+
+### may 12 todos:
+### - make dialog box styles
+### - fix bag item packing screen, and bird spotting locations
+
 #/// current ongoing 2024 code above this, older code below ///#
 
 
@@ -1108,7 +1113,7 @@ label chap1:
     call screen berries
     call screen berries
     
-    ### TODO ADD multi BERRY CLICKABLE SCREEN
+    
     "You both return with many berries and wildflowers."""
     
     p "Wow! Look at all this! You’re really good at this, huh?"
@@ -1151,7 +1156,7 @@ label chap1:
     # "They begin to gather around you."
     pause
 
-    ### TODO ADD IMAGEMAP for ANIMALS
+    
 
     "You notice how happy Hiran’s cooking makes the others, and feel lucky to have someone like this on the journey with you. "
 
@@ -1460,7 +1465,7 @@ label valleyCont:
     with Dissolve(0.1)
 
     $ empathy += 10
-    # TODO TOKEN AWARD
+    
 
     # hide deer
     show langur thinking
@@ -1588,7 +1593,7 @@ label localPub:
 
     show stats pub1:
         xpos 0.3 ypos 0.1
-    # TODO stats screen
+    
 
     w1 """Look at that, Dori! Great work! A strong relationship is about give and take. 
     {w}But remember, it not about keeping score of who does how much! {w}
@@ -1699,7 +1704,7 @@ label mangrove:
 
     "You tie Hiran to yourself using the rope, and you both begin to walk slowly through the mud. It is much easier. But you suddenly realize something."
 
-    # TODO Secure supporter badge
+    
 
     p "Hiran, how do you know that I had rope? Did you look in my bag?"
 
@@ -1733,7 +1738,7 @@ label pubWizard:
     show stats mangrove1:
         xpos 0.3 ypos 0.1
         
-    #TODO Stats Screen
+    
 
     p "Kauwaji, is it wrong that I feel angry at Hiran for going through my bag without asking me."
 
@@ -1839,7 +1844,7 @@ label rollingHills:
     if endScene == "rh2":
         show stats rh2:
             xpos 0.3 ypos 0.1
-    #TODO Stats screen
+    
     hide deer 
     show langur:
         xpos 0 ypos 0.1
@@ -1997,7 +2002,7 @@ label riverWiz:
     with Dissolve(0.5)
     pause
 
-    #TODO STATS Screen
+    
     show stats forest wiz:
         xpos 0.3 ypos 0.1
 
@@ -2009,7 +2014,7 @@ label riverWiz:
         xpos 0.32 ypos 0.3
     pause
     # show 
-    #TODO Inventory screen
+    
 
     "You take a moment to have a snack and focus your energy -  the temperature of the cave feels cool, the air smells fresh, you see the sunlight through the waterfall, the chips taste salty and delicious and you listen to the sound of the forest all around you. "
     hide bag river wiz
@@ -2119,7 +2124,7 @@ label valleyCont3:
     with Dissolve(0.1)
 
     $ empathy += 10
-    # TODO TOKEN AWARD
+    
 
     # hide deer
     show langur shocked
@@ -2200,7 +2205,7 @@ label pub3:
     # "Click on the objects to drink "
     call screen drinks
     call screen drinks
-    # TODO Add clickable drinks
+    
 
     $ confidence += 10
 
@@ -2255,7 +2260,7 @@ label pubWiz:
 
     show stats pub early:
         xpos 0.3 ypos 0.1
-    #TODO Stats screen
+    
     w1 "I sense that there has been a break down in the trust and communication between you and Hiran."
     p "I feel like I’m doing everything wrong with Hiran. They’re being so clingy. I feel so stuck with them."
     w1 "This can happen when two people find themselves in a stressful situation."
@@ -2360,7 +2365,7 @@ label valley4:
     "You feel the Sight of The Eternal Sage on you. You know that they sense everything."
     show stats valley end:
         xpos 0.3 ypos 0.1
-    #TODO Stats Screen
+    
 
     es "Young Dori, how heavy your heart is!
     {w}\nRemember that going on an adventure with a partner can be a wonderful thing, and it should never feel like a burden. The journey  is not about proving anything; it's about understanding, trust, and connection."
@@ -2449,7 +2454,7 @@ label mangrove4:
     if endScene == "m1":
         show stats mangrove 1:
             xpos 0.3 ypos 0.1
-    #TODO Stats screen for m1 vs m2
+    
 
     es "Young Monkey Dori, you seem frustrated and disappointed. These Marshy Lands are indeed difficult to cross.
     \n{w}But, don’t worry, I see your pain - you are hurt and regret the hurt you’ve caused Hiran. You don’t know how to mend it." 
@@ -2559,7 +2564,7 @@ label rollingHillsAlone:
         show stats rha2:
             xpos 0.3 ypos 0.1
         with Dissolve(0.3)
-    #TODO Stats screen
+    
 
     es "Young Monkey Dori, you have many questions! This is good. {w}
     \nWhile not every question has an answer, I am proud to see you taking the time to reflect and think about the choices you have made."
@@ -2645,7 +2650,7 @@ label barrenDesert:
         show stats bd3:
             xpos 0.3 ypos 0.1
 
-    #TODO STATS Screen
+    
     es "Young Monkey Dori, it seems you are struggling quite a bit."
 
     es "Being the focus of your partner's attention may seem romantic at first, but it can become too much over time. {w}It is important to maintain balance and individuality in a relationship."
