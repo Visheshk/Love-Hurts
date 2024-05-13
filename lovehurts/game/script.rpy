@@ -818,9 +818,8 @@ label stickyQuicksand:
 
 
 ### may 12 todos:
-### - make dialog box styles
 
-### future big - texting?
+### future big todo - texting?
 #/// current ongoing 2024 code above this, older code below ///#
 
 
