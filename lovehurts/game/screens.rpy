@@ -138,6 +138,23 @@ style window:
 
     background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
 
+style diarywindow:
+    xalign 0.5
+    xfill True
+    yalign gui.textbox_yalign
+    ysize gui.textbox_height
+
+    background Image("gui/diarttext.png", xalign=0.5, yalign=1.0)
+
+style thoughtwindow:
+    xalign 0.5
+    xfill True
+    yalign gui.textbox_yalign
+    ysize gui.textbox_height
+
+    background Image("gui/thoughtbubble.png", xalign=0.5, yalign=1.0)
+
+
 style namebox:
     xpos gui.name_xpos
     xanchor gui.name_xalign

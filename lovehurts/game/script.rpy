@@ -34,6 +34,12 @@ define do = Character("Dori", color="#f4c2c2")
 define ra = Character("Raka", color="#80f680")
 define kh = Character("Khar", color="#57228b")
 
+define thought = Character( window_background="gui/thoughtbubble.png", what_xpos=0.1, window_xpos=0.6, window_ypos=0.95, what_ypos=0.3)
+# what_color="#ffffff", , what_right_margin=100, , what_ypos=678, what_xsize=1821, what_ysize=100,
+
+define diary = Character( window_background="gui/diartext.png", what_xpos=0.08, window_xpos=0.62, window_ypos=0.95, what_ypos=0.27)
+# what_color="#ffffff", what_size=25, what_right_margin=100, what_xpos=55, what_ypos=678, what_xsize=1821, what_ysize=100,
+
 default mapDone = False
 default partnerChoice = False
 # The game starts here.
@@ -366,10 +372,8 @@ label forest1:
 
     scene newforest2
     show dori chuffed
-    
-    #/// TODO make diary dialog box style
 
-    "Diary Entry" "Today Raka and I begin our travels. I am feeling lot of mixed emotions! What will Raka think of me?? I am also so excited about the adventure - so many samples to find and notes to make! My head is buzzing with thoughts - is this normal?"
+    diary "Today Raka and I begin our travels. I am feeling lot of mixed emotions! What will Raka think of me?? I am also so excited about the adventure - so many samples to find and notes to make! My head is buzzing with thoughts - is this normal?"
 
     scene newforest
     show raka happy 1:
@@ -429,7 +433,7 @@ label forest1:
 
     ##TODO: diary style again
 
-    "Diary Entry" "I’m really glad Raka opened up to me about their past partners and shared so many of their stories with me. Their confidence is sooo attractive. Like, they just know what they want and how to get it."
+    diary "I’m really glad Raka opened up to me about their past partners and shared so many of their stories with me. Their confidence is sooo attractive. Like, they just know what they want and how to get it."
     
     scene newforest5
     with None
@@ -440,7 +444,7 @@ label forest1:
     "They even offered to hold my bag when I got tired. I'm usually so independent but I could get used to this!"
 
     scene newforest
-    with None
+    with Dissolve(0.2)
     show raka proud binocs:
         xpos 0.15 ypos 0.05
     show dori bighappy:
@@ -667,7 +671,7 @@ label selfSearch:
 
     ra "Wow, calm down, crankypants. "
 
-    "Diary entry" "I am TIRED. I am sore. Going to bed now."
+    diary "I am TIRED. I am sore. Going to bed now."
 
     show raka eyeroll
     show dori ashamed
@@ -749,7 +753,9 @@ label lostAvoid:
     ra "Tomorrow? Yeah no, I already have plans, Dori. My friends will be waiting for me at the pub. Besides, don’t you want to meet the gang?"
 
     #///TODO: Thought bubble here ///#
-    "Khar is one of my closest friends, I should and really want to go for their picnic. I don’t want to upset Raka anymore especially since they are already mad at me because of the binocular incident. UGH! What should I do!"
+    # style thoughtwindow
+
+    thought "Khar is one of my closest friends, I should and really want to go for their picnic. I don’t want to upset Raka anymore especially since they are already mad at me because of the binocular incident. UGH! What should I do!"
 
     menu:
         "Convince Raka to go to the picnic together":
@@ -813,7 +819,6 @@ label stickyQuicksand:
 
 ### may 12 todos:
 ### - make dialog box styles
-### menu choice styles
 
 ### future big - texting?
 #/// current ongoing 2024 code above this, older code below ///#

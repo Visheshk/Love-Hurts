@@ -1,21 +1,25 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <renpy.display.im.Image object ('gui/button/choice_idle_background.png') at 0x107ab3a60>:
-  File "game/script.rpy", line 523, in script
-    menu:
-OSError: Couldn't find file 'gui/button/choice_idle_background.png'.
+While loading <renpy.display.im.Image object ('gui/thoughtbubble.png') at 0x11cb32ac0>:
+  File "game/script.rpy", line 763, in script
+    diary "Khar is one of my closest friends, I should and really want to go for their picnic. I don’t want to upset Raka anymore especially since they are already mad at me because of the binocular incident. UGH! What should I do!"
+OSError: Couldn't find file 'gui/thoughtbubble.png'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 523, in script
-    menu:
-  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/ast.py", line 1922, in execute
-    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
-  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/exports.py", line 1106, in menu
-    rv = renpy.store.menu(new_items)
-  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/exports.py", line 1345, in display_menu
-    rv = renpy.ui.interact(mouse='menu', type=type, roll_forward=roll_forward)
+  File "game/script.rpy", line 763, in script
+    diary "Khar is one of my closest friends, I should and really want to go for their picnic. I don’t want to upset Raka anymore especially since they are already mad at me because of the binocular incident. UGH! What should I do!"
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/ast.py", line 930, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/exports.py", line 1474, in say
+    who(what, *args, **kwargs)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/character.py", line 1352, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/character.py", line 1003, in do_display
+    display_say(who,
+  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/character.py", line 693, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
   File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/ui.py", line 299, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/core.py", line 3582, in interact
@@ -46,24 +50,8 @@ Full traceback:
     surf = render(child, width, height, cst, cat)
   File "render.pyx", line 170, in renpy.display.render.render
   File "render.pyx", line 266, in renpy.display.render.render
-  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/layout.py", line 1109, in render
-    surf = render(d, width - x, rh, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/behavior.py", line 948, in render
-    rv = super(Button, self).render(width, height, st, at)
   File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/layout.py", line 1373, in render
     back = render(style.background, bw, bh, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/imagelike.py", line 300, in render
-    crend = render(image, width, height, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/image.py", line 774, in render
-    return wrap_render(self.target, width, height, st, at)
-  File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/image.py", line 316, in wrap_render
-    rend = render(child, w, h, st, at)
   File "render.pyx", line 170, in renpy.display.render.render
   File "render.pyx", line 266, in renpy.display.render.render
   File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/display/im.py", line 676, in render
@@ -76,9 +64,9 @@ Full traceback:
     filelike = renpy.loader.load(self.filename, directory="images")
   File "/Users/vkumar/Downloads/renpy-8.1.3-sdk/renpy/loader.py", line 833, in load
     raise IOError("Couldn't find file '%s'." % name)
-OSError: Couldn't find file 'gui/button/choice_idle_background.png'.
+OSError: Couldn't find file 'gui/thoughtbubble.png'.
 
 macOS-13.1-arm64-arm-64bit arm64
 Ren'Py 8.1.3.23091805
 lovehurts 1.0
-Sun May 12 23:45:12 2024
+Mon May 13 00:50:41 2024
