@@ -532,6 +532,19 @@ default bird2 = False
 default bird3 = False
 default bird4 = False
 
+screen bagitems():
+    # frame:
+    #     xpos 400 ypos 600
+    #     # has vbox
+    #     text "Click on food items to collect them! (There are 3!)"    
+
+    if bagLiquidCourage == False:
+        imagemap:        
+            auto "items/bagpack/liquidcourage_%s.png" 
+            hotspot(955, 115, 314, 155) action [Hide("bagitems"), SetVariable("bagLiquidCourage", True), Return()]
+    else:
+        add "items/bagpack/liquidcourage_action.png"
+
 screen birdSpotting():
     # frame:
     #     xpos 0 ypos 0
@@ -539,25 +552,29 @@ screen birdSpotting():
     #     text "Click on food items to collect them! (There are 3!)"
     # vbox xalign 1.0 yalign 1.0:
     if bird1 == False:
-        imagebutton:  
-            xalign 0
-            yalign 0
-            auto "items/birdbinoc/bird1_%s.png" action [Hide("birdSpotting"), SetVariable("bird1", True), Return()]
+        imagemap:  
+            auto "items/birdbinoc/bird1_%s.png" 
+            hotspot(170,92,96,90) action [Hide("birdSpotting"), SetVariable("bird1", True), Return()]
+    else:
+        add "items/birdbinoc/bird1_action.png"
     if bird2 == False:
-        imagebutton:  
-            xalign 0.5
-            yalign 0.5
-            auto "items/birdbinoc/bird2_%s.png" action [Hide("birdSpotting"), SetVariable("bird2", True), Return()]
+        imagemap:  
+            auto "items/birdbinoc/bird2_%s.png" 
+            hotspot(480,375,70,100) action [Hide("birdSpotting"), SetVariable("bird2", True), Return()]
+    else:
+        add "items/birdbinoc/bird2_action.png"
     if bird3 == False:
-        imagebutton:        
-            xalign 0.7
-            yalign 0.7
-            auto "items/birdbinoc/bird3_%s.png" action [Hide("birdSpotting"), SetVariable("bird3", True), Return()]
+        imagemap:  
+            auto "items/birdbinoc/bird3_%s.png" 
+            hotspot(780,340,85,80) action [Hide("birdSpotting"), SetVariable("bird3", True), Return()]
+    else:
+        add "items/birdbinoc/bird3_action.png"
     if bird4 == False:
-        imagebutton:  
-            xalign 0.18
-            yalign 0.02      
-            auto "items/birdbinoc/bird4_%s.png" action [Hide("birdSpotting"), SetVariable("bird4", True), Return()]
+        imagemap:  
+            auto "items/birdbinoc/bird4_%s.png" 
+            hotspot(940,275,100,135) action [Hide("birdSpotting"), SetVariable("bird4", True), Return()]
+    else:
+        add "items/birdbinoc/bird4_action.png"
 
 label forestbreak:
     scene newforest8
@@ -797,8 +814,8 @@ label stickyQuicksand:
 ### may 12 todos:
 ### - make dialog box styles
 ### menu choice styles
-### - fix bag item packing screen, and bird spotting locations
 
+### future big - texting?
 #/// current ongoing 2024 code above this, older code below ///#
 
 
