@@ -260,47 +260,24 @@ label bagpack:
     
     show bagunpack
 
-    #//// TODO: make bag hoverable interactions /////#
-
-    # "Hover over items to read about them, click to pack them."
-    # call screen bagitems
-    # call screen bagitems
-    # call screen bagitems
-    # call screen bagitems
-    # call screen bagitems
-
-    show diary nohover
-    show snack nohover
-    show liquidcourage nohover
-    show bracelet nohover
-    show star nohover
-
     "Let's go through all the items you might need"
 
-    show liquidcourage hover 
-    ""
-    show liquidcourage packed
-    ""
-    
-    show diary hover 
-    ""
-    show diary packed
-    ""
+    #//// TODO: make bag hoverable interactions /////#
 
-    show snack hover 
-    ""
-    show snack packed
-    ""
-    
-    show bracelet hover 
-    ""
-    show bracelet packed
-    ""
+    "Hover over items to read about them, click to pack them."
+    call screen bagitems
+    call screen bagitems
+    call screen bagitems
+    call screen bagitems
+    call screen bagitems
 
-    show star hover 
-    ""
-    show star packed
-    ""
+    # show diary nohover
+    # show snack nohover
+    # show liquidcourage nohover
+    # show bracelet nohover
+    # show star nohover
+
+
     # show diary
 
     scene intro3
@@ -326,18 +303,50 @@ label bagpack:
 default bagDiary = False
 default bagSnack = False
 default bagBracelet = False
+default bagLiquidCourage = False
 default bagStar = False
 
 screen bagitems():
     # frame:
     #     xpos 400 ypos 600
     #     # has vbox
-    #     text "Click on food items to collect them! (There are 3!)"
-    if bagDiary == False:
-        imagebutton:        
-            auto "items/bagpack/diary_%s.png" action [Hide("bagitems"), SetVariable("bagDiary", True), Return()]
+    #     text "Click on food items to collect them! (There are 3!)"    
+
+    if bagLiquidCourage == False:
+        imagemap:        
+            auto "items/bagpack/liquidcourage_%s.png" 
+            hotspot(955, 115, 314, 155) action [Hide("bagitems"), SetVariable("bagLiquidCourage", True), Return()]
     else:
-        add "items/bagpack/diary packed.png"
+        add "items/bagpack/liquidcourage_action.png"
+
+    if bagSnack == False:
+        imagemap:        
+            auto "items/bagpack/snack_%s.png" 
+            hotspot(735, 75, 355, 190) action [Hide("bagitems"), SetVariable("bagSnack", True), Return()]
+    else:
+        add "items/bagpack/snack_action.png"
+
+
+    if bagDiary == False:
+        imagemap:        
+            auto "items/bagpack/diary_%s.png" 
+            hotspot(820, 230, 475, 385) action [Hide("bagitems"), SetVariable("bagDiary", True), Return()]
+    else:
+        add "items/bagpack/diary_action.png"
+
+    if bagBracelet == False:
+        imagemap:        
+            auto "items/bagpack/bracelet_%s.png" 
+            hotspot(660, 300, 340, 385) action [Hide("bagitems"), SetVariable("bagBracelet", True), Return()]
+    else:
+        add "items/bagpack/bracelet_action.png"
+    
+    if bagStar == False:
+        imagemap:        
+            auto "items/bagpack/star_%s.png" 
+            hotspot(565, 120, 365, 155) action [Hide("bagitems"), SetVariable("bagStar", True), Return()]
+    else:
+        add "items/bagpack/star_action.png"
 
 
 label forest1:
@@ -787,6 +796,7 @@ label stickyQuicksand:
 
 ### may 12 todos:
 ### - make dialog box styles
+### menu choice styles
 ### - fix bag item packing screen, and bird spotting locations
 
 #/// current ongoing 2024 code above this, older code below ///#
