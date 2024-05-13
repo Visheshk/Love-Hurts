@@ -32,7 +32,7 @@ default char = "Deer"
 define sh = Character("Shilo", color="#ffbf00")
 define do = Character("Dori", color="#f4c2c2")
 define ra = Character("Raka", color="#80f680")
-
+define kh = Character("Khar", color="#57228b")
 
 default mapDone = False
 default partnerChoice = False
@@ -349,9 +349,9 @@ label forest1:
     hide newforesttitle
 
     show raka happy 1:
-        xpos 0.1 ypos 0.2
+        xpos 0.15 ypos 0.05
     show dori bighappy:
-        xpos 0.5 ypos 0.2
+        xpos 0.5 ypos 0.06
 
     "You meet Raka at the edge of the forest. They are carrying a small, light pack. As the sun shines down on them, they radiate confidence."
 
@@ -364,9 +364,9 @@ label forest1:
 
     scene newforest
     show raka happy 1:
-        xpos 0.1 ypos 0.2
+        xpos 0.15 ypos 0.05
     show dori bighappy:
-        xpos 0.5 ypos 0.2
+        xpos 0.5 ypos 0.1
     
     "Raka is excited to get going, so you set off almost immediately. They have many things to say - so many adventures, with so many different people!" 
     "You find that you both share a love for adventuring. But Raka especially likes feeling prepared and in control."
@@ -380,9 +380,9 @@ label forest1:
 
     scene newforest
     show raka happy 1:
-        xpos 0.1 ypos 0.2
+        xpos 0.15 ypos 0.05
     show dori happy:
-        xpos 0.5 ypos 0.2
+        xpos 0.5 ypos 0.1
     
     "Raka continues to open up. They share experiences of past partners. The conversation then turns to you."
 
@@ -414,14 +414,375 @@ label forest1:
 
     scene newforest
     show raka happy 1:
-        xpos 0.1 ypos 0.2
+        xpos 0.15 ypos 0.05
     show dori happy:
-        xpos 0.5 ypos 0.2
+        xpos 0.5 ypos 0.1
 
     ##TODO: diary style again
 
     "Diary Entry" "I’m really glad Raka opened up to me about their past partners and shared so many of their stories with me. Their confidence is sooo attractive. Like, they just know what they want and how to get it."
+    
+    scene newforest5
+    with None
+    show dori tired 1
 
+    ##TODO: thought bubble style here
+    "We walked for about 12km and, wow, can Raka walk. They are so strong and athletic. It's hard for me to keep up sometimes. But I like the challenge. They stop to check on me and make sure I'm okay. "
+    "They even offered to hold my bag when I got tired. I'm usually so independent but I could get used to this!"
+
+    scene newforest
+    with None
+    show raka proud binocs:
+        xpos 0.15 ypos 0.05
+    show dori bighappy:
+        xpos 0.5 ypos 0.1
+
+    "As you walk, you notice that Raka uses their binoculars often. This seems so curious to you. "
+
+    do "Hey, why do you carry binoculars around with you?"
+
+    ra "I like to be prepared, as I said. "
+
+    do "How do the binoculars help?"
+
+    scene newforest6
+    with None
+    show raka proud binocs 2
+    ra "They help me see things that are far away. That way I know what to expect. But sometimes, you can use them for fun too!"
+
+    do "Oh yeah?"
+
+    ra "Here, let me show you. You hold it like this, focus and now!"
+
+    scene binoculars
+    "Can you spot all the birds in the trees? Look how many kinds their are!"
+    call screen birdSpotting
+    call screen birdSpotting
+    call screen birdSpotting
+    call screen birdSpotting
+
+    scene binoculars2
+
+    "For a moment you are distracted by a blue glint. You adjust the focus of the binoculars and are delighted by what you have found! A waterfall. This wasn’t on the map!"
+
+    scene newforest
+    with None
+    show raka normal:
+        xpos 0.15 ypos 0.05
+    show dori bighappy:
+        xpos 0.5 ypos 0.1
+
+    do "Hey, I spotted a waterfall! It’s not that far out of the way!"
+
+    ra "That’s nice, Dori but we didn’t plan for this..."
+
+    do "Let’s check it out!"
+
+    ra "Alright, but I’m telling you now, it’s going to delay us. "
+
+    do "It’s okay!"
+
+    scene waterfall
+
+    "Your insistence pays off!"
+
+    show obsidian
+
+    "Upon reaching the waterfall, you immediately begin poking around. It isn’t long before you discover something - a rare obsidian rock!!"
+    
+    #///TODO: make obsidian clickable ///#
+    
+    "You place it carefully inside your pack."
+    hide obsidian
+
+    show raka normal:
+        xpos 0.15 ypos 0.05
+    show dori determined:
+        xpos 0.5 ypos 0.1
+    do "See? That didn’t take so long AND I found this!"
+
+    ra "Okay, now can we keep moving? We’re losing daylight. "
+
+    do "Yup! Let’s go."
+    
+    scene newforest7
+    with None
+
+    show dori irritated
+    "You continue to walk for hours to “make up the lost time”, as Raka puts it. Your feet are aching and there is a blister forming on your toe. "
+
+    menu:
+        "Suggest taking a break":
+            jump forestbreak
+        
+        "Keep pushing on":
+            jump foresttired
+
+default bird1 = False
+default bird2 = False
+default bird3 = False
+default bird4 = False
+
+screen birdSpotting():
+    # frame:
+    #     xpos 0 ypos 0
+    #     # has vbox
+    #     text "Click on food items to collect them! (There are 3!)"
+    # vbox xalign 1.0 yalign 1.0:
+    if bird1 == False:
+        imagebutton:  
+            xalign 0
+            yalign 0
+            auto "items/birdbinoc/bird1_%s.png" action [Hide("birdSpotting"), SetVariable("bird1", True), Return()]
+    if bird2 == False:
+        imagebutton:  
+            xalign 0.5
+            yalign 0.5
+            auto "items/birdbinoc/bird2_%s.png" action [Hide("birdSpotting"), SetVariable("bird2", True), Return()]
+    if bird3 == False:
+        imagebutton:        
+            xalign 0.7
+            yalign 0.7
+            auto "items/birdbinoc/bird3_%s.png" action [Hide("birdSpotting"), SetVariable("bird3", True), Return()]
+    if bird4 == False:
+        imagebutton:  
+            xalign 0.18
+            yalign 0.02      
+            auto "items/birdbinoc/bird4_%s.png" action [Hide("birdSpotting"), SetVariable("bird4", True), Return()]
+
+label forestbreak:
+    scene newforest8
+    with None
+    show raka snide 1
+    "Raka insists that you forge ahead. "    
+    ra "We have to keep going, Dori! We need to make it to the campsite since we already took that detour."
+
+    jump forestContinue
+
+label foresttired:
+    scene newforest9
+    with None
+    show dori tired 1
+    "You agree to push on. After all, it was your idea to take the detour to the waterfall."
+    
+    jump forestContinue
+
+label forestContinue:
+    scene newforest
+    with None
+    show raka snide 2:
+        xpos 0.15 ypos 0.05
+    show dori uncomfortable:
+        xpos 0.5 ypos 0.1
+
+    "You continue to struggle to keep up. "
+
+    ra "C’mon, slowpoke! Don’t they do endurance training at University anymore? "
+
+    "Raka pokes you jokingly. You laugh it off. "
+
+    do "No, I worked a lot on academic stuff. "
+
+    ra "Yeah, I can tell, nerd. "
+    
+    "Eventually, you make it to the campsite. Your legs are sore and you have trouble sitting down. But, you’re glad to have made it. Raka is doing a check of their stuff.  "
+    
+    scene campsite
+    show raka shock 1:
+        xpos 0.15 ypos 0.05
+    show dori tired 2:
+        xpos 0.5 ypos 0.1
+        # 
+
+    ra "Wait. Where the hell are my binoculars?"
+
+    "There is a sinking feeling in your stomach as you realize you left Raka’s binoculars at the waterfall."
+
+    show raka snide 2
+    show dori scared
+
+    do "I’m so sorry but...I think I left your binoculars at the waterfall. "
+
+    ra "Wait, are you serious?"
+
+    do "Yeah. But-but I can go get them for you? "
+
+    ra "Just stay here. I think you've helped enough."
+
+    scene campsite2
+    show dori scared zoom
+    menu:
+        "Insist on going yourself":
+            jump selfSearch
+        
+        "Let Raka go ahead":
+            jump rakaAnger
+
+label selfSearch:
+    do "Please, let me just go. It’s my fault that they’re back there. "
+    scene waterfall1
+    show dori tired binocs
+
+    "You walk to the waterfall. It is painful and demoralizing. You are upset at yourself for forgetting but you think Raka should have been more mindful as well. You return, drained and irritable. "
+
+    scene campsite
+    show raka irritated:
+        xpos 0.15 ypos 0.05
+    show dori irritated 2:
+        xpos 0.5 ypos 0.1
+    
+    "You toss the binoculars to Raka. "
+
+    do "Here. "
+
+    ra "What the heck? What’s your problem!"
+
+    do "I’d suggest keeping better track of your stuff in the future. "
+
+    ra "Wow, calm down, crankypants. "
+
+    "Diary entry" "I am TIRED. I am sore. Going to bed now."
+
+    show raka eyeroll
+    show dori ashamed
+    "You spend the night in separate tents, furious at each other. In the morning, when you wake up, Raka is waiting for you in a raft by the river. As soon as you climb in, the raft begins to move."
+
+    jump turbulentRiver
+
+label rakaAnger:
+    "As you wait for Raka, you feel increasingly guilty. Your throat tightens and your stomach is in a knot. "
+
+    scene campsite
+    show raka irritated:
+        xpos 0.15 ypos 0.05
+    show dori scared:
+        xpos 0.5 ypos 0.1
+    
+    "Raka returns and hardly speaks to you. You feel even more guilty knowing they are this upset."
+
+    menu:
+        "Apologize for all the trouble":
+            jump lostApology
+        
+        "Let it pass without bringing it up":
+            jump lostAvoid
+
+label lostApology:
+    show raka eyeroll
+    show dori ashamed
+    do "Raka, I am so sorry for being careless. Thank you for getting the binoculars back. I promise I’ll be more careful from now on. "
+
+    "Raka doesn’t make eye contact with you and continues walking ahead."
+
+    jump stickyQuicksand
+
+label lostAvoid:
+    show raka:
+        xzoom -1.0
+    show dori irritated 2
+
+    "As you both set up your tents for the night in awkward silence, your phone rings."
+
+    #/// TODO: mobile phone display here
+    do "Hey, Khar! What's up? We’re just setting up. I'm with Raka right now. "
+    
+    show dori bighappy
+
+    do "Raka say hi, it’s my friend Khar."
+    
+    "Raka grunts and gets back to setting up."
+    
+    scene campsite2
+    show dori thinking zoom
+    kh "Hey so, I'm having a picnic tomorrow next to the Valley and I wanted to invite you!"
+
+    do "Oh that sounds awesome! Our route takes us close to where you are. Can Raka come?"
+
+    kh "Of course, dude. Any friend of yours is a friend of mine and I'm excited to meet them. "
+
+    do "Yeah... I'm sure they'll be excited to meet you guys too..*sigh*"
+
+    kh "You okay, Dor? You sound a bit off. "
+
+    do "Yeah! I'm fine - just tired. "
+
+    kh "Okay, get some rest. See you soon!"
+
+    do "Bye!"
+
+    scene campsite 
+    show raka snide 2:
+        xpos 0.15 ypos 0.05
+    show dori scared:
+        xpos 0.5 ypos 0.1
+    
+    "The atmosphere seems tense, but you bring up the invitation nervously."
+
+    do "So... my friend Khar is having a picnic tomorrow. It’s not too much of a detour from our route. Why don’t we drop by? I’d really like it if you met my friends and it’ll be really sweet if - "
+
+    ra "Tomorrow? Yeah no, I already have plans, Dori. My friends will be waiting for me at the pub. Besides, don’t you want to meet the gang?"
+
+    #///TODO: Thought bubble here ///#
+    "Khar is one of my closest friends, I should and really want to go for their picnic. I don’t want to upset Raka anymore especially since they are already mad at me because of the binocular incident. UGH! What should I do!"
+
+    menu:
+        "Convince Raka to go to the picnic together":
+            jump convincePicnic
+
+        "Agree to meet Raka's friends":
+            jump agreePub
+
+label convincePicnic:
+    scene campsite
+    show raka eyeroll:
+        xpos 0.15 ypos 0.05
+    show dori uncomfortable:
+        xpos 0.5 ypos 0.1
+
+    do "I’d really really like it if you met my friends, Raka. "
+
+    ra "I already told you, I have another meeting at the pub."
+
+    do "Please?! I know you’re going to love them. "
+
+    ra "Ugh, fine but next time we go where I want. "
+
+    do "Okay! Thanks, Raka!"
+
+    jump kharPicnic
+
+label agreePub:
+    show campsite
+    show raka normal:
+        xpos 0.15 ypos 0.05
+    show dori ashamed:
+        xpos 0.5 ypos 0.1
+
+    ra "We can meet your friends another time. I agreed to meet my friends much earlier. I mean, I guess you could go alone?"
+
+    do "No, I don’t want to do that. "
+
+    ra "Then it’s settled. You’re coming with me to meet the gang. "
+
+    do "Okay."
+
+    jump rakaPub
+
+
+label kharPicnic:
+    "build out picnic scene !"
+
+label rakaPub:
+    "build out pub!!"
+
+
+label turbulentRiver:
+    "turbulent river work here!!!!"
+    # return
+
+label stickyQuicksand:
+    "sticky quicksand work here!!!"
+    # return
 
 #/// current ongoing 2024 code above this, older code below ///#
 
@@ -1540,7 +1901,7 @@ label logicalPendant:
     jump turbulentRiver
 # screen animals():
     
-label turbulentRiver:
+label turbulentRiver2:
     scene black
     with Dissolve(0.4)
     pause(0.3)
