@@ -262,7 +262,7 @@ label bagpack:
     scene intro3
 
     show overlay:
-        alpha 0.95
+        alpha 0.6
     
     show bagunpack
 
@@ -271,23 +271,28 @@ label bagpack:
     #//// TODO: make bag hoverable interactions /////#
 
     "Hover over items to read about them, click to pack them."
-    call screen bagitems
-    call screen bagitems
-    call screen bagitems
-    call screen bagitems
-    call screen bagitems
 
+    #TODO: in bagpack, add text to say hover to read, clikc to pack
+    call screen bagitems
+    call screen bagitems
+    call screen bagitems
+    call screen bagitems
+    call screen bagitems
+    
+    # pause
+    #TODO: add pause, and change the image to packed bag
     # show diary nohover
     # show snack nohover
     # show liquidcourage nohover
     # show bracelet nohover
     # show star nohover
-
-
+    
+    hide bagunpack
     # show diary
 
-    scene intro3
-
+    # scene intro3
+    hide overlay
+    with dissolve
     "You and Shilo stand triumphantly over the pack. You’re surprised and impressed by how much fit into it. Shilo lays a hand on your shoulder and gives it an affectionate squeeze."
 
     scene room1
@@ -317,13 +322,7 @@ screen bagitems():
     #     xpos 400 ypos 600
     #     # has vbox
     #     text "Click on food items to collect them! (There are 3!)"    
-
-    if bagLiquidCourage == False:
-        imagemap:        
-            auto "items/bagpack/liquidcourage_%s.png" 
-            hotspot(955, 115, 314, 155) action [Hide("bagitems"), SetVariable("bagLiquidCourage", True), Return()]
-    else:
-        add "items/bagpack/liquidcourage_action.png"
+    # modal True
 
     if bagSnack == False:
         imagemap:        
@@ -332,6 +331,13 @@ screen bagitems():
     else:
         add "items/bagpack/snack_action.png"
 
+    
+    if bagLiquidCourage == False:
+        imagemap:        
+            auto "items/bagpack/liquidcourage_%s.png" 
+            hotspot(955, 115, 314, 155) action [Hide("bagitems"), SetVariable("bagLiquidCourage", True), Return()]
+    else:
+        add "items/bagpack/liquidcourage_action.png"
 
     if bagDiary == False:
         imagemap:        
@@ -536,7 +542,7 @@ default bird2 = False
 default bird3 = False
 default bird4 = False
 
-screen bagitems():
+screen bagitemsBirds():
     # frame:
     #     xpos 400 ypos 600
     #     # has vbox
@@ -803,18 +809,18 @@ label agreePub:
 
 label kharPicnic:
     "build out picnic scene !"
-
+    return
 label rakaPub:
     "build out pub!!"
-
+    return
 
 label turbulentRiver:
     "turbulent river work here!!!!"
-    # return
+    return
 
 label stickyQuicksand:
     "sticky quicksand work here!!!"
-    # return
+    return
 
 
 ### may 12 todos:
