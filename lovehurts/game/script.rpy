@@ -815,8 +815,153 @@ label rakaPub:
     return
 
 label turbulentRiver:
-    "turbulent river work here!!!!"
+    scene turbbg
+    # with Dissolve
+    show turbtitle:
+        xpos 0.1 ypos 0.5
+    # with Dissolve
+    pause 
+
+    hide turbtitle
+    # with Dissolve
+
+    show raka snide 2:
+        xpos 0.15 ypos 0.05 xzoom -1
+    show dori irritated 2:
+        xpos 0.5 ypos 0.1
+
+    "You and Raka float along the river not talking much. Dark clouds form overhead and the water grows choppy. It begins to rain, water rushes in and around the two of you. You look to Raka."
+
+    "Raka sits in the back, unphased by the change in weather. The second oar lies untouched next to them. You feel helpless as you struggle to control the raft in the turbulent waters. "
+
+    show dori scared
+    ra "You know, we could have avoided this rain if you hadn’t delayed us yesterday."
+
+    scene river1
+    show dori furious big
+    thought "Why won’t they help me?? Why are they being so stubborn - maybe I should give them a taste of their own medicine."
+
+    show overlay:
+        alpha 0.4
+    
+    show truthbomb:
+        xpos 0.4 ypos 0.3
+
+    show screen countdown                          ### call and start the timer
+
+    # show dori irritated:
+        # xpos 0.5
+    # hide dori
+    # with Dissolve(3, time_warp=_warper.easein_quad)
+
+    menu:
+        "drop a truth bomb":
+            hide screen countdown
+            jump truebomb
+        
+        "let it go":
+            hide screen countdown
+            jump letitgo
+    # "turbulent river work here!!!!"
+
     return
+
+transform alpha_dissolve:
+    alpha 0.0
+    linear 0.5 alpha 1.0
+    on hide:
+        linear 0.5 alpha 0
+    # This is to fade the bar in and out, and is only required once in your script
+
+default timer_range = 3
+default time = 3
+default timer_jump = "truebomb"
+
+screen countdown:
+    timer 0.01 repeat True action If(time > 0, true=SetVariable('time', time - 0.01), false=[Hide('countdown'), Jump("truebomb")]) 
+        ### ^this code decreases variable time by 0.01 until time hits 0, at which point, the game jumps to label timer_jump (timer_jump is another variable that will be defined later)
+
+    bar value time range timer_range xalign 0.5 yalign 0.2 xmaximum 300 at alpha_dissolve 
+    
+        # ^This is the timer bar.
+        
+label truebomb:
+    scene turbbg
+    show raka snide 2:
+        xpos 0.15 ypos 0.05 
+    show dori furious:
+        xpos 0.5 ypos 0.1
+
+    "You feel the rage well up inside you. You know you’re going to say something mean but you want Raka to feel hurt - just like they’ve hurt you."
+
+    do "Are you doing nothing because you’re a coward or because you’re incompetent?"
+
+    "You watch Raka's face change in anger."
+
+    show raka irritated 
+
+    ra "Oh, I’m incompetent? You don’t even know how to row a raft. So now you're acting like a helpless baby. Grow up."
+
+    do "At least I’m doing something, Raka. Not just sitting around."
+
+    ra "Since you're so sure of everything, it seems like you don’t even need my help."
+
+    "The raft is getting tossed around in the choppy water. The second oar slides off the raft. You know you can’t do this on your own. "
+
+    show raka snide 2:
+        ypos 0.1 xzoom -1
+    
+    do "Can we talk about this later? Can you please just help. "
+
+    ra "If you need my help, just apologize and ask. "
+
+    "You are furious and scared.  "
+
+    "Up ahead, large rocks jut out of the water. You will need help navigating through them. You give in. "
+
+    show dori ashamed
+    show raka snide 2:
+        ypos 0.05
+
+    do "ALRIGHT! I'm sorry!"
+    "Raka is silent."
+    
+    do "Please, Raka. Please help me row the raft."
+    "Raka takes the oar from you and navigates swiftly through the waters. "
+
+    ra "Was that so hard?"
+
+
+
+label letitgo:
+    scene river2
+    show raka irritated zoom
+    
+    "You calm yourself down before saying anything rash. Raka, however, continues speaking."
+    ra "Look at the mess we’re in, Dori. This is what happens when you are careless. I'm tired too, you know. "
+
+    scene river1
+    show dori scared:
+        xpos 0.25 zoom 1.5
+    "You stay silent and continue to struggle against the waves and rain."
+
+    scene river2
+    show raka eyeroll:
+        xpos 0.25 zoom 1.5
+    ra "You’re hopeless. Give me that."
+
+    "Raka takes the oar and begins to push forward. The weather soon calms down."
+
+    scene turbbg
+    show raka snide 2:
+        xpos 0.15 ypos 0.05 
+    
+    show dori ashamed:
+        xpos 0.5 ypos 0.1
+    "The raft soon hits a riverbank and the two of you alight. You are disappointed in yourself and hurt by Raka."
+
+    
+
 
 label stickyQuicksand:
     "sticky quicksand work here!!!"

@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 288: expected 'image_name_component' not found.
-    hide 
-         ^
+File "game/script.rpy", line 882: 'color' is not a keyword argument or valid child of the bar statement.
+    bar value time range timer_range color "#f11" xalign 0.5 yalign 0.2 xmaximum 300 at alpha_dissolve 
+                                          ^
 
 Ren'Py Version: Ren'Py 8.1.1.23060707
-Sun May 19 22:53:33 2024
+Mon May 20 00:31:42 2024
