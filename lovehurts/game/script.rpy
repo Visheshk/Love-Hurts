@@ -3026,7 +3026,7 @@ screen buttons():
 
 label intro:
 
-    scene bg2
+    scene sandbg
     
     "intro here"
 
@@ -3042,7 +3042,7 @@ label intro:
             jump forest
 
 label forest:
-    scene forestbg
+    # scene forestbg
     if char == "Deer":
         "deer dialogue 1"
         
@@ -3052,7 +3052,7 @@ label forest:
 
         show deer:
             easein 0.9 xpos 0.2
-        show pc:
+        show raka:
             xpos 1.2
             easein 0.9 xpos 0.7
 
@@ -3061,7 +3061,7 @@ label forest:
     if char == "Wolf":
         "wolf dialogue 1"
     
-        show wolf1
+        show raka
     
     call screen buttons
 

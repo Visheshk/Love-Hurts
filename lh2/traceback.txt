@@ -1,0 +1,22 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 1093, in script
+    jump localpub
+ScriptError: could not find label 'localpub'.
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 1093, in script
+    jump localpub
+  File "/Applications/renpy-8.2.1-sdk/renpy/ast.py", line 1698, in execute
+    rv = renpy.game.script.lookup(target)
+  File "/Applications/renpy-8.2.1-sdk/renpy/script.py", line 1103, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'localpub'.
+
+macOS-14.5-arm64-arm-64bit arm64
+Ren'Py 8.2.1.24030407
+lh2 1.0
+Fri May 24 14:02:28 2024

@@ -144,7 +144,7 @@ style diarywindow:
     yalign gui.textbox_yalign
     ysize gui.textbox_height
 
-    background Image("gui/diarttext.png", xalign=0.5, yalign=1.0)
+    background Image("gui/diartext.png", xalign=0.5, yalign=1.0)
 
 style thoughtwindow:
     xalign 0.5
