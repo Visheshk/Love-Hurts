@@ -62,6 +62,7 @@ init python:
 
 
 label start:
+    play music "music/onmyway.mp3"
 
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
@@ -815,6 +816,7 @@ label rakaPub:
     return
 
 label turbulentRiver:
+    play music "music/hotpursuit.mp3"
     scene turbbg
     # with Dissolve
     show turbtitle:
@@ -964,13 +966,148 @@ label letitgo:
 
 
 label stickyQuicksand:
-    "sticky quicksand work here!!!"
+    scene sandbg
+    show sandtitle:
+        xpos 0.1 ypos 0.4 
+    with dissolve
+
+    pause
+
+    hide sandtitle
+    show raka eyeroll:
+        xpos 0.15 ypos 0.05
+    show dori uncomfortable:
+        xpos 0.5 ypos 0.1
+    
+    "The ground beneath your feet begins to grow unsteady. You find yourselves sinking into sand. Despite how much effort you have to put in to walk, you still try to keep a positive attitude."
+
+    do "Oh my gosh, isn't this something..."
+
+    "Nothing from Raka. They just wade slowly but sure through the quicksand."
+
+    do "Funny that its called quicksand when we’re moving so slow!"
+
+    ra "Let’s just not talk, okay? Let’s just get through this."
+
+    scene sandbg2
+
+    show dori ashamed:
+        xpos 0.22 ypos -0.15 zoom 1.6
+
+    thought "I FEEL SO GUILTY - and careless. This is all my fault. I've always been clumsy. I feel bad that I've asked Raka to come on this adventure, they obliged and now I'm messing it all up."
+
+    scene sandbg
+    show raka snide:
+        xpos 0.15 ypos 0.05
+    show dori bighappy:
+        xpos 0.5 ypos 0.1
+
+    thought "Suddenly, you spot the opening to a limestone cave. You think you could get some good samples in there."
+
+    do "Hey, Raka! There’s a cave there. How about we stop in there for a bit, I pick up a sample and we continue?"
+
+    ra "Dori, we already know how your little detour went last time. "
+
+    scene sandbg2
+    
+    show dori thinking:
+        xpos 0.22 ypos -0.15 zoom 1.6
+
+    menu:
+        "go into cave yourself":
+            jump cave
+        "keep moving":
+            jump sandctd
+    # "sticky quicksand work here!!!"
     return
 
+label cave:
+    do "Okay, you continue. It’ll only take a minute. I’ll catch up. "
+    thought "I am sure I'll find something in there that will cheer Raka up!"
 
-### may 12 todos:
+    scene cavebg
+
+    show dori chuffed:
+        xpos 0.22 ypos -0.15 zoom 1.6
+
+    "Your intuition pays off! You travel into the cave confidently. You use the flashlight on your phone to help you look. Soon, you notice a glimmer that indicates the presence of a gemstone."
+
+    
+
+    hide dori
+    with dissolve
+
+    show cavegem
+    with dissolve
+    "You go closer - wedged in the rock is a smooth blue gem! "
+    pause
+
+    hide cavegem
+    with dissolve
+    
+    show dori haggardshocked:
+        xpos 0.55 ypos 0.1
+    
+    "In your haste to get out and show Raka your glorious find, you don’t notice the sharp, jagged rocks sticking out of the ground. You trip, bruising your knee as you fall. "
+
+    show raka eyeroll:
+        xpos 0.15 ypos 0.05
+
+    ra "Gosh Dori, I told you this was a bad idea. Hope you're satisfied with your dumb decision!"
+        
+    scene sandbg
+
+    show raka irritated:
+        xpos 0.15 ypos 0.05
+    
+    show dori haggard:
+        xpos 0.55 ypos 0.1
+    
+    ra "Why are you so careless? Don’t they tell you the importance of awareness in university?"
+
+    do "I’m sorry...I think I just need to sit for a bit."
+
+    hide dori
+
+    show raka eyeroll:
+        xpos 0.28 ypos 0.05 zoom 1.3
+    
+    ra "The pub is so close, Dori. If you wouldn’t get so distracted by your little rocks, we’d be there already. How about this? Give me your bag, you'll move faster without it."
+
+    scene sandbg2
+    show dori haggardshocked:
+        xpos 0.22 ypos -0.15 zoom 1.6
+    
+    menu:
+        "Hand Raka your bag":
+            jump marshyswamp1
+        
+        "Say no":
+            jump marshyswamp2
+
+label marshyswamp1:
+    show dori sad zoom:
+        xpos 0.25 ypos 0 zoom 1
+    thought "I could probably use all the help I can get. I don't want to be such a hindrance."
+
+    jump localpub
+
+label marshyswamp2:
+    scene sandbg
+
+    show raka eyeroll:
+        xpos 0.15 ypos 0.05
+    
+    show dori haggardshocked:
+        xpos 0.55 ypos 0.1
+
+    do "I’d rather not. Why don’t you go on ahead to the pub tonight? I’ll stay here and rest. My leg is sore and it’s getting late too. I’ll start setting up my tent."
+    
+    ra "Fine, have it your way. I’m off. "
 
 ### future big todo - texting?
+### may 24 todos:
+    ### TODO finish marshy swamp night tent texting scene. add texting next
 #/// current ongoing 2024 code above this, older code below ///#
 
 
