@@ -1,30 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 972, in script
-    with Dissolve
-Exception: Expected transition to be a displayable, not a <partial <class 'renpy.display.transition.Dissolve'> () {'old_widget': <renpy.display.layout.Fixed object at 0x107cfb280>, 'new_widget': <renpy.display.layout.Fixed object at 0x107cfb340>}>
+  File "game/script.rpy", line 1093, in script
+    jump localpub
+ScriptError: could not find label 'localpub'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 972, in script
-    with Dissolve
-  File "/Users/vkumar/Downloads/renpy-8.1.1-sdk/renpy/ast.py", line 1678, in execute
-    renpy.exports.with_statement(trans, paired=paired)
-  File "/Users/vkumar/Downloads/renpy-8.1.1-sdk/renpy/exports.py", line 1757, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "/Users/vkumar/Downloads/renpy-8.1.1-sdk/renpy/display/core.py", line 2975, in do_with
-    return self.interact(trans_pause=True,
-  File "/Users/vkumar/Downloads/renpy-8.1.1-sdk/renpy/display/core.py", line 3579, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "/Users/vkumar/Downloads/renpy-8.1.1-sdk/renpy/display/core.py", line 3973, in interact_core
-    trans = instantiate_transition(None, old_root, layers_root)
-  File "/Users/vkumar/Downloads/renpy-8.1.1-sdk/renpy/display/core.py", line 3924, in instantiate_transition
-    raise Exception("Expected transition to be a displayable, not a %r" % trans)
-Exception: Expected transition to be a displayable, not a <partial <class 'renpy.display.transition.Dissolve'> () {'old_widget': <renpy.display.layout.Fixed object at 0x107cfb280>, 'new_widget': <renpy.display.layout.Fixed object at 0x107cfb340>}>
+  File "game/script.rpy", line 1093, in script
+    jump localpub
+  File "/Users/kumav11/Library/CloudStorage/OneDrive-Vanderbilt/Documents/renpy-8.1.1-sdk/renpy/ast.py", line 1705, in execute
+    rv = renpy.game.script.lookup(target)
+  File "/Users/kumav11/Library/CloudStorage/OneDrive-Vanderbilt/Documents/renpy-8.1.1-sdk/renpy/script.py", line 1103, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'localpub'.
 
-macOS-14.5-arm64-arm-64bit arm64
-Ren'Py 8.1.1.23060707
+macOS-14.7.3-arm64-arm-64bit arm64
+Ren'Py 8.3.4.24120703
 lovehurts 1.0
-Fri May 24 02:57:44 2024
+Tue Feb  4 16:01:29 2025

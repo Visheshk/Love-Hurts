@@ -38,6 +38,9 @@ Module.preRun = Module.preRun || [ ];
     let statusTextDiv = document.getElementById("statusTextDiv");
     let statusProgress = document.getElementById("statusProgress");
 
+    // Presplash block
+    let presplash = document.getElementById('presplash');
+
     // The timeout before the status div hides itself.
     let statusTimeout = null;
 
@@ -257,7 +260,7 @@ Module.preRun = Module.preRun || [ ];
     Module.canvas = canvas;
 
     window.presplashEnd = () => {
-        document.getElementById('presplash').remove();
+        presplash.remove();
         cancelStatusTimeout();
         hideStatus();
     };
@@ -782,6 +785,7 @@ Module.preRun = Module.preRun || [ ];
     function endInput() {
         inputDiv.classList.remove("visible");
         inputDiv.classList.add("hidden");
+        inputText.blur();
     }
 
     window.endInput = endInput;
@@ -800,10 +804,11 @@ Module.preRun = Module.preRun || [ ];
      * @param url The URL to fetch.
      * @param inFile The file to send to the server. A string giving the file name, or null for no file.
      * @param outFile The file to write the response to. A string giving the file name, or null for no file.
+     * @param inContentType The content type of the file to send to the server. A string giving the content type. Ignored if inFile is null.
      *
      * @return A string giving the result of the fetch. The first word is the status, which is one of "OK", "ERROR", or "PENDING", followed by the HTTP status code and status text.
      */
-    function fetchFile(method, url, inFile, outFile) {
+    function fetchFile(method, url, inFile, outFile, inContentType) {
 
         let id = fetchId++;
         fetchResult[id] = "PENDING Fetch in progress.";
@@ -817,6 +822,7 @@ Module.preRun = Module.preRun || [ ];
 
                 if (inFile) {
                     options.body = FS.readFile(inFile, { encoding: 'binary' });
+                    options.headers = { 'Content-Type': inContentType || 'application/octet-stream' };
                 }
 
                 let response = await fetch(url, options);
@@ -857,6 +863,49 @@ Module.preRun = Module.preRun || [ ];
     window.fetchFile = fetchFile;
     window.fetchFileResult = fetchFileResult;
 
+    /**
+     * Fullscreen support.
+     */
+
+    let lastFullscreenTime = 0;
+
+    function isFullscreen() {
+        let now = +new Date();
+        return document.fullscreenElement ? 1 : 0;
+    }
+
+    window.isFullscreen = isFullscreen;
+
+    function setFullscreen(enable) {
+
+        let current = document.fullscreenElement !== null;
+
+        if (enable == current) {
+            return;
+        }
+
+        let now = +new Date();
+
+        if (lastFullscreenTime + 250 > +new Date()) {
+            return;
+        }
+
+        lastFullscreenTime = now;
+
+        setTimeout(function () {
+            if (enable) {
+                let e = document.getElementsByTagName("html")[0];
+                e.requestFullscreen().catch(function (error) {
+                    lastFullscreenTime = now + 15000;
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }, 0);
+    }
+
+    window.setFullscreen = setFullscreen;
+
     /***************************************************************************
      * "Hidden" developer functions.
      **************************************************************************/
@@ -884,5 +933,31 @@ Module.preRun = Module.preRun || [ ];
     }
 
     window.loseContext = loseContext;
+
+
+    /***************************************************************************
+     * Overlay div handling.
+     **************************************************************************/
+
+    let overlayDiv = document.getElementById("overlayDiv");
+
+    for (let eventName of ["mousedown", "mouseup", "mousemove" ]) {
+        overlayDiv.addEventListener(eventName, function (e) {
+            canvas.dispatchEvent(new MouseEvent(e.type, e));
+
+            if (e.type == "mouseup") {
+                overlayDiv.remove();
+            }
+
+        });
+
+    };
+
+
+
+
+
+
+
 
 })();

@@ -1105,6 +1105,22 @@ label marshyswamp2:
     
     ra "Fine, have it your way. I’m off. "
 
+label localpub:
+    scene pubbg
+    show pubtitle:
+        xpos 0.2 ypos 0.4 
+    with dissolve
+
+    pause
+
+    hide sandtitle
+    show raka eyeroll:
+        xpos 0.15 ypos 0.05
+    show dori uncomfortable:
+        xpos 0.5 ypos 0.1
+    
+
+
 ### future big todo - texting?
 ### may 24 todos:
     ### TODO finish marshy swamp night tent texting scene. add texting next
@@ -1794,11 +1810,11 @@ label valleyCont:
     
     menu: 
         "Go ahead with excitement":
-            jump localPub
+            jump localPubOld
         "Go ahead with caution":
             jump mangrove
 
-label localPub:
+label localPubOld:
     
     scene black
     with Dissolve(0.4)
